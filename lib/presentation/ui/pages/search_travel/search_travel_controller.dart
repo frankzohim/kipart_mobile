@@ -61,8 +61,8 @@ class SearchTravelController extends GetxController
     if (!formKey.currentState!.validate()) return;
     SearchData dataSearch = SearchData(
         type: typeTravel.value,
-        departure: typeAheadAllerController.text,
-        arrival: typeAheadRetourController.text,
+        departure: departure.value,
+        arrival: arrival.value,
         dateDeparture: dateDepart.value,
         departure_time: heureDepart.value,
         dateArrival:

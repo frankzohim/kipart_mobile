@@ -89,100 +89,31 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                   .toList(),
                               onChanged: controller.typeTravel),
                           AppDimensions.serparatorVert8,
-                          TypeAheadField<CityModel>(
-                            textFieldConfiguration: TextFieldConfiguration(
-                              controller: controller.typeAheadAllerController,
+                          DropdownButtonFormField(
+                              value: controller.departure.value,
                               decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.circle_outlined),
-                                  labelText: "Lieu de départ"),
-                            ),
-                            suggestionsCallback: (pattern) {
-                              if (controller.typeAheadAllerController.text ==
-                                  '') {
-                                print('je sui slàààà');
-                                controller.villes = controller.listVillesBack;
-                                return controller.listVillesBack
-                                    .where((CityModel option) {
-                                  return option.ville
-                                      .toLowerCase()
-                                      .contains(pattern.toLowerCase());
-                                });
-                              } else {
-                                return controller.villes
-                                    .where((CityModel option) {
-                                  return option.ville
-                                      .toLowerCase()
-                                      .contains(pattern.toLowerCase());
-                                });
-                              }
-                            },
-                            itemBuilder: (context, suggestion) {
-                              return ListTile(
-                                leading: Icon(Icons.location_on),
-                                title: Text(suggestion.ville),
-                              );
-                            },
-                            onSuggestionSelected: (suggestion) async {
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              //     builder: (context) =>
-                              //         ProductPage(product: suggestion)));
-                              controller.villes.removeWhere((element) {
-                                return element.ville == suggestion.ville;
-                              });
-                              controller.typeAheadAllerController.text =
-                                  suggestion.ville;
-                              controller.messageErrorDepart.value = '';
-                            },
-                          ),
-                          if (controller.typeAheadAllerController.text == '')
-                            Obx(() {
-                              return controller.messageErrorDepart.value != ''
-                                  ? Text(
-                                      controller.messageErrorDepart.value,
-                                      style: TextStyle(color: Colors.red),
-                                    )
-                                  : Container();
-                            }),
+                                  labelText: "Lieu de départ",
+                                  prefixIcon:
+                                  Icon(Icons.circle_outlined)),
+                              items: ["Douala", "Yaoundé"]
+                                  .map((e) => DropdownMenuItem(
+                                  child: Text(e), value: e))
+                                  .toList(),
+                              onChanged: controller.departure),
                           AppDimensions.serparatorVert8,
-                          TypeAheadField<CityModel>(
-                            textFieldConfiguration: TextFieldConfiguration(
-                              controller: controller.typeAheadRetourController,
+                          DropdownButtonFormField(
+                              value: controller.arrival.value,
                               decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.location_on),
-                                  labelText: "Destination"),
-                            ),
-                            suggestionsCallback: (pattern) async {
-                              return controller.villes
-                                  .where((CityModel option) {
-                                return option.ville
-                                    .toLowerCase()
-                                    .contains(pattern.toLowerCase());
-                              });
-                            },
-                            itemBuilder: (context, suggestion) {
-                              return ListTile(
-                                leading: Icon(Icons.location_on),
-                                title: Text(suggestion.ville),
-                              );
-                            },
-                            onSuggestionSelected: (suggestion) async {
-                              controller.typeAheadRetourController.text =
-                                  suggestion.ville;
-                              await controller.villes.remove(
-                                  controller.typeAheadRetourController.text);
-                              controller.messageErrorArrive.value = '';
-                            },
-                          ),
-                          if (controller.typeAheadRetourController.text == '')
-                            Obx(() {
-                              controller.villes = controller.listVillesBack;
-                              return controller.messageErrorArrive.value != ''
-                                  ? Text(
-                                      controller.messageErrorArrive.value,
-                                      style: TextStyle(color: Colors.red),
-                                    )
-                                  : Container();
-                            }),
+                                  labelText: "Destination",
+                                  prefixIcon:
+                                  Icon(Icons.location_on)),
+                              items: ["Douala", "Yaoundé"]
+                                  .map((e) => DropdownMenuItem(
+                                  child: Text(e), value: e))
+                                  .toList(),
+                              onChanged: controller.departure),
+
+
                           // if (controller.typeAheadAllerController.text ==
                           //     controller.typeAheadRetourController.text)
                           //   Text(
@@ -330,18 +261,18 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
               AppDimensions.serparatorVert16,
               ElevatedButton(
                   onPressed: () {
-                    if (controller.typeAheadAllerController.text == '') {
+                    if (controller.departure.value == '') {
                       controller.messageErrorDepart.value =
-                          'Veuillez saisir la ville de départ';
+                          'Veuillez choisir la ville de départ';
                       return;
                     }
-                    if (controller.typeAheadRetourController.text == '') {
+                    if (controller.arrival.value == '') {
                       controller.messageErrorArrive.value =
                           'Veuillez saisir votre destination';
                       return;
                     }
-                    if (controller.typeAheadAllerController.text != '' &&
-                        controller.typeAheadRetourController.text != '') {
+                    if (controller.departure.value != '' &&
+                        controller.arrival.value != '') {
                       controller.initSearch();
                     }
                   },
