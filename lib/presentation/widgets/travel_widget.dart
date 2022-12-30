@@ -45,7 +45,9 @@ class TravelWidget extends StatelessWidget {
                         Text("Gros porteur")
                       ],
                     ),
-                    Text("70 places"),
+                    Text(
+                      "${travel['number_of_places']} places"
+                    ),
                   ],
                 ),
                 Row(
@@ -74,7 +76,7 @@ class TravelWidget extends StatelessWidget {
                                 Icon(Icons.history_toggle_off_sharp),
                                 AppDimensions.serparatorHor8,
                                 Text(
-                                  "${travel['departure_time']}",
+                                  "${travel['hours']}",
                                   style: Theme.of(context).textTheme.headline6,
                                 )
                               ],
