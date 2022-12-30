@@ -95,9 +95,11 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                   labelText: "Lieu de départ",
                                   prefixIcon:
                                   Icon(Icons.circle_outlined)),
-                              items: ["Douala", "Yaoundé"]
-                                  .map((e) => DropdownMenuItem(
-                                  child: Text(e), value: e))
+                              items: controller.villes
+                                  .map((CityModel e) => DropdownMenuItem(
+                                    value: e.ville,
+                                    child: Text(e.ville),
+                                  ))
                                   .toList(),
                               onChanged: controller.departure),
                           AppDimensions.serparatorVert8,
@@ -107,11 +109,13 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                   labelText: "Destination",
                                   prefixIcon:
                                   Icon(Icons.location_on)),
-                              items: ["Douala", "Yaoundé"]
-                                  .map((e) => DropdownMenuItem(
-                                  child: Text(e), value: e))
+                              items: controller.listVillesBack
+                                  .map((CityModel e) => DropdownMenuItem(
+                                    value: e.ville,
+                                    child: Text(e.ville),
+                                  ))
                                   .toList(),
-                              onChanged: controller.departure),
+                              onChanged: controller.arrival),
 
 
                           // if (controller.typeAheadAllerController.text ==
@@ -232,6 +236,17 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                   decoration: InputDecoration(
                                       prefixIcon: Icon(Icons.person),
                                       labelText: "Nombre de passagers"),
+                                  validator: (text){
+                                    if (text == null || text.isEmpty) {
+
+                                      return "Merci de préciser le nombre de passager";
+                                    }
+                                    if (text != null && int.parse(text) > 70) {
+
+                                      return "Le nombre de passager doit être inférieur à 70";
+                                    }
+                                    return null;
+                                  },
                                 ),
                               ),
                               AppDimensions.serparatorHor8,
@@ -272,7 +287,14 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                       return;
                     }
                     if (controller.departure.value != '' &&
-                        controller.arrival.value != '') {
+                        controller.arrival.value != '' && controller.departure.value == controller.arrival.value) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Le départ doit être différent de la destination")),
+                      );
+                      return;
+                    }
+                    if (controller.departure.value != '' &&
+                        controller.arrival.value != '' && controller.departure.value != controller.arrival.value) {
                       controller.initSearch();
                     }
                   },

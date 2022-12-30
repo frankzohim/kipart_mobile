@@ -5,6 +5,7 @@ import 'package:ki_part/data/models/hours.dart';
 import 'package:ki_part/data/models/searchData.dart';
 import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/utils/app_routes.dart';
+import 'dart:convert';
 import 'package:ki_part/utils/loader.dart';
 
 class SearchTravelController extends GetxController
@@ -18,6 +19,7 @@ class SearchTravelController extends GetxController
   final typeTravel = "Aller simple".obs;
   final departure = "Douala".obs;
   final arrival = "Yaoundé".obs;
+  var cityList = [];
   final classeTravel = "Classique".obs;
   final dateDepart = "".obs;
   final heureDepart = "07:30".obs;
@@ -48,6 +50,12 @@ class SearchTravelController extends GetxController
       print('Hi there');
       print(value);
       villes = await value[0];
+      var list = [];
+      villes.forEach((element) {
+        list.add(element.ville);
+        print(element.ville);
+      });
+      cityList = list;
       listVillesBack = await value[0];
       heures = await value[1];
       change(value, status: RxStatus.success());
