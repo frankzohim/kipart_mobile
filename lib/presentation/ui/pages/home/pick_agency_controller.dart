@@ -10,6 +10,7 @@ class PickAgencyController extends GetxController
   @override
   void onReady() {
     searchData.value = Get.arguments;
+    //print(searchData.value?.arrival);
     super.onReady();
   }
 
