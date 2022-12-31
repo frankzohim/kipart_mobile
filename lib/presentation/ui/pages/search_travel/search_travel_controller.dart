@@ -47,13 +47,12 @@ class SearchTravelController extends GetxController
       Api().travelRepo.listTown(),
       Api().travelRepo.listHours(),
     ]).then((List<dynamic> value) async {
-      print('Hi there');
-      print(value);
+      /*print('Hi there');
+      print(value);*/
       villes = await value[0];
       var list = [];
       villes.forEach((element) {
         list.add(element.ville);
-        print(element.ville);
       });
       cityList = list;
       listVillesBack = await value[0];
@@ -83,9 +82,9 @@ class SearchTravelController extends GetxController
                 : null,
         number_of_places: nbrePassagerController.text,
         classe: classeTravel.value);
-    // Loader.loading();
+        //Loader.loading();
     Get.toNamed(Approutes.PICK_AGENCY, arguments: dataSearch);
-    // Loader.close();
+    //Loader.close();
     // } else {
     //   return;
     // }

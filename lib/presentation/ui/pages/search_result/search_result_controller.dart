@@ -12,24 +12,27 @@ class SearchResultController extends GetxController
 
   List travels = [];
 
-  // late SearchData searchData;
+  //late SearchData searchData;
 
   @override
   void onReady() {
     searchData.value = Get.arguments;
+    print('hello in search result controller');
+    print(searchData.value?.departure);
+    print(searchData.value?.departure_time);
     super.onReady();
   }
 
   @override
   void onInit() {
-    loadMore();
+    loadArguments();
     super.onInit();
   }
 
-  // loadArguments() async {
-  //   searchData.value = await Get.arguments;
-  //   await loadMore();
-  // }
+  loadArguments() async {
+    searchData.value = await Get.arguments;
+   await loadMore();
+   }
 
   loadMore() {
     // change(null, status: RxStatus.loading());

@@ -6,11 +6,12 @@ import 'package:ki_part/repo/api.dart';
 class PickAgencyController extends GetxController
     with StateMixin<List<AgencesModel>> {
   final searchData = Rx<SearchData?>(null);
+  final data = Get.arguments;
 
   @override
   void onReady() {
     searchData.value = Get.arguments;
-    //print(searchData.value?.arrival);
+    print(searchData.value?.arrival);
     super.onReady();
   }
 

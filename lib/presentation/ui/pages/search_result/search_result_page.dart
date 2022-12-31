@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/config/app_colors.dart';
 import 'package:ki_part/presentation/ui/pages/home/pick_agency_controller.dart';
@@ -37,14 +38,14 @@ class SearchResultPage extends GetWidget<SearchResultController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "${controller.searchData.value!.departure} - ${controller.searchData.value!.arrival}",
+                        "${Get.arguments.departure} - ${Get.arguments.arrival}",
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge!
                                   .copyWith(color: AppColors.primary),
                             ),
                             Text(
-                                "${controller.searchData.value!.dateDeparture}. ${controller.searchData.value!.number_of_places} place(s)",
+                                "${Get.arguments.dateDeparture} - ${Get.arguments.number_of_places} place(s)",
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge!
