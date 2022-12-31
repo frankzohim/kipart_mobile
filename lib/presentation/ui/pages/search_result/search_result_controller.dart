@@ -7,19 +7,19 @@ import 'package:ki_part/repo/travel_repo.dart';
 
 class SearchResultController extends GetxController
     with StateMixin<List<dynamic>> {
-  final searchData = Rx<SearchData?>(null);
+  //final searchData = Rx<SearchData?>(null);
   // List<TravelsModel> travels = [];
 
   List travels = [];
 
-  //late SearchData searchData;
+  late SearchData searchData;
 
   @override
   void onReady() {
-    searchData.value = Get.arguments;
-    print('hello in search result controller');
+    searchData = Get.arguments;
+    /*print('hello in search result controller');
     print(searchData.value?.departure);
-    print(searchData.value?.departure_time);
+    print(searchData.value?.departure_time);*/
     super.onReady();
   }
 
@@ -30,13 +30,13 @@ class SearchResultController extends GetxController
   }
 
   loadArguments() async {
-    searchData.value = await Get.arguments;
+    searchData = await Get.arguments;
    await loadMore();
    }
 
   loadMore() {
     // change(null, status: RxStatus.loading());
-    TravelRepo.searchTravels(searchData.value).then((value) async {
+    TravelRepo.searchTravels(searchData).then((value) async {
       travels = await value;
       await TravelRepo.allTravels;
       // print('valeur de la liste');

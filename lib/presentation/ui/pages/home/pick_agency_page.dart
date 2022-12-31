@@ -54,7 +54,6 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
                     onPressed: () async {
                       await TravelRepo.searchTravels(
                           controller.searchData.value);
-                      print('toto');
                       await Get.toNamed(Approutes.SEARCH_RESULT,
                           arguments: controller.searchData.value);
                     },

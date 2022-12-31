@@ -10,6 +10,7 @@ void main() {
   HttpOverrides.global = MyHttpOverrides();
 
   runApp(GetMaterialApp(
+    defaultTransition: Transition.leftToRight,
     getPages: Approutes.pages,
     themeMode: ThemeMode.light,
     theme: AppStyles.ligth,

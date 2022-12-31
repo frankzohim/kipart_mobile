@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:ki_part/config/app_colors.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/data/models/travel.dart';
-
 import 'package:ki_part/presentation/ui/pages/buy_ticket/buy_ticket_page.dart';
 import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_page.dart';
 
@@ -17,10 +16,12 @@ class TravelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('toto');
+    print(travel);
     return InkWell(
       onTap: () {
         // Get.to(BuyTicketPage());
-        Get.to(TravellersInfosPage());
+        Get.to(TravellersInfosPage(), arguments: travel);
       },
       child: Card(
         child: Theme(

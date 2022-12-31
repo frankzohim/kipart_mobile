@@ -34,6 +34,7 @@ import 'package:ki_part/presentation/ui/pages/settings/settings_controller.dart'
 import 'package:ki_part/presentation/ui/pages/settings/settings_page.dart';
 import 'package:ki_part/presentation/ui/pages/splash/splash_page.dart';
 import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_page.dart';
+import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_controller.dart';
 import 'package:ki_part/presentation/ui/pages/verify_otp/verify_otp_controller.dart';
 import 'package:ki_part/presentation/ui/pages/verify_otp/verify_otp_page.dart';
 
@@ -103,7 +104,10 @@ mixin Approutes {
         page: () => const SearchResultPage(),
         binding: BindingsBuilder.put(() => SearchResultController())),
     GetPage(name: SELECT_PLACE, page: () => const SelectPlacePage()),
-    GetPage(name: TRAVELLERS_INFO, page: () => const TravellersInfosPage()),
+    GetPage(
+        name: TRAVELLERS_INFO,
+        binding: BindingsBuilder.put(() => TravellersInfosController()),
+        page: () => const TravellersInfosPage()),
     GetPage(
         name: PICK_AGENCY,
         page: () => const PickAgencyPage(),
