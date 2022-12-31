@@ -37,18 +37,18 @@ class TravellersInfosPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Nom de l'agence",
+                          "${Get.arguments['name']}",
                           style: Theme.of(context).textTheme.headline6,
                         ),
                         AppDimensions.serparatorVert8,
                         Row(
                           children: [
                             Row(
-                              children: const [
+                              children:  [
                                 Icon(Icons.access_time_outlined),
                                 AppDimensions.serparatorHor8,
                                 Text(
-                                  "O4:00",
+                                  "${Get.arguments['hours']}",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15),
@@ -58,10 +58,10 @@ class TravellersInfosPage extends StatelessWidget {
                             AppDimensions.serparatorHor16,
                             AppDimensions.serparatorHor16,
                             Row(
-                              children: const [
+                              children:  [
                                 Icon(Icons.star),
                                 AppDimensions.serparatorHor8,
-                                Text("VIP"),
+                                Text("${Get.arguments['classe']}"),
                               ],
                             ),
                           ],
@@ -72,10 +72,10 @@ class TravellersInfosPage extends StatelessWidget {
                 ),
                 BusWidget(
                   color: Theme.of(context).colorScheme.primary,
-                  departureCity: "Douala",
-                  arrivalDate: "Sam. 10 dec.",
-                  destinationCity: "Yaounde",
-                  departureDate: "Sam. 10 dec.",
+                  departureCity: "${Get.arguments['departure']}",
+                  arrivalDate: "${Get.arguments['date']}",
+                  destinationCity: "${Get.arguments['arrival']}",
+                  departureDate: "${Get.arguments['date']}",
                 ),
                 Divider(
                   color: Theme.of(context).colorScheme.primary,
@@ -84,7 +84,7 @@ class TravellersInfosPage extends StatelessWidget {
                 Form(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: ListView.builder(
-                      itemCount: 3,
+                      itemCount: 1,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) => Card(

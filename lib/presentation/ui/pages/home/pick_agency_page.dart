@@ -54,8 +54,8 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
                     onPressed: () async {
                       await TravelRepo.searchTravels(
                           controller.searchData.value);
-                      await Get.offAndToNamed(Approutes.SEARCH_RESULT,
-                          arguments: controller.searchData);
+                      await Get.toNamed(Approutes.SEARCH_RESULT,
+                          arguments: controller.searchData.value);
                     },
                     child: const Text(
                       "Voir tous les départs de toutes les agences",

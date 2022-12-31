@@ -288,8 +288,18 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                     }
                     if (controller.departure.value != '' &&
                         controller.arrival.value != '' && controller.departure.value == controller.arrival.value) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Le départ doit être différent de la destination")),
+                      Get.snackbar(
+                          "Erreur !!",
+                          "Le départ doit être différent de la destination",
+                          snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: Colors.amber,
+                          margin: EdgeInsets.all(10),
+                          animationDuration: Duration(milliseconds: 2000),
+                          isDismissible: true,
+                          //dismissDirection: SnackDismissDirection.HORIZONTAL
+                          forwardAnimationCurve: Curves.bounceInOut,
+                          reverseAnimationCurve: Curves.bounceInOut,
+                          overlayBlur: 5
                       );
                       return;
                     }
