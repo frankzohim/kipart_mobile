@@ -4,6 +4,8 @@ import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/utils/loader.dart';
 import 'package:ki_part/utils/password_reveal.dart';
 
+import '../../../../utils/app_routes.dart';
+
 class ResetPasswordController extends GetxController with PasswordReveal {
   final formKey = GlobalKey<FormState>();
 
@@ -32,7 +34,7 @@ class ResetPasswordController extends GetxController with PasswordReveal {
         message:
             'Votre mot de passe a été reinitilisé. Veuillez vous conntecter',
         onCofirm: () {
-          Get.back();
+           Get.toNamed(Approutes.LOGIN);
         },
       );
     }).catchError((error) {
