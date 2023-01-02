@@ -19,28 +19,26 @@ class AgencyController extends GetxController
 
   @override
   void onReady() async {
-    print('11111111');
     await loadTravels();
     super.onReady();
   }
 
   @override
   void onInit() {
-    print('4444444');
     loadArguments();
     super.onInit();
   }
 
   loadArguments() async {
-    print('333333"');
     agency.value = await Get.arguments[0]['agency'];
     dataSearch.value = await Get.arguments[1]['dataSearch'];
+    /*print(dataSearch.value!.number_of_places);
+    print('Hello world');*/
     await loadTravels();
     travels = TravelRepo.listTravels;
   }
 
   loadTravels() {
-    print('22222222');
     change(null, status: RxStatus.loading());
     TravelRepo.listTravelsAgency(agency.value!.id, dataSearch.value)
         .then((value) async {
@@ -48,8 +46,8 @@ class AgencyController extends GetxController
       // var body = jsonEncode(value);
       travels = await value;
       await TravelRepo.listTravels;
-      print('valeur de la liste');
-      print(TravelRepo.listTravels);
+      //print('valeur de la liste');
+      //print(TravelRepo.listTravels);
       // change(value, status: RxStatus.success());
       return value;
     }).catchError((err) {

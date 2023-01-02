@@ -86,7 +86,7 @@ class AgencyDetailsPage extends GetWidget<AgencyController> {
                         // print(item);
                         // if(widget.name == theController.travelList[index].agence)   {
                         return TravelWidget(
-                          travel: item,
+                          travel: item, searchData: controller.dataSearch.value!
                         );
                         // } else {
                         //   return SizedBox(height:0);

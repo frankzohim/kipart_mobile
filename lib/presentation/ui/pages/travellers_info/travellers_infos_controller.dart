@@ -10,17 +10,20 @@ import 'package:ki_part/utils/app_routes.dart';
 import 'package:ki_part/utils/loader.dart';
 
 class TravellersInfosController extends GetxController {
-  final travellers = Rx<List<Traveller>>(List.empty(growable: true));
 
+  final travellers = Rx<List<Traveller>>(List.empty(growable: true));
   final formKey = GlobalKey<FormState>();
   final travel = Rx<TravelsModel?>(null);
+
   @override
   void onReady() {
     SearchData searchData = Get.arguments["searchData"];
-    travel.value = Get.arguments["travel"];
+    print(Get.arguments["travel"]);
     for (var i = 0; i < num.parse(searchData.number_of_places); i++) {
       addOne();
     }
+    //travel.value = Get.arguments["travel"];
+    //travel.value = TravelsModel(Get.arguments["travel"]);
     super.onReady();
   }
 
@@ -60,9 +63,15 @@ class TravellersInfosController extends GetxController {
 
   void save() {
     if (!formKey.currentState!.validate()) return;
-    Loader.loading();
+    //Loader.loading();
 
     travellers.value[0].seatNumber = Random().nextInt(30);
+
+    Get.toNamed(Approutes.RECAP, arguments: {
+      'travel': Get.arguments["travel"],
+      "travellers": travellers.value,
+      "searchData" : Get.arguments["searchData"]
+    });
 
     /*Api()
         .travelRepo

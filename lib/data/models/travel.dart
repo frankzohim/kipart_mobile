@@ -10,7 +10,7 @@ class TravelsModel {
   String? classe;
   String? prix;
 
-  TravelsModel(
+  TravelsModel(argument, 
       {this.id,
       this.date,
       this.departure,

@@ -68,7 +68,7 @@ class SearchResultPage extends GetWidget<SearchResultController> {
                       itemCount: TravelRepo.allTravels.length,
                       padding: const EdgeInsets.all(16),
                       itemBuilder: (context, index) =>
-                          TravelWidget(travel: TravelRepo.allTravels[index]),
+                          TravelWidget(travel: TravelRepo.allTravels[index], searchData: controller.searchData),
                     )
                   : Container(
                       child: Padding(

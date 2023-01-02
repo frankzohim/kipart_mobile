@@ -37,6 +37,7 @@ import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_p
 import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_controller.dart';
 import 'package:ki_part/presentation/ui/pages/verify_otp/verify_otp_controller.dart';
 import 'package:ki_part/presentation/ui/pages/verify_otp/verify_otp_page.dart';
+import 'package:ki_part/presentation/ui/pages/recap/recap_controller.dart';
 
 mixin Approutes {
   static const HOME = "/";
@@ -94,7 +95,10 @@ mixin Approutes {
       page: () => const PasswordForgotPage(),
     ),
     GetPage(name: PAYMENT, page: () => const PaymentPage()),
-    GetPage(name: RECAP, page: () => const RecapPage()),
+    GetPage(
+        name: RECAP,
+        binding: BindingsBuilder.put(() => RecapController()),
+        page: () => const RecapPage()),
     GetPage(
         name: RESET_PASSWORD,
         binding: BindingsBuilder.put(() => ResetPasswordController()),

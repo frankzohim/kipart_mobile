@@ -10,7 +10,7 @@ abstract class Validators {
 
   static String? phone(String? value) {
     if (value == null || !value.isNumericOnly || value.length != 9) {
-      return "Numéro de tel incorrect";
+      return "Numéro incorrect";
     }
     return null;
   }

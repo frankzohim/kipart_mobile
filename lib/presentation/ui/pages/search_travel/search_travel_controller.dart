@@ -47,8 +47,7 @@ class SearchTravelController extends GetxController
       Api().travelRepo.listTown(),
       Api().travelRepo.listHours(),
     ]).then((List<dynamic> value) async {
-      /*print('Hi there');
-      print(value);*/
+
       villes = await value[0];
       var list = [];
       villes.forEach((element) {

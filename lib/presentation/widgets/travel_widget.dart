@@ -5,23 +5,26 @@ import 'package:get/get.dart';
 import 'package:ki_part/config/app_colors.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/data/models/travel.dart';
+import 'package:ki_part/data/models/searchData.dart';
+import 'package:ki_part/utils/app_routes.dart';
 import 'package:ki_part/presentation/ui/pages/buy_ticket/buy_ticket_page.dart';
 import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_page.dart';
 
 class TravelWidget extends StatelessWidget {
   // final TravelsModel travel;
   final dynamic travel;
+  final SearchData searchData;
 
-  const TravelWidget({Key? key, required this.travel}) : super(key: key);
+  const TravelWidget({Key? key, required this.travel, required this.searchData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print('toto');
-    print(travel);
     return InkWell(
       onTap: () {
         // Get.to(BuyTicketPage());
-        Get.to(TravellersInfosPage(), arguments: travel);
+        Get.toNamed(Approutes.TRAVELLERS_INFO,
+            arguments: {"travel": travel, "searchData": searchData});
       },
       child: Card(
         child: Theme(
@@ -67,7 +70,7 @@ class TravelWidget extends StatelessWidget {
                                 Icon(Icons.airplane_ticket),
                                 AppDimensions.serparatorHor8,
                                 Text(
-                                    "${travel['classe']}") // Text("${travel.classe}")
+                                    "${travel['classe'].toString().toUpperCase()}") // Text("${travel.classe}")
                               ],
                             ),
                             AppDimensions.serparatorHor16,

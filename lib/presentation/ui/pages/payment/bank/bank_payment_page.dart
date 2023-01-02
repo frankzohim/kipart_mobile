@@ -1,5 +1,6 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/config/app_dimensions.dart';
@@ -91,7 +92,7 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
                   onPressed: () {
                     controller.payTicket(context);
                   },
-                  child: const Text("Payer (85000FCFA)"))
+                  child: Text("Payer (${Get.arguments["amount"] } FCFA)"))
             ],
           );
         }),

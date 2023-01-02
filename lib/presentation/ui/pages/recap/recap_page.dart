@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/buy_ticket/buy_ticket_page.dart';
+import 'package:ki_part/presentation/ui/pages/recap/recap_controller.dart';
 import 'package:ki_part/presentation/widgets/bus_widget.dart';
 import 'package:ki_part/utils/app_routes.dart';
+import 'package:ki_part/utils/validators.dart';
 
-class RecapPage extends StatelessWidget {
+class RecapPage extends GetWidget<RecapController> {
   const RecapPage({super.key});
 
   @override
@@ -27,10 +29,10 @@ class RecapPage extends StatelessWidget {
               children: [
                 BusWidget(
                   color: Theme.of(context).colorScheme.primary,
-                  departureCity: "Douala",
-                  arrivalDate: "Sam. 10 dec.",
-                  destinationCity: "Yaounde",
-                  departureDate: "Sam. 10 dec.",
+                  departureCity: "${Get.arguments["travel"]['departure']}",
+                  arrivalDate: "${Get.arguments["travel"]['date']}",
+                  destinationCity: "${Get.arguments["travel"]['arrival']}",
+                  departureDate: "${Get.arguments["travel"]['date']}",
                 ),
                 Divider(
                   color: Theme.of(context).colorScheme.primary,
@@ -66,7 +68,7 @@ class RecapPage extends StatelessWidget {
                           ],
                         ),
                         AppDimensions.serparatorVert8,
-                        ...[0, 1, 2]
+                        ...Get.arguments["travellers"]
                             .map((e) => Padding(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 8),
@@ -74,9 +76,9 @@ class RecapPage extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text("M. Noms & prénoms"),
-                                      const Text("CNI: XXXXXXXXXX"),
-                                      const Text("TEl.: +2376XXXXXXXX"),
+                                       Text("${_getCivitiy(e.type)} ${e.name}"),
+                                       Text("CNI: ${e.cni}"),
+                                       Text("TEl.: ${e.phone}"),
                                     ],
                                   ),
                                 ))
@@ -92,15 +94,15 @@ class RecapPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text("Tickets (3)"),
-                            const Text("8000 FCFA"),
+                             Text("Tickets (${Get.arguments["travellers"].length})"),
+                             Text("${(num.tryParse(Get.arguments["travel"]['price']) ?? 0) * Get.arguments["travellers"].length} FCFA"),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text("Frais Kipart"),
-                            const Text("500 FCFA"),
+                             Text("${Get.arguments["travellers"].length * 500} FCFA"),
                           ],
                         ),
                         Row(
@@ -123,7 +125,7 @@ class RecapPage extends StatelessWidget {
                               ),
                               const TextSpan(text: "(taxes comprises)")
                             ])),
-                            Text("8000 FCFA",
+                            Text("${Get.arguments["travellers"].length * 500 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA",
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline6!
@@ -189,7 +191,11 @@ class RecapPage extends StatelessWidget {
                 AppDimensions.serparatorVert16,
                 ElevatedButton(
                     onPressed: () {
-                      Get.toNamed(Approutes.OPERATOR_PAYMENT);
+                      Get.toNamed(Approutes.OPERATOR_PAYMENT,
+                        arguments: {
+                          "amount": Get.arguments["travellers"].length * 500 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length),
+                        },
+                      );
                       // Navigator.of(context).push(
                       //     MaterialPageRoute(builder: (c) => BuyTicketPage()));
                     },
@@ -198,5 +204,16 @@ class RecapPage extends StatelessWidget {
             ),
           )),
     );
+  }
+
+  _getCivitiy(String type) {
+    switch (type.toLowerCase()) {
+      case "femme":
+        return "Mme.";
+      case "homme":
+        return "M.";
+      default:
+        return "";
+    }
   }
 }

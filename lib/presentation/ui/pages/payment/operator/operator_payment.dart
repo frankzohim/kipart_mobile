@@ -85,7 +85,11 @@ class OperatorPaymentPage extends GetWidget<OperatorPaymentController> {
               if (controller.operator.value == 'CB')
                 ElevatedButton(
                     onPressed: () {
-                      Get.offAndToNamed(Approutes.BANK_PAYMENT);
+                      Get.offAndToNamed(Approutes.BANK_PAYMENT,
+                        arguments: {
+                          "amount": Get.arguments["amount"],
+                        },
+                      );
                     },
                     child: const Text("Valider")),
             ],

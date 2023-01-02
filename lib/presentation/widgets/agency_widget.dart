@@ -16,6 +16,9 @@ class AgencyWidget extends GetWidget {
 
   @override
   Widget build(BuildContext context) {
+    /*print('in agency widget');
+    print(dataSearch?.departure);
+    print(agency.name);*/
     return InkWell(
       onTap: () async {
         await TravelRepo.listTravelsAgency(agency.id, dataSearch);
