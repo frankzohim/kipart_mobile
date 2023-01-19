@@ -50,7 +50,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
                           children: [
-                            TextSpan(text: "Salut "),
+                            TextSpan(text: "hello".tr + ' '),
                             TextSpan(
                               text:
                                   "${user.value == null ? 'Guest' : user.value!.name} ",
@@ -136,7 +136,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                   dateLabelText: 'Date',
                                   onChanged: controller.dateDepart,
                                   validator: (val) {
-                                    print(val);
+                                    //print(val);
                                     // return null;
 
                                     if (val == '') {
@@ -253,7 +253,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                               Expanded(
                                 child: DropdownButtonFormField(
                                   value: controller.classeTravel.value,
-                                  items: ["Classique", "VIP"]
+                                  items: ["classique", "VIP"]
                                       .map((e) => DropdownMenuItem(
                                             child: Text(e),
                                             value: e,

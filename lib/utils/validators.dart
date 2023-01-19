@@ -15,6 +15,20 @@ abstract class Validators {
     return null;
   }
 
+  static String? card(String? value) {
+    if (value == null || !value.isNumericOnly || value.length != 16) {
+      return "Numéro de carte invalide";
+    }
+    return null;
+  }
+
+  static String? cvv(String? value) {
+    if (value == null || !value.isNumericOnly || value.length != 3) {
+      return "Numéro CVV invalide";
+    }
+    return null;
+  }
+
   static String? password(String? value) {
     if (value == null || value.length < 6 || value.isAlphabetOnly) {
       return "Le mot de passe doit contenir au moins 7 caractères et un chiffre";

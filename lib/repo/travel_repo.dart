@@ -5,6 +5,7 @@ import 'package:ki_part/data/models/city.dart';
 import 'package:ki_part/data/models/hours.dart';
 import 'package:ki_part/data/models/searchData.dart';
 import 'package:ki_part/data/models/travel.dart';
+import 'package:ki_part/data/models/traveller.dart';
 import 'package:http/http.dart' as http;
 
 class TravelRepo {
@@ -82,6 +83,7 @@ class TravelRepo {
         .toList();
   }
 
+
   static Future<List<dynamic>> listTravelsAgency(
       int? agencyId, SearchData? dataS) async {
     // print("/api/search/byAgency/$agencyId");
@@ -92,6 +94,8 @@ class TravelRepo {
     var endpointUrl =
         "http://kipart.stillforce.tech/api/search/byAgency/$agencyId";
     // print(endpointUrl);
+    print("in travel list");
+    print(dataS!.classe);
     Map<String, String> queryParams = {
       'type': dataS!.type,
       'departure': dataS.departure,
@@ -123,4 +127,11 @@ class TravelRepo {
       return [];
     }
   }
+
+  Future saveTravellers(String travelleId, List<Traveller> travellers) async {
+    var res = await _dio.post("api/v1/add/passengers/$travelleId",
+        data: {"passengers": travellers.map((e) => e.toJson()).toList()});
+    return res.data;
+  }
+
 }

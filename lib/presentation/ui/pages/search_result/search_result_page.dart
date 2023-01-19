@@ -9,7 +9,7 @@ import 'package:ki_part/presentation/widgets/error_widget.dart';
 import 'package:ki_part/presentation/widgets/travel_widget.dart';
 import 'package:ki_part/repo/travel_repo.dart';
 
-class SearchResultPage extends GetWidget<SearchResultController> {
+/*class SearchResultPage extends GetWidget<SearchResultController> {
   const SearchResultPage({super.key});
 
   @override
@@ -68,7 +68,8 @@ class SearchResultPage extends GetWidget<SearchResultController> {
                       itemCount: TravelRepo.allTravels.length,
                       padding: const EdgeInsets.all(16),
                       itemBuilder: (context, index) =>
-                          TravelWidget(travel: TravelRepo.allTravels[index], searchData: controller.searchData),
+                          TravelWidget(travel: TravelRepo.allTravels[index], searchData: controller.searchData,
+                          agency: null, subAgency: null),
                     )
                   : Container(
                       child: Padding(
@@ -90,4 +91,4 @@ class SearchResultPage extends GetWidget<SearchResultController> {
           ),
     );
   }
-}
+}*/

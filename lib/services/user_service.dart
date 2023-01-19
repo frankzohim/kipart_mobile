@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:ki_part/data/models/users.dart';
 import 'package:ki_part/repo/api.dart';
@@ -9,10 +8,12 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 class UserService extends GetxService {
   final user = Rx<UserModel?>(null);
+
   static Future<UserService> init() async {
     await Storage.instance.init();
     final userService = UserService();
     final val = Storage.instance.get("currentUser");
+    print(val);
     if (val == null) return userService;
     _initNotifications(userService.user.value);
     userService.user.value = UserModel.fromMap(val);
@@ -24,9 +25,9 @@ class UserService extends GetxService {
   void login(UserModel user, bool remeberMe) {
     this.user.value = user;
     Api().updateToken(user.accessToken);
-    if (remeberMe) {
+    //if (remeberMe) {
       Storage.instance.save("currentUser", user.toMap());
-    }
+    //}
   }
 
   void logOut() async {

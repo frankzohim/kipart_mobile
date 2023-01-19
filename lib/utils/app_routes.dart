@@ -8,6 +8,8 @@ import 'package:ki_part/presentation/ui/pages/all_agencies/all_agencies_controll
 import 'package:ki_part/presentation/ui/pages/all_agencies/all_agencies_page.dart';
 import 'package:ki_part/presentation/ui/pages/home/pick_agency_controller.dart';
 import 'package:ki_part/presentation/ui/pages/home/pick_agency_page.dart';
+import 'package:ki_part/presentation/ui/pages/home/pick_sub_agency_controller.dart';
+import 'package:ki_part/presentation/ui/pages/home/pick_sub_agency_page.dart';
 import 'package:ki_part/presentation/ui/pages/login/login_controller.dart';
 import 'package:ki_part/presentation/ui/pages/login/login_page.dart';
 import 'package:ki_part/presentation/ui/pages/my_tickets/my_tickets_page.dart';
@@ -38,6 +40,8 @@ import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_c
 import 'package:ki_part/presentation/ui/pages/verify_otp/verify_otp_controller.dart';
 import 'package:ki_part/presentation/ui/pages/verify_otp/verify_otp_page.dart';
 import 'package:ki_part/presentation/ui/pages/recap/recap_controller.dart';
+import 'package:ki_part/presentation/ui/pages/ticket/ticket_page.dart';
+import 'package:ki_part/presentation/ui/pages/ticket/ticket_controller.dart';
 
 mixin Approutes {
   static const HOME = "/";
@@ -47,6 +51,7 @@ mixin Approutes {
   static const SEARCH = "/search";
   static const AGENCY = "/agency";
   static const ALL_AGENCIES = "/all/agency";
+  static const TICKET = "/ticket";
   static const MY_TICKETS = "/all/tickets";
   static const PASSWORD_FORGOT = "/auth/password-forgot";
   static const PAYMENT = "/pay";
@@ -57,6 +62,7 @@ mixin Approutes {
   static const SELECT_PLACE = "/select-place";
   static const TRAVELLERS_INFO = "/travellers-info";
   static const PICK_AGENCY = "/pick-agency";
+  static const PICK_SUB_AGENCY = "/pick-sub-agency";
   static const VERIFY_OTP = "/otp";
 
   static const SETTINGS = "/settings";
@@ -68,6 +74,7 @@ mixin Approutes {
   static final pages = [
     GetPage(name: HOME, page: () => const SearchTravelPage()),
     GetPage(name: SPLASH, page: () => const SplashPage()),
+
     GetPage(
         name: LOGIN,
         page: () => const LoginPage(),
@@ -88,6 +95,10 @@ mixin Approutes {
         name: ALL_AGENCIES,
         page: () => const AllAgenciesPage(),
         binding: BindingsBuilder.put(() => AllAgenciesController())),
+    GetPage(
+        name: TICKET,
+        page: () => const TicketPage(),
+        binding: BindingsBuilder.put(() => TicketController())),
     GetPage(name: MY_TICKETS, page: () => const MyTicketsPage()),
     GetPage(
       name: PASSWORD_FORGOT,
@@ -103,10 +114,10 @@ mixin Approutes {
         name: RESET_PASSWORD,
         binding: BindingsBuilder.put(() => ResetPasswordController()),
         page: () => const ResetPasswordPage()),
-    GetPage(
+    /*GetPage(
         name: SEARCH_RESULT,
         page: () => const SearchResultPage(),
-        binding: BindingsBuilder.put(() => SearchResultController())),
+        binding: BindingsBuilder.put(() => SearchResultController())),*/
     GetPage(name: SELECT_PLACE, page: () => const SelectPlacePage()),
     GetPage(
         name: TRAVELLERS_INFO,
@@ -116,6 +127,12 @@ mixin Approutes {
         name: PICK_AGENCY,
         page: () => const PickAgencyPage(),
         binding: BindingsBuilder.put(() => PickAgencyController())),
+
+    GetPage(
+        name: PICK_SUB_AGENCY,
+        page: () => const PickSubAgencyPage(),
+        binding: BindingsBuilder.put(() => PickSubAgencyController())),
+
     GetPage(
         name: VERIFY_OTP,
         page: () => const VerifyOTPPage(),

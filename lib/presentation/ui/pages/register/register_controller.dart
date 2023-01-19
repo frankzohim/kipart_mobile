@@ -4,6 +4,7 @@ import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/utils/app_routes.dart';
 import 'package:ki_part/utils/loader.dart';
 import 'package:ki_part/utils/password_reveal.dart';
+import 'dart:math';
 
 class RegisterController extends GetxController with PasswordReveal {
   TextEditingController nameController = TextEditingController();
@@ -12,11 +13,16 @@ class RegisterController extends GetxController with PasswordReveal {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
+  final _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+  Random _rnd = Random();
+
   final formKey = GlobalKey<FormState>();
 
   void signUp() {
     if (!formKey.currentState!.validate()) return;
     Loader.loading();
+    print(getRandomString(10));
+
     Api()
         .userRepo
         .register(
@@ -42,4 +48,9 @@ class RegisterController extends GetxController with PasswordReveal {
     confirmPasswordController.dispose();
     super.onClose();
   }
+
+  String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 }
+
+

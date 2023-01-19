@@ -36,8 +36,8 @@ class LoginController extends GetxController with PasswordReveal {
 
   @override
   void onClose() {
-    phoneController.dispose();
-    passwordController.dispose();
+    /*phoneController.dispose();
+    passwordController.dispose();*/
     super.onClose();
   }
 }

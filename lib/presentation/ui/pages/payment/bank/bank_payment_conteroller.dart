@@ -6,20 +6,46 @@ import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/repo/ticket_repo.dart';
 import 'package:ki_part/utils/app_routes.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:ki_part/utils/loader.dart';
+import 'package:ki_part/data/models/traveller.dart';
+import 'package:ki_part/data/models/subAgency.dart';
 
 class BankPaymentController extends GetxController with StateMixin<String> {
-  CardFieldInputDetails? card;
 
+  final travellers = Rx<List<Traveller>>([]);
+  dynamic travel;
+  final subAgency  = Rx<SubAgencyModel?>(null);
+  CardFieldInputDetails? card;
+  final formKey = GlobalKey<FormState>();
   final dateExp = "".obs;
   final TextEditingController nomCard = TextEditingController();
   final TextEditingController numCard = TextEditingController();
   final TextEditingController cvvCard = TextEditingController();
   String msg = '';
+  var amount = Get.arguments['amount'];
+  var paymentId = Get.arguments['paymentId'];
+
+  @override
+  void onInit() async{
+    await loadArguments();
+  }
+
+  loadArguments() async{
+
+    travellers.value = await Get.arguments["travellers"];
+    subAgency.value = await Get.arguments["subAgency"];
+    travel = await Get.arguments["travel"];
+    paymentId = (await Get.arguments["paymentId"]).toString();
+    print(paymentId);
+  }
 
   payTicket(context) async {
-    String msg = Api().ticketRepo.buyTicket('2500', 'YRTRKiP3', '1').toString();
-    print(msg);
-    if (msg != "succeeded") {
+    Loader.loading();
+    List<String> tickets = await Api().ticketRepo.buyTicket(subAgency.value!.id.toString(), amount.toString(), 'YRTRKiP3', paymentId, numCard.text,cvvCard.text );
+    Loader.close();
+    print(tickets);
+
+    if (tickets[0] == "succeeded") {
       await Alert(
         context: context,
         type: AlertType.success,
@@ -31,11 +57,21 @@ class BankPaymentController extends GetxController with StateMixin<String> {
               "OK",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            onPressed: () =>  Get.offAndToNamed(Approutes.SEARCH),
-            color: Colors.orange,
-            width: 120,
-          )
-        ],
+            onPressed: () async {
+              String qrCode = await Api().ticketRepo.getTicket(tickets[1]);
+              Get.offAllNamed(Approutes.TICKET,
+              arguments: {
+                "amount": amount,
+                "paymentId": paymentId,
+                'travel': travel,
+                "travellers": travellers.value,
+                "subAgency": subAgency.value,
+                "qrCode" : qrCode
+              },);
+            color: Colors.orange;
+            width: 120;
+          }
+        )]
       ).show();
     } else {
       await Alert(

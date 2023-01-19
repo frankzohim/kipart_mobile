@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/data/models/agences.dart';
 import 'package:ki_part/data/models/searchData.dart';
+import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/repo/travel_repo.dart';
+import 'package:ki_part/data/models/subAgency.dart';
 import 'package:ki_part/utils/app_routes.dart';
 
 class AgencyWidget extends GetWidget {
@@ -19,13 +23,53 @@ class AgencyWidget extends GetWidget {
     /*print('in agency widget');
     print(dataSearch?.departure);
     print(agency.name);*/
+    List<SubAgencyModel>? subAgencies = [];
     return InkWell(
       onTap: () async {
-        await TravelRepo.listTravelsAgency(agency.id, dataSearch);
+        /*await TravelRepo.listTravelsAgency(agency.id, dataSearch);
         await Get.toNamed(Approutes.AGENCY, arguments: [
           {"agency": agency},
           {"dataSearch": dataSearch}
-        ]);
+        ]);*/
+
+        print("onTap");
+        Api().agencyRepo.getSubAgency(agency.id.toString())
+            .then((value) async {
+          //change(value, status: RxStatus.success());
+          //print(value);
+          print(value.length);
+          subAgencies = [];
+          value.forEach((element) {
+
+            if(element.headquarters == dataSearch?.departure){
+              subAgencies!.add(element);
+              print(element.headquarters);
+            }
+
+          });
+          print(subAgencies!.length);
+          if(subAgencies!.length == 1){
+            print(dataSearch!.classe);
+             await TravelRepo.listTravelsAgency(agency.id, dataSearch);
+             Get.toNamed(Approutes.AGENCY, arguments: [
+              {"agency": agency},
+              {"dataSearch": dataSearch},
+               {"subAgency": subAgencies![0]}
+            ]);
+          }
+
+          else{
+            print(dataSearch!.classe);
+            Get.toNamed(Approutes.PICK_SUB_AGENCY, arguments: [
+              {"agency": agency},
+              {"dataSearch": dataSearch},
+              {"subAgencies": subAgencies}
+            ]);
+          }
+
+        }).catchError((error) {
+          print(error);
+        });
       },
       child: Material(
         elevation: 1,

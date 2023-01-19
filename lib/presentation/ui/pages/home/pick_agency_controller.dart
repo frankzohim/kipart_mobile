@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:ki_part/data/models/agences.dart';
 import 'package:ki_part/data/models/searchData.dart';
 import 'package:ki_part/repo/api.dart';
+import 'package:ki_part/repo/agency_repo.dart';
 
 class PickAgencyController extends GetxController
     with StateMixin<List<AgencesModel>> {
@@ -23,9 +24,8 @@ class PickAgencyController extends GetxController
 
   void loadAgencies() {
     change(null, status: RxStatus.loading());
-    Api().agencyRepo.getAgencies(0)
-        // .getAgenciesByCity(
-        //     searchData.value!.departure, searchData.value!.arrival)
+    Api().agencyRepo.getAgenciesByCity(
+         searchData.value!.departure, searchData.value!.arrival)
         .then((value) {
       change(value, status: RxStatus.success());
     }).catchError((error) {

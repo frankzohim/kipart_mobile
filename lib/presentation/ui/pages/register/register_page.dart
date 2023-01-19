@@ -71,7 +71,7 @@ class RegisterPage extends GetWidget<RegisterController> {
                   AppDimensions.serparatorVert8,
                   TextFormField(
                     controller: controller.emailController,
-                    validator: Validators.email,
+                    //validator: Validators.email,
                     decoration: const InputDecoration(
                       labelText: "Email",
                       prefixIcon: Icon(Icons.email),

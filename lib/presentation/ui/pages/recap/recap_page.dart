@@ -45,26 +45,55 @@ class RecapPage extends GetWidget<RecapController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Coordonnées des passagers",
-                              style: Theme.of(context).textTheme.caption,
+                              "Détails du voyage",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                              ,
                             ),
-                            InkWell(
-                              child: Text(
-                                "Modifier",
-                                style: Theme.of(context)
+                          ],
+                        ),
+                        AppDimensions.serparatorVert8,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("AGENCE : "),
+                            Text("${Get.arguments["subAgency"].name}".toUpperCase()),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("CLASSE : "),
+                            Text("${Get.arguments["travel"]['classe']}".toUpperCase()),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("HEURE : "),
+                            Text("${Get.arguments["travel"]['hours']}"),
+                          ],
+                        ),
+                        Divider(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        AppDimensions.serparatorVert16,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Passagers",
+                              style: Theme.of(context)
                                     .textTheme
-                                    .caption!
-                                    .copyWith(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
-                              ),
-                              onTap: () {},
-                            )
+                                    .headline6!
+                                    ,
+                            ),
                           ],
                         ),
                         AppDimensions.serparatorVert8,
@@ -102,16 +131,12 @@ class RecapPage extends GetWidget<RecapController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text("Frais Kipart"),
-                             Text("${Get.arguments["travellers"].length * 500} FCFA"),
+                            Text(Get.arguments['travel']['classe'] == "vip" ?
+                            "${Get.arguments["travellers"].length * 500}  FCFA" : "${Get.arguments["travellers"].length * 300}  FCFA"),
+
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("Reduction"),
-                            const Text("0 FCFA"),
-                          ],
-                        ),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -125,7 +150,9 @@ class RecapPage extends GetWidget<RecapController> {
                               ),
                               const TextSpan(text: "(taxes comprises)")
                             ])),
-                            Text("${Get.arguments["travellers"].length * 500 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA",
+                            Text(Get.arguments['travel']['classe'] == "vip" ?
+                            "${Get.arguments["travellers"].length * 500 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA"
+                                : "${Get.arguments["travellers"].length * 300 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA" ,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline6!
@@ -142,58 +169,18 @@ class RecapPage extends GetWidget<RecapController> {
                 ),
                 AppDimensions.serparatorVert16,
                 AppDimensions.serparatorVert16,
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Appliquer une réduction (optionnel)",
-                          style: Theme.of(context).textTheme.caption,
-                        ),
-                        AppDimensions.serparatorVert8,
-                        Row(
-                          children: [
-                            const Expanded(
-                              flex: 2,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    labelText: "Code de reduction"),
-                              ),
-                            ),
-                            AppDimensions.serparatorHor16,
-                            Expanded(
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              const Color.fromARGB(
-                                                  255, 77, 77, 77)),
-                                      padding: MaterialStateProperty.all(
-                                        const EdgeInsets.symmetric(
-                                            vertical: 12, horizontal: 8),
-                                      ),
-                                      shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(16)))),
-                                  onPressed: () {},
-                                  child: const Text("Appliquer")),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                AppDimensions.serparatorVert16,
-                AppDimensions.serparatorVert16,
+
                 ElevatedButton(
                     onPressed: () {
                       Get.toNamed(Approutes.OPERATOR_PAYMENT,
                         arguments: {
-                          "amount": Get.arguments["travellers"].length * 500 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length),
+                          "amount": Get.arguments['travel']['classe'] == "vip" ?
+                          Get.arguments["travellers"].length * 500 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length) :
+                          Get.arguments["travellers"].length * 300 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length),
+                          "paymentId": controller.paymentId,
+                          'travel': controller.travel,
+                          "travellers": controller.travellers.value,
+                          "subAgency": controller.subAgency.value
                         },
                       );
                       // Navigator.of(context).push(

@@ -88,6 +88,10 @@ class OperatorPaymentPage extends GetWidget<OperatorPaymentController> {
                       Get.offAndToNamed(Approutes.BANK_PAYMENT,
                         arguments: {
                           "amount": Get.arguments["amount"],
+                          "paymentId": Get.arguments["paymentId"],
+                          'travel': Get.arguments["travel"],
+                          "travellers": Get.arguments["travellers"],
+                          "subAgency": Get.arguments["subAgency"]
                         },
                       );
                     },

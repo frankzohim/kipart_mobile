@@ -46,8 +46,7 @@ class AgencyDetailsPage extends GetWidget<AgencyController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "${controller.agency.value!.name}",
-                          style: Theme.of(context).textTheme.headline6,
+                          "${controller.subAgency.value!.name}",
                         ),
                         AppDimensions.serparatorVert8,
                         RatingBarIndicator(
@@ -82,11 +81,16 @@ class AgencyDetailsPage extends GetWidget<AgencyController> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         final item = TravelRepo.listTravels[index];
-                        // print('IIITTTEEEMMM');
-                        // print(item);
+                        if(item['classe'] =="classique")
+                          item['price'] = "3000";
+                        else
+                          item['price'] = "8000";
+                        /*print(item['price']);
+                        print(item);*/
                         // if(widget.name == theController.travelList[index].agence)   {
                         return TravelWidget(
-                          travel: item, searchData: controller.dataSearch.value!
+                          travel: item, searchData: controller.dataSearch.value!,
+                          agency: controller.agency.value!, subAgency: controller.subAgency.value!,
                         );
                         // } else {
                         //   return SizedBox(height:0);

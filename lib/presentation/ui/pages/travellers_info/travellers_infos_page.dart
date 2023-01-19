@@ -42,8 +42,7 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "${Get.arguments["travel"]['name']}",
-                            style: Theme.of(context).textTheme.headline6,
+                            controller.subAgency.value!.name!,
                           ),
                           AppDimensions.serparatorVert8,
                           Row(
@@ -176,6 +175,7 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                                     ),
                                     AppDimensions.serparatorVert8,
                                     TextFormField(
+                                      initialValue: index == 0 ? controller.user.value!.name : "",
                                       validator: Validators.length,
                                       onChanged: (value) => controller
                                           .onNameChanged(value, index),
@@ -185,7 +185,6 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                                     if (traveller.type != "ENFANT") ...[
                                       AppDimensions.serparatorVert8,
                                       TextFormField(
-                                        validator: Validators.length,
                                         onChanged: (value) => controller
                                             .onCNI(value, index),
                                         decoration: const InputDecoration(
@@ -193,6 +192,7 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                                       ),
                                       AppDimensions.serparatorVert8,
                                       TextFormField(
+                                        initialValue: index == 0 ? controller.user.value!.phoneNumber : "",
                                         validator: Validators.phone,
                                         onChanged: (value) => controller
                                             .onPhoneChanged(value, index),

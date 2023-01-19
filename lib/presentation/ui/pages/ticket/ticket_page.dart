@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/avd.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ki_part/config/app_assets.dart';
 import 'package:ki_part/config/app_colors.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/widgets/bus_widget.dart';
+import 'package:ki_part/presentation/ui/pages/ticket/ticket_controller.dart';
 import 'package:ticket_widget/ticket_widget.dart';
+import 'package:ki_part/utils/app_routes.dart';
 
-class TicketPage extends StatelessWidget {
+class TicketPage extends GetWidget<TicketController> {
   const TicketPage({super.key});
 
   @override
@@ -19,7 +25,7 @@ class TicketPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Stack(alignment: Alignment.topCenter, children: [
           Container(
-            height: 300,
+            height: 400,
             width: double.infinity,
             alignment: Alignment.topCenter,
             decoration: BoxDecoration(
@@ -48,10 +54,11 @@ class MyTicketWidget extends StatelessWidget {
           margin: const EdgeInsets.only(top: 32),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
           child: TicketWidget(
-            width: 300,
-            height: 470, color: Colors.white,
+            width: 450,
+            height: 700, color: Colors.white,
             isCornerRounded: true,
-            // padding: EdgeInsets.all(20),
+            //padding: const EdgeInsets.all(16),
+            //padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 Container(
@@ -69,57 +76,157 @@ class MyTicketWidget extends StatelessWidget {
                         fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ),
-                BusWidget(
-                  color: Theme.of(context).textTheme.headline1!.color!,
-                ),
-                Text(
-                  "Noms & prénoms",
-                  maxLines: 1,
-                  style: Theme.of(context).textTheme.headline5!.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.bold),
-                ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("CNI: XXXXXXXX"), Text("8 500")],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("Tel: 6XXXXXXXX"), Text("CFA")],
-                      )
-                    ],
+                Padding(
+                  padding: EdgeInsets.all(15), //apply padding to all four sides
+                  child:  BusWidget(
+                    color: Theme.of(context).colorScheme.primary,
+                    departureCity: "${Get.arguments["travel"]['departure']}",
+                    arrivalDate: "${Get.arguments["travel"]['date']}",
+                    destinationCity: "${Get.arguments["travel"]['arrival']}",
+                    departureDate: "${Get.arguments["travel"]['date']}",
                   ),
                 ),
-                Divider(
-                  color: Colors.grey,
+
+
+                Card(
+                  elevation: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Détails du voyage",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                              ,
+                            ),
+                          ],
+                        ),
+                        AppDimensions.serparatorVert8,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("AGENCE : "),
+                            Text("${Get.arguments["subAgency"].name}".toUpperCase()
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("CLASSE : "),
+                            Text("${Get.arguments["travel"]['classe']}".toUpperCase()),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("HEURE : "),
+                            Text("${Get.arguments["travel"]['hours']}"),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("MONTANT : "),
+                            Text(Get.arguments['travel']['classe'] == "vip" ?
+                            "${Get.arguments["travellers"].length * 500 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA"
+                                :"${Get.arguments["travellers"].length * 300 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA"
+                                ,
+                                style: Theme.of(context)
+                                .textTheme
+                                .headline6!
+                                .copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primary)
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        AppDimensions.serparatorVert8,
+                        Center(
+                            child:
+                                Text(
+                                  "Passagers",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline6!
+                                  ,
+                                ),
+                        ),
+
+
+                        ...Get.arguments["travellers"]
+                            .map((e) => Padding(
+                          padding:
+                          const EdgeInsets.symmetric(vertical: 8),
+                          child: Center(
+                            child: Column(
+                            crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                            children: [
+                              Text("${_getCivitiy(e.type)} ${e.name}"),
+                              Text("CNI: ${e.cni}"),
+                              Text("TEl.: ${e.phone}"),
+                            ],
+                          )),
+                        ))
+                            .toList(),
+
+                        AppDimensions.serparatorVert16,
+
+                      ],
+                    ),
+                  ),
                 ),
+
+                AppDimensions.serparatorVert16,
                 Container(
-                  height: 150,
-                  width: 150,
-                  color: Colors.blue,
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.all(16),
-                  child: Text("QRCode ici"),
+                  child: SvgPicture.string(
+                    Get.arguments["qrCode"].toString(),
+                    width: 200,
+                    height: 200,
+                  )
                 ),
+                AppDimensions.serparatorVert16,
                 Text("Faire scanner ce QR code à l’agence"),
               ],
             ),
           ),
         ),
-        AppDimensions.serparatorVert16,
         TextButton.icon(
           onPressed: () {},
           icon: Icon(Icons.share),
           label: Text("Partager"),
         ),
+
+        ElevatedButton(
+          onPressed: () {
+              Get.offAllNamed(Approutes.HOME);
+          },
+          child: Text("Retourner à l'acceuil")
+        ),
       ],
     );
+  }
+  _getCivitiy(String type) {
+    switch (type.toLowerCase()) {
+      case "femme":
+        return "Mme.";
+      case "homme":
+        return "M.";
+      default:
+        return "";
+    }
   }
 }

@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/payment/bank/bank_payment_conteroller.dart';
 import 'package:ki_part/presentation/widgets/header_with_image.dart';
+import 'package:ki_part/utils/validators.dart';
 
 class BankPaymentPage extends GetWidget<BankPaymentController> {
   const BankPaymentPage({super.key});
@@ -46,6 +47,7 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
               //   // },
               // ),
               TextFormField(
+                validator: Validators.length,
                 controller: controller.nomCard,
                 decoration: const InputDecoration(
                   labelText: "Nom sur la carte",
@@ -53,6 +55,7 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
               ),
               AppDimensions.serparatorVert8,
               TextFormField(
+                validator: Validators.card,
                 controller: controller.numCard,
                 decoration:
                     const InputDecoration(labelText: "Numéro de la carte"),
@@ -79,8 +82,9 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
                   AppDimensions.serparatorHor8,
                   Expanded(
                     child: TextFormField(
+                      validator: Validators.cvv,
                       controller: controller.cvvCard,
-                      decoration: const InputDecoration(labelText: "CVV"),
+                      decoration: const InputDecoration(labelText: "CVC"),
                     ),
                   ),
                 ],
@@ -90,6 +94,76 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
               AppDimensions.serparatorVert16,
               ElevatedButton(
                   onPressed: () {
+
+                    if (controller.nomCard.value.text == '') {
+                      Get.snackbar(
+                          "Erreur !!",
+                          "Veuillez renseigner votre nom sur la carte",
+                          snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: Colors.amber,
+                          margin: EdgeInsets.all(10),
+                          animationDuration: Duration(milliseconds: 1000),
+                          isDismissible: true,
+                          //dismissDirection: SnackDismissDirection.HORIZONTAL
+                          forwardAnimationCurve: Curves.bounceInOut,
+                          reverseAnimationCurve: Curves.bounceInOut,
+                          overlayBlur: 5
+                      );
+                      return;
+                    }
+
+                    if (controller.numCard.value.text == '' || !controller.numCard.value.text.isNumericOnly || controller.numCard.value.text.length != 16) {
+                      Get.snackbar(
+                          "Erreur !!",
+                          "Numéro de carte de crédit incorrecte",
+                          snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: Colors.amber,
+                          margin: EdgeInsets.all(10),
+                          animationDuration: Duration(milliseconds: 1000),
+                          isDismissible: true,
+                          //dismissDirection: SnackDismissDirection.HORIZONTAL
+                          forwardAnimationCurve: Curves.bounceInOut,
+                          reverseAnimationCurve: Curves.bounceInOut,
+                          overlayBlur: 5
+                      );
+                      return;
+                    }
+
+                    if (controller.dateExp.value == '') {
+                      Get.snackbar(
+                          "Erreur !!",
+                          "Veuillez renseigner la date",
+                          snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: Colors.amber,
+                          margin: EdgeInsets.all(10),
+                          animationDuration: Duration(milliseconds: 1000),
+                          isDismissible: true,
+                          //dismissDirection: SnackDismissDirection.HORIZONTAL
+                          forwardAnimationCurve: Curves.bounceInOut,
+                          reverseAnimationCurve: Curves.bounceInOut,
+                          overlayBlur: 5
+                      );
+                      return;
+                    }
+
+                    if (controller.cvvCard.value.text == '' || !controller.cvvCard.value.text.isNumericOnly || controller.cvvCard.value.text.length != 3) {
+                      Get.snackbar(
+                          "Erreur !!",
+                          "Numéro CVC incorrect",
+                          snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: Colors.amber,
+                          margin: EdgeInsets.all(10),
+                          animationDuration: Duration(milliseconds: 1000),
+                          isDismissible: true,
+                          //dismissDirection: SnackDismissDirection.HORIZONTAL
+                          forwardAnimationCurve: Curves.bounceInOut,
+                          reverseAnimationCurve: Curves.bounceInOut,
+                          overlayBlur: 5
+                      );
+                      return;
+                    }
+
+
                     controller.payTicket(context);
                   },
                   child: Text("Payer (${Get.arguments["amount"] } FCFA)"))

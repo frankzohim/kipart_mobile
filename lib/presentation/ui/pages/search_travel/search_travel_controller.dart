@@ -20,7 +20,7 @@ class SearchTravelController extends GetxController
   final departure = "Douala".obs;
   final arrival = "Yaoundé".obs;
   var cityList = [];
-  final classeTravel = "Classique".obs;
+  final classeTravel = "classique".obs;
   final dateDepart = "".obs;
   final heureDepart = "07:30".obs;
   final dateRetour = "".obs;
@@ -65,6 +65,7 @@ class SearchTravelController extends GetxController
 
   initSearch() {
     if (!formKey.currentState!.validate()) return;
+    print(classeTravel.value);
     SearchData dataSearch = SearchData(
         type: typeTravel.value,
         departure: departure.value,
