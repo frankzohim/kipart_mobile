@@ -29,6 +29,8 @@ class PickAgencyController extends GetxController
         .then((value) {
       change(value, status: RxStatus.success());
     }).catchError((error) {
+      print('in catch Error');
+      print(error);
       change(null, status: RxStatus.error());
     });
   }

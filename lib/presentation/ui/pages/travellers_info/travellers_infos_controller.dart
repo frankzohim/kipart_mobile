@@ -99,10 +99,11 @@ class TravellersInfosController extends GetxController {
       travellers.value[0].phone = user.value!.phoneNumber;
     }
 
+    print("in travellers");
     print(travellers.value[0].name);
     Api()
         .travelRepo
-        .saveTravellers(trip["id"], travellers.value)
+        .saveTravellers(trip["id"].toString(), travellers.value)
         .then((value) {
       Loader.close();
       Get.toNamed(Approutes.RECAP, arguments: {

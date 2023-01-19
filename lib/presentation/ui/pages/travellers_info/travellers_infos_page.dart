@@ -185,6 +185,7 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                                     if (traveller.type != "ENFANT") ...[
                                       AppDimensions.serparatorVert8,
                                       TextFormField(
+                                        validator: Validators.length,
                                         onChanged: (value) => controller
                                             .onCNI(value, index),
                                         decoration: const InputDecoration(

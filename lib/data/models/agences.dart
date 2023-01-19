@@ -7,7 +7,7 @@ class AgencesModel {
   String? arrival;
   String? email;
   String? phoneNumber;
-  String? state;
+  int? state;
 
   AgencesModel(
       {this.id,
@@ -27,7 +27,7 @@ class AgencesModel {
     headquarters = json['headquarters'];
     departure = json['departure'];
     arrival = json['arrival'];
-    email = json['email'];
+    email = "email@gmail.com";
     phoneNumber = json['phone_number'];
     state = json['state'];
   }
