@@ -16,7 +16,7 @@ class AgencyRepo {
   }
 
   Future<List<AgencesModel>> getAgenciesByCity(String villeDepart, String villeArrivee) async {
-    print("get agencies by city");
+
     var res =
         await _dio.get("/api/listAgencyByPath/$villeDepart/$villeArrivee");
     print(res.data['data']);

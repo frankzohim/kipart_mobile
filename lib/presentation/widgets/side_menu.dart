@@ -20,7 +20,7 @@ class SideMenu extends StatelessWidget {
     NavItem(
         iconData: Icons.mail,
         title: "Boîte de reception",
-        page: Approutes.ALL_AGENCIES,
+        page: Approutes.CHAT,
         requireLogin: true),
     NavItem(
         iconData: Icons.settings,

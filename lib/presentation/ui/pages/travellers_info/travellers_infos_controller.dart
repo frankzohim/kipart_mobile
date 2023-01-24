@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/data/models/searchData.dart';
@@ -100,7 +99,7 @@ class TravellersInfosController extends GetxController {
     }
 
     print("in travellers");
-    print(travellers.value[0].name);
+    print(travellers.value[0]);
     Api()
         .travelRepo
         .saveTravellers(trip["id"].toString(), travellers.value)

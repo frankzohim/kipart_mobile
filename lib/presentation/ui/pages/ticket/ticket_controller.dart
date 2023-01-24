@@ -28,13 +28,12 @@ class TicketController extends GetxController {
   }
 
   loadArguments() async{
-    print(Get.arguments["paymentId"]);
+    print(Get.arguments["travel"]);
     travellers.value = await Get.arguments["travellers"];
     dataSearch.value = await Get.arguments['dataSearch'];
     user.value = await Get.arguments['user'];
     agency.value = await Get.arguments['agency'];
     subAgency.value = await Get.arguments['subAgency'];
-    print(subAgency.value!.name);
 
   }
 

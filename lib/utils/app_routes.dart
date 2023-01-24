@@ -12,6 +12,7 @@ import 'package:ki_part/presentation/ui/pages/home/pick_sub_agency_controller.da
 import 'package:ki_part/presentation/ui/pages/home/pick_sub_agency_page.dart';
 import 'package:ki_part/presentation/ui/pages/login/login_controller.dart';
 import 'package:ki_part/presentation/ui/pages/login/login_page.dart';
+import 'package:ki_part/presentation/ui/pages/my_tickets/my_tickets_controller.dart';
 import 'package:ki_part/presentation/ui/pages/my_tickets/my_tickets_page.dart';
 import 'package:ki_part/presentation/ui/pages/notfications/notifications_controller.dart';
 import 'package:ki_part/presentation/ui/pages/notfications/notifications_page.dart';
@@ -42,6 +43,8 @@ import 'package:ki_part/presentation/ui/pages/verify_otp/verify_otp_page.dart';
 import 'package:ki_part/presentation/ui/pages/recap/recap_controller.dart';
 import 'package:ki_part/presentation/ui/pages/ticket/ticket_page.dart';
 import 'package:ki_part/presentation/ui/pages/ticket/ticket_controller.dart';
+import 'package:ki_part/presentation/ui/pages/chat/chat_page.dart';
+import 'package:ki_part/presentation/ui/pages/chat/chat_controller.dart';
 
 mixin Approutes {
   static const HOME = "/";
@@ -65,6 +68,7 @@ mixin Approutes {
   static const PICK_SUB_AGENCY = "/pick-sub-agency";
   static const VERIFY_OTP = "/otp";
 
+  static const CHAT = "/chat";
   static const SETTINGS = "/settings";
   static const NOTIFICATIONS = "/settings/notifications";
 
@@ -99,7 +103,11 @@ mixin Approutes {
         name: TICKET,
         page: () => const TicketPage(),
         binding: BindingsBuilder.put(() => TicketController())),
-    GetPage(name: MY_TICKETS, page: () => const MyTicketsPage()),
+    GetPage(
+        name: MY_TICKETS,
+        page: () => const MyTicketsPage(),
+        binding: BindingsBuilder.put(() => MyTicketsController()),
+    ),
     GetPage(
       name: PASSWORD_FORGOT,
       binding: BindingsBuilder.put(() => ForgotPasswordController()),
@@ -141,6 +149,12 @@ mixin Approutes {
         name: SETTINGS,
         page: () => SettingsPage(),
         binding: BindingsBuilder.put(() => SettingsController())),
+
+    GetPage(
+        name: CHAT,
+        page: () => ChatPage(),
+        binding: BindingsBuilder.put(() => ChatController())),
+
     GetPage(
         name: NOTIFICATIONS,
         page: () => NotificationsPage(),

@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 import 'package:ki_part/utils/storage.dart';
 import 'package:ki_part/data/models/users.dart';
+import 'package:ki_part/data/models/ticket.dart';
 
 class TicketRepo {
   final Dio _dio;
@@ -59,8 +60,6 @@ class TicketRepo {
 
     var endpointUrl =
         "http://kipart.stillforce.tech/api/v1/get/qrCode/$idQrCode";
-    print(endpointUrl);
-    print("hello world");
 
     var requestUrl = endpointUrl;
     var responseJson = await http.get(Uri.parse(requestUrl),
@@ -71,9 +70,40 @@ class TicketRepo {
         },
        );
 
+    return responseJson.body;
+  }
+
+  Future<List<TicketModel>> getTicketList() async {
+
+    final UserModel user;
+    await Storage.instance.init();
+    final val = Storage.instance.get("currentUser");
+    user = UserModel.fromMap(val);
+
+    var res =
+    await _dio.get("/api/v1/list/tickets");
+    print(res.data['data']);
+    return res.data["data"]
+        .map<TicketModel>((e) => TicketModel.fromJson(e))
+        .toList();
+
+    /*var endpointUrl =
+        "http://kipart.stillforce.tech/api/v1/list/tickets";
+    print(endpointUrl);
+    print("hello world");
+
+    var requestUrl = endpointUrl;
+    var responseJson = await http.get(Uri.parse(requestUrl),
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+        "Authorization": user.accessToken!
+      },
+    );
+
     print(responseJson.statusCode);
     print("Le body ");
     debugPrint(responseJson.body);
-    return responseJson.body;
+    return responseJson.body;*/
   }
 }

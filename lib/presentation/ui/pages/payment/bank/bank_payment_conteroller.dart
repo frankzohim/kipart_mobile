@@ -31,7 +31,6 @@ class BankPaymentController extends GetxController with StateMixin<String> {
   }
 
   loadArguments() async{
-
     travellers.value = await Get.arguments["travellers"];
     subAgency.value = await Get.arguments["subAgency"];
     travel = await Get.arguments["travel"];
@@ -65,7 +64,7 @@ class BankPaymentController extends GetxController with StateMixin<String> {
                 "paymentId": paymentId,
                 'travel': travel,
                 "travellers": travellers.value,
-                "subAgency": subAgency.value,
+                "subAgencyName": subAgency.value!.name,
                 "qrCode" : qrCode
               },);
             color: Colors.orange;
