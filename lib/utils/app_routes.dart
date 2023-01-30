@@ -45,6 +45,8 @@ import 'package:ki_part/presentation/ui/pages/ticket/ticket_page.dart';
 import 'package:ki_part/presentation/ui/pages/ticket/ticket_controller.dart';
 import 'package:ki_part/presentation/ui/pages/chat/chat_page.dart';
 import 'package:ki_part/presentation/ui/pages/chat/chat_controller.dart';
+import 'package:ki_part/presentation/ui/pages/customer_service/customer_service_controller.dart';
+import 'package:ki_part/presentation/ui/pages/customer_service/customer_service_page.dart';
 
 mixin Approutes {
   static const HOME = "/";
@@ -69,6 +71,7 @@ mixin Approutes {
   static const VERIFY_OTP = "/otp";
 
   static const CHAT = "/chat";
+  static const CUSTOMER_SERVICE = "/customer/service";
   static const SETTINGS = "/settings";
   static const NOTIFICATIONS = "/settings/notifications";
 
@@ -154,6 +157,11 @@ mixin Approutes {
         name: CHAT,
         page: () => ChatPage(),
         binding: BindingsBuilder.put(() => ChatController())),
+
+    GetPage(
+        name: CUSTOMER_SERVICE,
+        page: () => CustomerServicePage(),
+        binding: BindingsBuilder.put(() => CustomerServiceController())),
 
     GetPage(
         name: NOTIFICATIONS,

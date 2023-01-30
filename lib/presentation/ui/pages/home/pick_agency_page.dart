@@ -88,12 +88,6 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
                   child: CircularProgressIndicator.adaptive(),
                 )),
             AppDimensions.serparatorVert16,
-            OutlinedButton(
-                onPressed: () {
-                  // print('aller à tous');
-                  Get.offAndToNamed(Approutes.ALL_AGENCIES);
-                },
-                child: const Text("VOIR PLUS"))
           ],
         ),
       ),

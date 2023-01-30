@@ -30,7 +30,7 @@ class SideMenu extends StatelessWidget {
     NavItem(
       iconData: Icons.person,
       title: "Service client",
-      page: Approutes.RECAP,
+      page: Approutes.CUSTOMER_SERVICE,
       requireLogin: false,
     ),
   ];

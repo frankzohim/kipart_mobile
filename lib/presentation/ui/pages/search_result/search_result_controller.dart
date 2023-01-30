@@ -17,9 +17,6 @@ class SearchResultController extends GetxController
   @override
   void onReady() {
     searchData = Get.arguments;
-    /*print('hello in search result controller');
-    print(searchData.value?.departure);
-    print(searchData.value?.departure_time);*/
     super.onReady();
   }
 

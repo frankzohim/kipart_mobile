@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ki_part/data/models/users.dart';
+import 'package:ki_part/data/models/brandAmbassador.dart';
 
 class UserRepo {
   final Dio _dio;
@@ -23,15 +24,27 @@ class UserRepo {
       {required String name,
       required String email,
       required String phone,
-      required String password}) async {
+      required String password,
+      int? brand_ambassadors_id}) async {
     var res = await _dio.post("/api/register", data: {
       "name": name,
       "email": email,
       "phone_number": phone,
       "password": password,
+      "brand_ambassadors_id": brand_ambassadors_id,
     });
 
     return res.data;
+  }
+
+  Future<List<BrandAmabssadorModel>> getBrandAmbassador() async {
+
+    var res =
+    await _dio.get("/api/list/brandAmbassadors");
+    print(res.data["brand_ambassadors"]);
+    return res.data["brand_ambassadors"]
+        .map<BrandAmabssadorModel>((e) => BrandAmabssadorModel.fromJson(e))
+        .toList();
   }
 
   Future<bool> validateOTP(String otp, String phone) async {

@@ -290,6 +290,20 @@ class MyTicketWidget extends StatelessWidget {
    _saved(Uint8List image) async {
      final result = await ImageGallerySaver.saveImage(image);
      print("File Saved to Gallery");
+     Get.snackbar(
+         "Super !",
+         "Ticket enregistré dans votre galerie",
+         snackPosition: SnackPosition.BOTTOM,
+         backgroundColor: Colors.amber,
+         margin: EdgeInsets.all(10),
+         animationDuration: Duration(milliseconds: 2000),
+         isDismissible: true,
+         //dismissDirection: SnackDismissDirection.HORIZONTAL
+         forwardAnimationCurve: Curves.bounceInOut,
+         reverseAnimationCurve: Curves.bounceInOut,
+         overlayBlur: 5
+     );
+     Get.offAllNamed(Approutes.MY_TICKETS);
    }
 
   _getCivitiy(String type) {

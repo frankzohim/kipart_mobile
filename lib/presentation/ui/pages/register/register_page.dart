@@ -5,6 +5,7 @@ import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/register/register_controller.dart';
 import 'package:ki_part/presentation/widgets/header_with_image.dart';
 import 'package:ki_part/utils/validators.dart';
+import 'package:ki_part/data/models/brandAmbassador.dart';
 
 class RegisterPage extends GetWidget<RegisterController> {
   const RegisterPage({super.key});
@@ -118,6 +119,20 @@ class RegisterPage extends GetWidget<RegisterController> {
                                 ? Icons.visibility_off
                                 : Icons.remove_red_eye))),
                   ),
+                  AppDimensions.serparatorVert8,
+                  DropdownButtonFormField(
+                      value: controller.brandAmbassador.value,
+                      decoration: InputDecoration(
+                          labelText: "Brand Girl",
+                          prefixIcon:
+                          Icon(Icons.supervised_user_circle)),
+                      items: controller.brandAmbassadors.value
+                          .map((BrandAmabssadorModel e) => DropdownMenuItem(
+                        value: e.name,
+                        child: Text(e.name!),
+                      ))
+                          .toList(),
+                      onChanged: controller.brandAmbassador),
                   AppDimensions.serparatorVert16,
                   Text.rich(
                     TextSpan(children: [

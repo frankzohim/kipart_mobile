@@ -5,6 +5,7 @@ import 'package:ki_part/data/models/hours.dart';
 import 'package:ki_part/data/models/searchData.dart';
 import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/utils/app_routes.dart';
+import 'package:intl/intl.dart';
 import 'dart:convert';
 import 'package:ki_part/utils/loader.dart';
 
@@ -21,7 +22,7 @@ class SearchTravelController extends GetxController
   final arrival = "Yaoundé".obs;
   var cityList = [];
   final classeTravel = "classique".obs;
-  final dateDepart = "".obs;
+  final dateDepart = new DateFormat('yyyy-MM-dd').format(new DateTime.now()).obs;
   final heureDepart = "07:30".obs;
   final dateRetour = "".obs;
   final heureRetour = "07:30".obs;
@@ -37,6 +38,10 @@ class SearchTravelController extends GetxController
 
   @override
   void onInit() async {
+    var now = new DateTime.now();
+    var formatter = new DateFormat('yyyy-MM-dd');
+    String formattedDate = formatter.format(now);
+    print(formattedDate); // 2016-01-25
     await loadTown();
     super.onInit();
   }

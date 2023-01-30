@@ -30,8 +30,8 @@ abstract class Validators {
   }
 
   static String? password(String? value) {
-    if (value == null || value.length < 6 || value.isAlphabetOnly) {
-      return "Le mot de passe doit contenir au moins 7 caractères et un chiffre";
+    if (value == null || value.length < 5) {
+      return "Le mot de passe doit contenir au moins 6 caractères";
     }
     return null;
   }
