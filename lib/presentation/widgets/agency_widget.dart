@@ -32,7 +32,7 @@ class AgencyWidget extends GetWidget {
           {"dataSearch": dataSearch}
         ]);*/
 
-        print("onTap");
+        print("onTap hi");
         Api().agencyRepo.getSubAgency(agency.id.toString())
             .then((value) async {
           //change(value, status: RxStatus.success());

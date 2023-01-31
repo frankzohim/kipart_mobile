@@ -108,7 +108,7 @@ class TravelRepo {
     String queryString = Uri(queryParameters: queryParams).query;
     var requestUrl = '$endpointUrl?$queryString';
     // print(requestUrl);
-
+    print("view again 1");
     var responseJson = await http.post(Uri.parse(requestUrl), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
@@ -116,6 +116,7 @@ class TravelRepo {
     });
     // print(responseJson.body);
     var resp = jsonDecode(responseJson.body);
+
     // print(resp['data']);
     // print(resp['data'][0]['name']);
     if (resp['data'] != null) {

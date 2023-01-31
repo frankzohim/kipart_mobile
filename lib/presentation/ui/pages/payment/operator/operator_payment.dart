@@ -12,8 +12,8 @@ class OperatorPaymentPage extends GetWidget<OperatorPaymentController> {
 
   final List<ListItem> operatorItems = [
     ListItem(1, "OM", "Orange Money", "assets/images/OM.png"),
-    ListItem(2, "MoMo", "Mobile Money", "assets/images/MoMo.jfif"),
-    ListItem(2, "CB", "Carte Bancaire", "assets/images/visa.jfif")
+    ListItem(2, "MoMo", "Mobile Money", "assets/images/MoMo.png"),
+    ListItem(2, "CB", "Carte Bancaire", "assets/images/visa.png")
   ];
 
   @override

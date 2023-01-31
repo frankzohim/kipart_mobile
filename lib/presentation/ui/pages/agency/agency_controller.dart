@@ -32,6 +32,7 @@ class AgencyController extends GetxController
   }
 
   loadArguments() async {
+    print('hello');
     agency.value = await Get.arguments[0]['agency'];
     dataSearch.value = await Get.arguments[1]['dataSearch'];
     subAgency.value = await Get.arguments[2]['subAgency'];
