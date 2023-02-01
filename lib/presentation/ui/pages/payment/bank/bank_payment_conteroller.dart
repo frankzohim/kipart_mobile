@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/presentation/ui/pages/search_travel/search_travel_page.dart';
@@ -57,7 +58,17 @@ class BankPaymentController extends GetxController with StateMixin<String> {
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             onPressed: () async {
+              CoolAlert.show(
+                  context: Get.context!,
+                  animType: CoolAlertAnimType.slideInLeft,
+                  backgroundColor: Theme.of(Get.context!).colorScheme.secondary,
+                  barrierDismissible: false,
+                  loopAnimation: true,
+                  text: "Veuillez patienter",
+                  title: "Chargement...",
+                  type: CoolAlertType.loading);
               String qrCode = await Api().ticketRepo.getTicket(tickets[1]);
+              Loader.close();
               Get.offAllNamed(Approutes.TICKET,
               arguments: {
                 "amount": amount,

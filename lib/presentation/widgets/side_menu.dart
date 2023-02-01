@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,8 @@ import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/services/user_service.dart';
 import 'package:ki_part/utils/app_routes.dart';
 import 'package:ki_part/utils/loader.dart';
+
+import 'header_with_image.dart';
 
 class SideMenu extends StatelessWidget {
   SideMenu({super.key});
@@ -52,7 +55,11 @@ class SideMenu extends StatelessWidget {
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage(AppAssets.connexion))),
+                            image: AssetImage(AppAssets.connexion)
+                        ),
+
+                    ),
+
                     width: double.infinity,
                     child: Center(
                       child: Obx(
@@ -60,13 +67,14 @@ class SideMenu extends StatelessWidget {
                             ? Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
+
                                   Row(
                                     children: [
                                       Expanded(
                                           flex: 2,
                                           child: Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.end,
+                                                MainAxisAlignment.center,
                                             children: [
                                               Text(
                                                 "Mon profil",
@@ -74,18 +82,39 @@ class SideMenu extends StatelessWidget {
                                                     .textTheme
                                                     .headline5!
                                                     .copyWith(
-                                                        color: Colors.black,
+                                                        color: Colors.white,
                                                         fontWeight:
                                                             FontWeight.bold),
                                               ),
                                               AppDimensions.serparatorVert8,
-                                              const Text(
+
+                                              Text.rich(
+                                                TextSpan(
+                                                    children: [
+                                                      TextSpan(text: "Profitez des avantages du compte KiPART "),
+                                                      TextSpan(
+                                                          text: "réservation, ",
+                                                          style: TextStyle(
+                                                              color:
+                                                              Theme.of(context).colorScheme.primary)),
+                                                      TextSpan(text: "mise à jour"),
+                                                      TextSpan(
+                                                          text: " en temps réel",
+                                                          style: TextStyle(
+                                                              color:
+                                                              Theme.of(context).colorScheme.primary)),
+                                                    ],
+                                                    style: Theme.of(context).textTheme.headline5!.copyWith(
+                                                        fontWeight: FontWeight.bold, color: Colors.white)),
+                                                textAlign: TextAlign.center,
+                                              )
+                                              /*Text(
                                                 "Profitez des avantages du compte KiPART : réservation plus rapide, mise à jour en temps réel de votre voyage et bien plus encore",
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight:
                                                         FontWeight.bold),
-                                              ),
+                                              ),*/
                                             ],
                                           )),
                                       Expanded(

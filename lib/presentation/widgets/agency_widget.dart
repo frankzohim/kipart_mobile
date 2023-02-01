@@ -10,6 +10,7 @@ import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/repo/travel_repo.dart';
 import 'package:ki_part/data/models/subAgency.dart';
 import 'package:ki_part/utils/app_routes.dart';
+import 'package:ki_part/utils/loader.dart';
 
 class AgencyWidget extends GetWidget {
   final AgencesModel agency;
@@ -26,9 +27,10 @@ class AgencyWidget extends GetWidget {
     List<SubAgencyModel>? subAgencies = [];
     return InkWell(
       onTap: () async {
-        print("onTap hi here");
+        Loader.loading();
         Api().agencyRepo.getSubAgency(agency.id.toString())
             .then((value) async {
+          Loader.close();
           //change(value, status: RxStatus.success());
           //print(value);
           print(value.length);
@@ -75,14 +77,14 @@ class AgencyWidget extends GetWidget {
               '${agency.logo}',
               width: double.infinity,
               fit: BoxFit.cover,
-              height: 100,
+              height: 130,
             ),
             AppDimensions.serparatorVert8,
             Text(
               "${agency.name}",
-              style: Theme.of(context).textTheme.headline6,
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            RatingBarIndicator(
+            /*RatingBarIndicator(
               rating: 2.5,
               itemBuilder: (context, index) => const Icon(
                 Icons.star,
@@ -91,7 +93,7 @@ class AgencyWidget extends GetWidget {
               itemCount: 5,
               itemSize: 15.0,
               direction: Axis.horizontal,
-            ),
+            ),*/
           ],
         ),
       ),

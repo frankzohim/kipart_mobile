@@ -43,8 +43,7 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
                     .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
-            AppDimensions.serparatorVert8,
-            Row(
+            /*Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
@@ -65,7 +64,7 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
                   color: Theme.of(context).colorScheme.primary,
                 )
               ],
-            ),
+            ),*/
             controller.obx((snapshot) {
               return GridView.builder(
                   itemCount: snapshot!.length,

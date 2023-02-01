@@ -10,6 +10,8 @@ import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/repo/travel_repo.dart';
 import 'package:ki_part/data/models/subAgency.dart';
 import 'package:ki_part/utils/app_routes.dart';
+import 'package:ki_part/utils/loader.dart';
+
 
 class SubAgencyWidget extends GetWidget {
   final AgencesModel? agency;
@@ -25,8 +27,9 @@ class SubAgencyWidget extends GetWidget {
     List<SubAgencyModel>? subAgencies = [];
     return InkWell(
       onTap: () async {
-        print('onTap subagency');
+        Loader.loading();
         await TravelRepo.listTravelsAgency(agency!.id, dataSearch);
+        Loader.close();
         await Get.toNamed(Approutes.AGENCY, arguments: [
           {"agency": agency},
           {"dataSearch": dataSearch},

@@ -12,6 +12,7 @@ import 'package:ki_part/services/user_service.dart';
 import 'package:ki_part/utils/storage.dart';
 import 'package:ki_part/data/models/subAgency.dart';
 import 'package:ki_part/data/models/agences.dart';
+import 'package:ki_part/utils/loader.dart';
 import 'package:ki_part/presentation/ui/pages/buy_ticket/buy_ticket_page.dart';
 import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_page.dart';
 
@@ -30,9 +31,12 @@ class TravelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
+        Loader.loading();
+        print('loading');
         //Check if the user is connected
         final UserModel user;
         await Storage.instance.init();
+        Loader.close();
         final val = Storage.instance.get("currentUser");
         if(val == null){
           Get.toNamed(Approutes.LOGIN,
