@@ -26,13 +26,7 @@ class AgencyWidget extends GetWidget {
     List<SubAgencyModel>? subAgencies = [];
     return InkWell(
       onTap: () async {
-        /*await TravelRepo.listTravelsAgency(agency.id, dataSearch);
-        await Get.toNamed(Approutes.AGENCY, arguments: [
-          {"agency": agency},
-          {"dataSearch": dataSearch}
-        ]);*/
-
-        print("onTap hi");
+        print("onTap hi here");
         Api().agencyRepo.getSubAgency(agency.id.toString())
             .then((value) async {
           //change(value, status: RxStatus.success());
