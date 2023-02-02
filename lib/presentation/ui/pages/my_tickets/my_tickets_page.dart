@@ -28,20 +28,22 @@ class MyTicketsPage extends GetWidget<MyTicketsController> {
             onTap: () async {
 
               print(controller.tickets.value[index]);
-              //Adding traveller to list
-              List<Traveller> travellers = [];
-              Traveller traveller = Traveller();
-              traveller.name = controller.tickets.value[index].passengers[0]['nom'];
-              traveller.type = controller.tickets.value[index].passengers[0]['type'];
-              traveller.cni = controller.tickets.value[index].passengers[0]['cniNumber'] != null ? controller.tickets.value[index].passengers[0]['cniNumber'] : " " ;
-              traveller.phone = controller.tickets.value[index].passengers[0]['telephone'].toString();
-              travellers.add(traveller);
 
-              //Converting date
-              controller.tickets.value[index].travel[0]['date'] = controller.tickets.value[index].travel[0]['date'].toString().substring(0,10);
+              void displayTicket() async {
+                //Adding traveller to list
+                List<Traveller> travellers = [];
+                Traveller traveller = Traveller();
+                traveller.name = controller.tickets.value[index].passengers[0]['nom'];
+                traveller.type = controller.tickets.value[index].passengers[0]['type'];
+                traveller.cni = controller.tickets.value[index].passengers[0]['cniNumber'] != null ? controller.tickets.value[index].passengers[0]['cniNumber'] : " " ;
+                traveller.phone = controller.tickets.value[index].passengers[0]['telephone'].toString();
+                travellers.add(traveller);
 
-              //Creating a new travel map
-              var travelMap = {
+                //Converting date
+                controller.tickets.value[index].travel[0]['date'] = controller.tickets.value[index].travel[0]['date'].toString().substring(0,10);
+
+                //Creating a new travel map
+                var travelMap = {
                   'id':controller.tickets.value[index].travel[0]['id'],
                   'date': controller.tickets.value[index].travel[0]['date'],
                   'departure': controller.tickets.value[index].travel[0]['departure'],
@@ -49,41 +51,24 @@ class MyTicketsPage extends GetWidget<MyTicketsController> {
                   'hours': controller.tickets.value[index].travel[0]['heure'],
                   'classe': controller.tickets.value[index].travel[0]['classe'],
                   'price': controller.tickets.value[index].travel[0]['prix']
-              };
-              //Fetching QRCode via API for this passenger
-              String qrCode = await Api().ticketRepo.getTicket(controller.tickets.value[index].id.toString());
+                };
+                //Fetching QRCode via API for this passenger
+                String qrCode = await Api().ticketRepo.getTicket(controller.tickets.value[index].id.toString());
 
-              int amount = controller.tickets.value[index].travel[0]['prix'];
+                int amount = controller.tickets.value[index].travel[0]['prix'];
 
-              print(controller.tickets.value[index].travel[0]);
-              Get.toNamed(Approutes.TICKET,
-                arguments: {
-                  "amount": amount,
-                  'travel': travelMap,
-                  "travellers": travellers,
-                  "subAgencyName": controller.tickets.value[index].agency ,
-                  "qrCode" : qrCode
-                },);
-              //print(qrCode);
-              /*showDialog(
-                  context: context,
-                  builder: ((context) => Dialog(
-                    backgroundColor: Colors.transparent,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.close,
-                              color: Theme.of(context).colorScheme.primary,
-                              size: 30,
-                            )),
-                        MyTicketWidget(),
-                      ],
-                    ),
-                  )));*/
+                print(controller.tickets.value[index].travel[0]);
+                Get.toNamed(Approutes.TICKET,
+                  arguments: {
+                    "amount": amount,
+                    'travel': travelMap,
+                    "travellers": travellers,
+                    "subAgencyName": controller.tickets.value[index].agency ,
+                    "qrCode" : qrCode
+                  },);
+              }
+              displayTicket();
+
             },
             child: Row(
               children: [
@@ -112,12 +97,15 @@ class MyTicketsPage extends GetWidget<MyTicketsController> {
                   ),
                 ),
                 AppDimensions.serparatorHor8,
-                IconButton(
-                    onPressed: () {},
+                /*IconButton(
+                    onPressed: () {
+                      displayTicket();
+                    },
                     icon: Icon(
-                      Icons.download,
+                      Icons.remove_red_eye,
                       color: Theme.of(context).colorScheme.primary,
-                    ))
+                    )
+                )*/
               ],
             ),
           );

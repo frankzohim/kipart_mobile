@@ -61,7 +61,7 @@ class AgencyDetailsPage extends GetWidget<AgencyController> {
                         ),
                         TextButton(
                             onPressed: () {},
-                            child: const Text("Noter l'agence"))
+                            child: Text(controller.agency.value!.name!.toUpperCase()))
                       ],
                     )
                   ],

@@ -67,7 +67,6 @@ class LoginPage extends GetWidget<LoginController> {
                       TextFormField(
                         controller: controller.phoneController,
                         keyboardType: TextInputType.phone,
-                        validator: Validators.phone,
                         decoration: InputDecoration(
                           labelText: "Téléphone",
                           hintText: "6XXXXXXXX",
@@ -79,7 +78,6 @@ class LoginPage extends GetWidget<LoginController> {
                         return TextFormField(
                           controller: controller.passwordController,
                           obscureText: !controller.isVisble.value,
-                          validator: Validators.password,
                           decoration: InputDecoration(
                             labelText: "Mot de passe",
                             prefixIcon: Icon(Icons.key),

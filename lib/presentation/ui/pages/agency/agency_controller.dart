@@ -26,18 +26,17 @@ class AgencyController extends GetxController
   }
 
   @override
-  void onInit() {
-    loadArguments();
+  void onInit() async{
+    await loadArguments();
     super.onInit();
   }
 
   loadArguments() async {
     print('hello');
     agency.value = await Get.arguments[0]['agency'];
+    print(agency.value!.name);
     dataSearch.value = await Get.arguments[1]['dataSearch'];
     subAgency.value = await Get.arguments[2]['subAgency'];
-    print(agency.value!.name);
-    print(dataSearch.value!.departure);
     print(subAgency.value!.name);
     /*print(dataSearch.value!.number_of_places);
     print('Hello world');*/
