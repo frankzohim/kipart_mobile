@@ -69,7 +69,7 @@ class BankPaymentController extends GetxController with StateMixin<String> {
                   type: CoolAlertType.loading);
               String qrCode = await Api().ticketRepo.getTicket(tickets[1]);
               Loader.close();
-              Get.offAllNamed(Approutes.TICKET,
+              /*Get.offAllNamed(Approutes.TICKET,
               arguments: {
                 "amount": amount,
                 "paymentId": paymentId,
@@ -77,7 +77,17 @@ class BankPaymentController extends GetxController with StateMixin<String> {
                 "travellers": travellers.value,
                 "subAgencyName": subAgency.value!.name,
                 "qrCode" : qrCode
-              },);
+              },);*/
+              /*Get.offAllNamed(Approutes.LIST_TICKET,
+                arguments: {
+                  "amount": amount,
+                  "paymentId": paymentId,
+                  'travel': travel,
+                  "travellers": travellers.value,
+                  "subAgencyName": subAgency.value!.name,
+                  "tickets" : tickets
+                },);*/
+              Get.offAllNamed(Approutes.MY_TICKETS);
             color: Colors.orange;
             width: 120;
           }

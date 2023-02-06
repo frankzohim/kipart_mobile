@@ -241,9 +241,9 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
 
                                       return "Merci de préciser le nombre de passager";
                                     }
-                                    if (text != null && int.parse(text) > 70) {
+                                    if (text != null && int.parse(text) > 6) {
 
-                                      return "Le nombre de passager doit être inférieur à 70";
+                                      return "Le nombre de passager doit être inférieur à 6";
                                     }
                                     return null;
                                   },

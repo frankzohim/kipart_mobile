@@ -14,6 +14,8 @@ import 'package:ki_part/presentation/ui/pages/login/login_controller.dart';
 import 'package:ki_part/presentation/ui/pages/login/login_page.dart';
 import 'package:ki_part/presentation/ui/pages/my_tickets/my_tickets_controller.dart';
 import 'package:ki_part/presentation/ui/pages/my_tickets/my_tickets_page.dart';
+import 'package:ki_part/presentation/ui/pages/list_tickets/list_ticket_controller.dart';
+import 'package:ki_part/presentation/ui/pages/list_tickets/list_ticket_page.dart';
 import 'package:ki_part/presentation/ui/pages/notfications/notifications_controller.dart';
 import 'package:ki_part/presentation/ui/pages/notfications/notifications_page.dart';
 import 'package:ki_part/presentation/ui/pages/password_forgot/forgot_password_controller.dart';
@@ -57,6 +59,7 @@ mixin Approutes {
   static const AGENCY = "/agency";
   static const ALL_AGENCIES = "/all/agency";
   static const TICKET = "/ticket";
+  static const LIST_TICKET = "/list/ticket";
   static const MY_TICKETS = "/all/tickets";
   static const PASSWORD_FORGOT = "/auth/password-forgot";
   static const PAYMENT = "/pay";
@@ -106,11 +109,19 @@ mixin Approutes {
         name: TICKET,
         page: () => const TicketPage(),
         binding: BindingsBuilder.put(() => TicketController())),
+
+    GetPage(
+        name: LIST_TICKET,
+        page: () => const ListTicketPage(),
+        binding: BindingsBuilder.put(() => ListTicketController())),
+
     GetPage(
         name: MY_TICKETS,
         page: () => const MyTicketsPage(),
         binding: BindingsBuilder.put(() => MyTicketsController()),
     ),
+
+
     GetPage(
       name: PASSWORD_FORGOT,
       binding: BindingsBuilder.put(() => ForgotPasswordController()),

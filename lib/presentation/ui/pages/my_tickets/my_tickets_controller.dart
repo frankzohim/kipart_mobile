@@ -1,11 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/repo/api.dart';
-import 'package:ki_part/utils/storage.dart';
-import 'package:ki_part/utils/app_routes.dart';
-import 'package:ki_part/utils/loader.dart';
-import 'package:ki_part/data/models/subAgency.dart';
-import 'package:ki_part/data/models/agences.dart';
 import 'package:ki_part/data/models/ticket.dart';
 
 

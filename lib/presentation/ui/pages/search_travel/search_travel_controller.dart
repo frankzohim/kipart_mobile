@@ -7,7 +7,7 @@ import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/utils/app_routes.dart';
 import 'package:intl/intl.dart';
 import 'dart:convert';
-import 'package:ki_part/utils/loader.dart';
+
 
 class SearchTravelController extends GetxController
     with StateMixin<List<dynamic>> {

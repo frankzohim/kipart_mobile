@@ -86,24 +86,5 @@ class TicketRepo {
     return res.data["data"]
         .map<TicketModel>((e) => TicketModel.fromJson(e))
         .toList();
-
-    /*var endpointUrl =
-        "http://kipart.stillforce.tech/api/v1/list/tickets";
-    print(endpointUrl);
-    print("hello world");
-
-    var requestUrl = endpointUrl;
-    var responseJson = await http.get(Uri.parse(requestUrl),
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-        "Authorization": user.accessToken!
-      },
-    );
-
-    print(responseJson.statusCode);
-    print("Le body ");
-    debugPrint(responseJson.body);
-    return responseJson.body;*/
   }
 }

@@ -5,8 +5,6 @@ import 'package:ki_part/presentation/ui/pages/home/pick_agency_controller.dart';
 import 'package:ki_part/presentation/widgets/agency_widget.dart';
 import 'package:ki_part/presentation/widgets/error_widget.dart';
 import 'package:ki_part/presentation/widgets/header_with_image.dart';
-import 'package:ki_part/repo/travel_repo.dart';
-import 'package:ki_part/utils/app_routes.dart';
 
 class PickAgencyPage extends GetWidget<PickAgencyController> {
   const PickAgencyPage({super.key});
@@ -18,16 +16,6 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-
-        // title: const Text("Choisissez une agence"),
-        // actions: [
-        //   IconButton(
-        //       onPressed: () {
-        //         Navigator.of(context).push(MaterialPageRoute(
-        //             builder: (c) => const SearchTravelPage()));
-        //       },
-        //       icon: const Icon(Icons.search))
-        // ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -43,28 +31,7 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
                     .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
-            /*Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                    style: ButtonStyle(
-                        textStyle: MaterialStateProperty.all(const TextStyle(
-                            decoration: TextDecoration.underline))),
-                    onPressed: () async {
-                      await TravelRepo.searchTravels(
-                          controller.searchData.value);
-                      await Get.toNamed(Approutes.SEARCH_RESULT,
-                          arguments: controller.searchData.value);
-                    },
-                    child: const Text(
-                      "Voir tous les départs de toutes les agences",
-                    )),
-                Icon(
-                  Icons.arrow_forward,
-                  color: Theme.of(context).colorScheme.primary,
-                )
-              ],
-            ),*/
+
             controller.obx((snapshot) {
               return GridView.builder(
                   itemCount: snapshot!.length,
