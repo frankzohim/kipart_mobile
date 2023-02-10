@@ -18,7 +18,7 @@ class TicketRepo {
     user = UserModel.fromMap(val);
 
     var endpointUrl =
-        "http://kipart.stillforce.tech/api/v1/stripe/test/payment/$idPayment/$amount/$codePromo/$idSubAgency";
+        "http://api.mykipart.com/api/v1/stripe/test/payment/$idPayment/$amount/$codePromo/$idSubAgency";
     print(endpointUrl);
     print("hello world");
 
@@ -59,7 +59,7 @@ class TicketRepo {
     user = UserModel.fromMap(val);
 
     var endpointUrl =
-        "http://kipart.stillforce.tech/api/v1/get/qrCode/$idQrCode";
+        "http://api.mykipart.com/api/v1/get/qrCode/$idQrCode";
 
     var requestUrl = endpointUrl;
     var responseJson = await http.get(Uri.parse(requestUrl),

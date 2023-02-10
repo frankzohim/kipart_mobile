@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:ki_part/data/models/city.dart';
 import 'package:ki_part/data/models/hours.dart';
@@ -34,7 +33,7 @@ class TravelRepo {
   // }
 
   static Future<List<dynamic>> searchTravels(SearchData? dataS) async {
-    var endpointUrl = "http://kipart.stillforce.tech/api/searchFull/travel";
+    var endpointUrl = "http://api.mykipart.com/api/searchFull/travel";
     print(endpointUrl);
     Map<String, String> queryParams = {
       'type': dataS!.type,
@@ -92,7 +91,7 @@ class TravelRepo {
     // print(res.data.toString());
     // return res.data.toList();
     var endpointUrl =
-        "http://kipart.stillforce.tech/api/search/byAgency/$agencyId";
+        "http://api.mykipart.com/api/search/byAgency/$agencyId";
     // print(endpointUrl);
     print("in travel list");
     print(dataS!.classe);
