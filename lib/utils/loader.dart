@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Loader {
-  static void error([String message = "Une erreur est survenue"]) {
+  static void error([String message = "An error has occurred"]) {
     CoolAlert.show(
         context: Get.context!,
         animType: CoolAlertAnimType.slideInLeft,
@@ -11,13 +11,13 @@ class Loader {
         confirmBtnColor: Theme.of(Get.context!).colorScheme.primary,
         barrierDismissible: true,
         loopAnimation: true,
-        text: message,
-        title: "Erreur",
+        text: message.tr,
+        title: "Error".tr,
         type: CoolAlertType.error);
   }
 
   static void info(
-      {String message = "Une erreur est survenue", VoidCallback? onCofirm}) {
+      {String message = "An error has occurred", VoidCallback? onCofirm}) {
     CoolAlert.show(
         context: Get.context!,
         animType: CoolAlertAnimType.slideInLeft,
@@ -26,27 +26,27 @@ class Loader {
         barrierDismissible: true,
         loopAnimation: true,
         onConfirmBtnTap: onCofirm,
-        text: message,
+        text: message.tr,
         title: "Info",
         type: CoolAlertType.info);
   }
 
-  static void loading([String message = "Veuillez patienter"]) {
+  static void loading([String message = "Please wait"]) {
     CoolAlert.show(
         context: Get.context!,
         animType: CoolAlertAnimType.slideInLeft,
         backgroundColor: Theme.of(Get.context!).colorScheme.secondary,
         barrierDismissible: false,
         loopAnimation: true,
-        text: message,
-        title: "Chargement...",
+        text: message.tr,
+        title: "Loading...".tr,
         type: CoolAlertType.loading);
   }
 
   static void confirm(
       {required VoidCallback onValidate,
       required VoidCallback onCancel,
-      String message = "Voulez-vous vraiment procéder?"}) {
+      String message = "Do you really want to proceed?"}) {
     CoolAlert.show(
         context: Get.context!,
         animType: CoolAlertAnimType.slideInUp,
@@ -57,8 +57,8 @@ class Loader {
         onCancelBtnTap: onCancel,
         onConfirmBtnTap: onValidate,
         confirmBtnColor: Theme.of(Get.context!).colorScheme.primary,
-        text: message,
-        title: "Confirmer",
+        text: message.tr,
+        title: "Confirm".tr,
         type: CoolAlertType.error);
   }
 

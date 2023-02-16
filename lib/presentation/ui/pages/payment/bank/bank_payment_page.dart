@@ -26,7 +26,7 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
             children: [
               HeaderWithImage(
                   child: Text(
-                "Details de votre carte",
+                "Card\'s details".tr,
                 style: Theme.of(context)
                     .textTheme
                     .headline5!
@@ -49,8 +49,8 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
               TextFormField(
                 validator: Validators.length,
                 controller: controller.nomCard,
-                decoration: const InputDecoration(
-                  labelText: "Nom sur la carte",
+                decoration: InputDecoration(
+                  labelText: "Name on the card".tr,
                 ),
               ),
               AppDimensions.serparatorVert8,
@@ -58,7 +58,7 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
                 validator: Validators.card,
                 controller: controller.numCard,
                 decoration:
-                    const InputDecoration(labelText: "Numéro de la carte"),
+                     InputDecoration(labelText: "Card number".tr),
               ),
               AppDimensions.serparatorVert8,
               Row(
@@ -69,13 +69,13 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
                       firstDate: DateTime.now(),
                       lastDate:
                           DateTime.now().add(const Duration(days: 360 * 6)),
-                      dateLabelText: "Date d'expiration",
+                      dateLabelText: "Expiration date".tr,
                       onChanged: controller.dateExp,
                       validator: (val) {
                         return null;
                       },
-                      decoration: const InputDecoration(
-                          labelText: "Date d'expiration",
+                      decoration:  InputDecoration(
+                          labelText: "Expiration date".tr,
                           suffixIcon: Icon(Icons.arrow_drop_down)),
                     ),
                   ),
@@ -97,8 +97,8 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
 
                     if (controller.nomCard.value.text == '') {
                       Get.snackbar(
-                          "Erreur !!",
-                          "Veuillez renseigner votre nom sur la carte",
+                          "Error !!".tr,
+                          "Please enter your name on the card".tr,
                           snackPosition: SnackPosition.BOTTOM,
                           backgroundColor: Colors.amber,
                           margin: EdgeInsets.all(10),
@@ -114,8 +114,8 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
 
                     if (controller.numCard.value.text == '' || !controller.numCard.value.text.isNumericOnly || controller.numCard.value.text.length != 16) {
                       Get.snackbar(
-                          "Erreur !!",
-                          "Numéro de carte de crédit incorrecte",
+                          "Error !!".tr,
+                          "Incorrect credit card number".tr,
                           snackPosition: SnackPosition.BOTTOM,
                           backgroundColor: Colors.amber,
                           margin: EdgeInsets.all(10),
@@ -131,8 +131,8 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
 
                     if (controller.dateExp.value == '') {
                       Get.snackbar(
-                          "Erreur !!",
-                          "Veuillez renseigner la date",
+                          "Error !!".tr,
+                          "Please fill in the date".tr,
                           snackPosition: SnackPosition.BOTTOM,
                           backgroundColor: Colors.amber,
                           margin: EdgeInsets.all(10),
@@ -148,8 +148,8 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
 
                     if (controller.cvvCard.value.text == '' || !controller.cvvCard.value.text.isNumericOnly || controller.cvvCard.value.text.length != 3) {
                       Get.snackbar(
-                          "Erreur !!",
-                          "Numéro CVC incorrect",
+                          "Error !!".tr,
+                          "Incorrect CVC number".tr,
                           snackPosition: SnackPosition.BOTTOM,
                           backgroundColor: Colors.amber,
                           margin: EdgeInsets.all(10),
@@ -166,7 +166,7 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
 
                     controller.payTicket(context);
                   },
-                  child: Text("Payer (${Get.arguments["amount"] } FCFA)"))
+                  child: Text("Payer".tr + "("+Get.arguments["amount"].toString() +" FCFA)"))
             ],
           );
         }),

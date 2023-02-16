@@ -3,10 +3,7 @@ import 'package:get/get.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/home/pick_sub_agency_controller.dart';
 import 'package:ki_part/presentation/widgets/sub_agency_widget.dart';
-import 'package:ki_part/presentation/widgets/error_widget.dart';
 import 'package:ki_part/presentation/widgets/header_with_image.dart';
-import 'package:ki_part/repo/travel_repo.dart';
-import 'package:ki_part/utils/app_routes.dart';
 
 class PickSubAgencyPage extends GetWidget<PickSubAgencyController> {
   const PickSubAgencyPage({super.key});
@@ -27,7 +24,7 @@ class PickSubAgencyPage extends GetWidget<PickSubAgencyController> {
             children: [
               HeaderWithImage(
                 child: Text(
-                  "Sous Agence",
+                  "Select sub agency".tr,
                   style: Theme.of(context)
                       .textTheme
                       .headline5!

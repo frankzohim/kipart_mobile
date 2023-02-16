@@ -13,8 +13,6 @@ import 'package:ki_part/utils/storage.dart';
 import 'package:ki_part/data/models/subAgency.dart';
 import 'package:ki_part/data/models/agences.dart';
 import 'package:ki_part/utils/loader.dart';
-import 'package:ki_part/presentation/ui/pages/buy_ticket/buy_ticket_page.dart';
-import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_page.dart';
 
 class TravelWidget extends StatelessWidget {
   // final TravelsModel travel;
@@ -32,7 +30,7 @@ class TravelWidget extends StatelessWidget {
     return InkWell(
       onTap: () async {
         Loader.loading();
-        print('loading');
+
         //Check if the user is connected
         final UserModel user;
         await Storage.instance.init();
@@ -68,11 +66,11 @@ class TravelWidget extends StatelessWidget {
                       children: [
                         Icon(Icons.car_crash),
                         AppDimensions.serparatorHor8,
-                        Text("Gros porteur")
+                        Text("Heavy duty".tr)
                       ],
                     ),
                     Text(
-                      "${travel['number_of_places']} places"
+                      "${travel['number_of_places']} "+"Seat(s)".tr
                     ),
                   ],
                 ),

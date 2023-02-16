@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/data/models/agences.dart';
 import 'package:ki_part/data/models/searchData.dart';
-import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/repo/travel_repo.dart';
 import 'package:ki_part/data/models/subAgency.dart';
 import 'package:ki_part/utils/app_routes.dart';

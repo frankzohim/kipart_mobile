@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
-import 'package:ki_part/presentation/ui/pages/search_travel/search_travel_page.dart';
 import 'package:ki_part/repo/api.dart';
-import 'package:ki_part/repo/ticket_repo.dart';
 import 'package:ki_part/utils/app_routes.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:ki_part/utils/loader.dart';
@@ -49,7 +47,7 @@ class BankPaymentController extends GetxController with StateMixin<String> {
       await Alert(
         context: context,
         type: AlertType.success,
-        title: "Félicitation !",
+        title: "Félicitations!",
         desc: "Paiement effectué avec succès.",
         buttons: [
           DialogButton(

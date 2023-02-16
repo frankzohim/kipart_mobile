@@ -17,11 +17,11 @@ class SearchTravelController extends GetxController
 
   final formKey = GlobalKey<FormState>();
 
-  final typeTravel = "Aller simple".obs;
+  final typeTravel = "one-way".tr.obs;
   final departure = "Douala".obs;
   final arrival = "Yaoundé".obs;
   var cityList = [];
-  final classeTravel = "classique".obs;
+  final classeTravel = "classic".tr.obs;
   final dateDepart = new DateFormat('yyyy-MM-dd').format(new DateTime.now()).obs;
   final heureDepart = "07:30".obs;
   final dateRetour = "".obs;

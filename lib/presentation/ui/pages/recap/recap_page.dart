@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/config/app_dimensions.dart';
-import 'package:ki_part/presentation/ui/pages/buy_ticket/buy_ticket_page.dart';
 import 'package:ki_part/presentation/ui/pages/recap/recap_controller.dart';
 import 'package:ki_part/presentation/widgets/bus_widget.dart';
 import 'package:ki_part/utils/app_routes.dart';
-import 'package:ki_part/utils/validators.dart';
 
 class RecapPage extends GetWidget<RecapController> {
   const RecapPage({super.key});
@@ -15,11 +13,11 @@ class RecapPage extends GetWidget<RecapController> {
     return Scaffold(
       body: NestedScrollView(
           headerSliverBuilder: (a, b) => [
-                const SliverAppBar(
+                 SliverAppBar(
                   pinned: true,
                   expandedHeight: 120,
                   flexibleSpace: FlexibleSpaceBar(
-                    title: Text("Résumé de votre réservation"),
+                    title: Text("Booking history".tr),
                   ),
                 )
               ],
@@ -50,7 +48,7 @@ class RecapPage extends GetWidget<RecapController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Détails du voyage",
+                              "Trip details".tr,
                               style: Theme.of(context)
                                   .textTheme
                                   .headline6!
@@ -62,21 +60,21 @@ class RecapPage extends GetWidget<RecapController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("AGENCE : "),
+                            Text("AGENCY".tr +" : "),
                             Text("${Get.arguments["subAgency"].name}".toUpperCase()),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("CLASSE : "),
+                            Text("class".tr.toUpperCase() +" : "),
                             Text("${Get.arguments["travel"]['classe']}".toUpperCase()),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("HEURE : "),
+                            Text("time".tr.toUpperCase() +" : "),
                             Text("${Get.arguments["travel"]['hours']}"),
                           ],
                         ),
@@ -88,7 +86,7 @@ class RecapPage extends GetWidget<RecapController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Passagers",
+                              "Passengers".tr,
                               style: Theme.of(context)
                                     .textTheme
                                     .headline6!
@@ -117,23 +115,14 @@ class RecapPage extends GetWidget<RecapController> {
                         ),
                         AppDimensions.serparatorVert16,
                         Text(
-                          "Votre facture",
+                          "Your bill".tr,
                           style: Theme.of(context).textTheme.caption,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                             Text("Tickets (${Get.arguments["travellers"].length})"),
-                             Text("${(num.tryParse(Get.arguments["travel"]['price']) ?? 0) * Get.arguments["travellers"].length} FCFA"),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("Frais Kipart"),
-                            Text(Get.arguments['travel']['classe'] == "vip" ?
-                            "${Get.arguments["travellers"].length * 500}  FCFA" : "${Get.arguments["travellers"].length * 300}  FCFA"),
-
+                             Text("Number of tickets".tr),
+                             Text("(${Get.arguments["travellers"].length})"),
                           ],
                         ),
 
@@ -148,11 +137,11 @@ class RecapPage extends GetWidget<RecapController> {
                                     .headline6!
                                     .copyWith(fontWeight: FontWeight.bold),
                               ),
-                              const TextSpan(text: "(taxes comprises)")
+                              ///const TextSpan(text: "(taxes comprises)")
                             ])),
                             Text(Get.arguments['travel']['classe'] == "vip" ?
-                            "${Get.arguments["travellers"].length * 500 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA"
-                                : "${Get.arguments["travellers"].length * 300 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA" ,
+                            "${Get.arguments["travellers"].length * 1000 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA"
+                                : "${Get.arguments["travellers"].length * 500 + (num.tryParse(Get.arguments["travel"]['price'])! * Get.arguments["travellers"].length)} FCFA" ,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline6!
@@ -186,7 +175,7 @@ class RecapPage extends GetWidget<RecapController> {
                       // Navigator.of(context).push(
                       //     MaterialPageRoute(builder: (c) => BuyTicketPage()));
                     },
-                    child: const Text("Procéder au paiement"))
+                    child: Text("Proceed to payment".tr))
               ],
             ),
           )),
@@ -197,8 +186,12 @@ class RecapPage extends GetWidget<RecapController> {
     switch (type.toLowerCase()) {
       case "femme":
         return "Mme.";
+      case "woman":
+        return "Mrs.";
       case "homme":
-        return "M.";
+        return "Mr.";
+      case "man":
+        return "Mme.";
       default:
         return "";
     }

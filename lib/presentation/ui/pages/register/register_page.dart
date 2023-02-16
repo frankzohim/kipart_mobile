@@ -27,9 +27,9 @@ class RegisterPage extends GetWidget<RegisterController> {
               child: Text.rich(
                 TextSpan(
                     children: [
-                      const TextSpan(text: "Créez un compte "),
+                       TextSpan(text: "Create an account".tr+" "),
                       TextSpan(
-                          text: "et vivez pleinement l'expérience ",
+                          text: "and fully live the experience".tr,
                           style: TextStyle(
                               color: Theme.of(context).colorScheme.primary)),
                       const TextSpan(text: "Ki"),
@@ -44,7 +44,7 @@ class RegisterPage extends GetWidget<RegisterController> {
               )),
           AppDimensions.serparatorVert8,
           Text(
-            "Profitez de réservations et de remboursements plus rapides ainsi que des réductions.",
+            "Enjoy faster reservations and refunds as well as discounts.",
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
@@ -64,16 +64,16 @@ class RegisterPage extends GetWidget<RegisterController> {
                     controller: controller.nameController,
                     validator: (v) =>
                         Validators.length(v, maxLength: 30, minLength: 1),
-                    decoration: const InputDecoration(
-                      labelText: "Noms et prénoms",
+                    decoration: InputDecoration(
+                      labelText: "Lastname and firstname".tr,
                       prefixIcon: Icon(Icons.person),
                     ),
                   ),
                   AppDimensions.serparatorVert8,
                   TextFormField(
                     controller: controller.emailController,
-                    //validator: Validators.email,
-                    decoration: const InputDecoration(
+                    validator: Validators.email,
+                    decoration: InputDecoration(
                       labelText: "Email",
                       prefixIcon: Icon(Icons.email),
                     ),
@@ -83,8 +83,8 @@ class RegisterPage extends GetWidget<RegisterController> {
                     controller: controller.phoneController,
                     validator: Validators.phone,
                     keyboardType: TextInputType.phone,
-                    decoration: const InputDecoration(
-                      labelText: "Téléphone",
+                    decoration:  InputDecoration(
+                      labelText: "Phone".tr,
                       hintText: "6XXXXXXXX",
                       prefixIcon: Icon(Icons.phone),
                     ),
@@ -96,7 +96,7 @@ class RegisterPage extends GetWidget<RegisterController> {
                     validator: (v) => Validators.equalPasswords(
                         v, controller.confirmPasswordController.text),
                     decoration: InputDecoration(
-                        labelText: "Mot de passe",
+                        labelText: "Password".tr,
                         prefixIcon: const Icon(Icons.key),
                         suffixIcon: IconButton(
                             onPressed: controller.change,
@@ -111,7 +111,7 @@ class RegisterPage extends GetWidget<RegisterController> {
                     validator: (v) => Validators.equalPasswords(
                         v, controller.passwordController.text),
                     decoration: InputDecoration(
-                        labelText: "confirmer mot de passe",
+                        labelText: "Confirm password".tr,
                         prefixIcon: const Icon(Icons.key),
                         suffixIcon: IconButton(
                             onPressed: controller.change,
@@ -136,15 +136,15 @@ class RegisterPage extends GetWidget<RegisterController> {
                   AppDimensions.serparatorVert16,
                   Text.rich(
                     TextSpan(children: [
-                      const TextSpan(
-                          text: "En créant votre compte vous acceptez nos "),
+                       TextSpan(
+                          text: "By creating your account you agree to our".tr),
                       TextSpan(
-                          text: "conditions d’utilisation ",
+                          text: "terms of use".tr,
                           style: TextStyle(
                               color: Theme.of(context).colorScheme.primary)),
-                      const TextSpan(text: "et notre "),
+                       TextSpan(text: "and our".tr),
                       TextSpan(
-                          text: "politique de confidentialité",
+                          text: "privacy-policy".tr,
                           style: TextStyle(
                               color: Theme.of(context).colorScheme.primary))
                     ], style: Theme.of(context).textTheme.bodySmall),
@@ -158,7 +158,7 @@ class RegisterPage extends GetWidget<RegisterController> {
           AppDimensions.serparatorVert16,
           ElevatedButton(
               onPressed: controller.signUp,
-              child: const Text("Créer un compte"))
+              child:  Text("Create an account".tr))
         ]),
       ),
     );

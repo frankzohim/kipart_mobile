@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ki_part/config/app_assets.dart';
@@ -145,8 +144,8 @@ class MyTicketWidget extends StatelessWidget {
                                   children: [
                                     Text("MONTANT : "),
                                     Text(Get.arguments['travel']['classe'] == "vip" ?
-                                    "${Get.arguments["travellers"].length * 500 + 8000 * Get.arguments["travellers"].length} FCFA"
-                                        :"${Get.arguments["travellers"].length * 300 + 3000 * Get.arguments["travellers"].length} FCFA"
+                                    "${Get.arguments["travellers"].length * 1000 + 8000 * Get.arguments["travellers"].length} FCFA"
+                                        :"${Get.arguments["travellers"].length * 500 + 3000 * Get.arguments["travellers"].length} FCFA"
                                         ,
                                         style: Theme.of(context)
                                             .textTheme
@@ -208,7 +207,21 @@ class MyTicketWidget extends StatelessWidget {
                             )
                         ),
                         AppDimensions.serparatorVert16,
-                        Text("Faire scanner ce QR code à l’agence"),
+                        Text("Faire scanner ce code QR à l’agence"),
+                        AppDimensions.serparatorVert8,
+                        Text("Nous Contacter : +237 673 18 93 79",
+                            style: TextStyle(
+                                fontSize: 9,
+                                height: 2, //line height 200%, 1= 100%, were 0.9 = 90% of actual line height
+                                color: Colors.orange, //font color//background color
+                                letterSpacing: 2, //letter spacing
+                                decoration: TextDecoration.underline, //make underline
+                                decorationStyle: TextDecorationStyle.dashed, //double underline
+                                decorationColor: Colors.brown, //text decoration 'underline' color
+                                decorationThickness: 1.5, //decoration 'underline' thickness
+                                //fontStyle: FontStyle.italic
+                            ),
+                          ),
                       ],
                     ),
                     )

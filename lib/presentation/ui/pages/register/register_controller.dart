@@ -13,7 +13,7 @@ class RegisterController extends GetxController with PasswordReveal {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   final brandAmbassadors = Rx<List<BrandAmabssadorModel>>(List.empty(growable: true));
-  final brandAmbassador = "Aucune".obs;
+  final brandAmbassador = "none".tr.obs;
 
   final formKey = GlobalKey<FormState>();
 
@@ -26,7 +26,7 @@ class RegisterController extends GetxController with PasswordReveal {
       print(value);
       brandAmbassadors.value = value;
       print(brandAmbassadors.value);
-      brandAmbassadors.value.add(new BrandAmabssadorModel(id:-1, name: "Aucune"));
+      brandAmbassadors.value.add(new BrandAmabssadorModel(id:-1, name: "none".tr));
       print(brandAmbassadors.value);
     }).catchError((error) {
       print(error);

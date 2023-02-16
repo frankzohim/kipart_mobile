@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/data/models/agences.dart';
@@ -21,9 +18,7 @@ class AgencyWidget extends GetWidget {
 
   @override
   Widget build(BuildContext context) {
-    /*print('in agency widget');
-    print(dataSearch?.departure);
-    print(agency.name);*/
+
     List<SubAgencyModel>? subAgencies = [];
     return InkWell(
       onTap: () async {
@@ -31,10 +26,8 @@ class AgencyWidget extends GetWidget {
         Api().agencyRepo.getSubAgency(agency.id.toString())
             .then((value) async {
           Loader.close();
-          //change(value, status: RxStatus.success());
-          //print(value);
-          print(value.length);
           subAgencies = [];
+
           value.forEach((element) {
 
             if(element.headquarters == dataSearch?.departure){
@@ -43,9 +36,8 @@ class AgencyWidget extends GetWidget {
             }
 
           });
-          print(subAgencies!.length);
+
           if(subAgencies!.length == 1){
-            print(dataSearch!.classe);
              await TravelRepo.listTravelsAgency(agency.id, dataSearch);
              Get.toNamed(Approutes.AGENCY, arguments: [
               {"agency": agency},

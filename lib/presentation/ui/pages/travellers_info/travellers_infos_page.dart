@@ -108,11 +108,11 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                                             child: ToggleButtons(
                                                 isSelected: [
                                                   traveller.type ==
-                                                      "HOMME",
+                                                      "MAN".tr,
                                                   traveller.type ==
-                                                      "FEMME",
+                                                      "WOMAN".tr,
                                                   traveller.type ==
-                                                      "ENFANT",
+                                                      "CHILD".tr,
                                                 ],
                                                 constraints:
                                                 const BoxConstraints(
@@ -136,28 +136,28 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                                                         .symmetric(
                                                         horizontal:
                                                         12),
-                                                    child: const Text(
-                                                        'HOMME',
+                                                    child:  Text(
+                                                        'MAN'.tr,
                                                         style: TextStyle(
                                                             fontSize:
                                                             18)),
                                                   ),
-                                                  const Padding(
+                                                   Padding(
                                                     padding: EdgeInsets
                                                         .symmetric(
                                                         horizontal:
                                                         12),
-                                                    child: Text('FEMME',
+                                                    child: Text('WOMAN'.tr,
                                                         style: TextStyle(
                                                             fontSize:
                                                             18)),
                                                   ),
-                                                  const Padding(
+                                                   Padding(
                                                     padding: EdgeInsets
                                                         .symmetric(
                                                         horizontal:
                                                         12),
-                                                    child: Text('ENFANT',
+                                                    child: Text('CHILD'.tr,
                                                         style: TextStyle(
                                                             fontSize:
                                                             18)),
@@ -179,17 +179,17 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                                       validator: Validators.length,
                                       onChanged: (value) => controller
                                           .onNameChanged(value, index),
-                                      decoration: const InputDecoration(
-                                          labelText: "Nom & prénoms"),
+                                      decoration:  InputDecoration(
+                                          labelText: "Last name and first names".tr),
                                     ),
-                                    if (traveller.type != "ENFANT") ...[
+                                    if (traveller.type != "CHILD".tr) ...[
                                       AppDimensions.serparatorVert8,
                                       TextFormField(
                                         validator: Validators.length,
                                         onChanged: (value) => controller
                                             .onCNI(value, index),
-                                        decoration: const InputDecoration(
-                                            labelText: "N° CNI"),
+                                        decoration: InputDecoration(
+                                            labelText: "N° NCI".tr),
                                       ),
                                       AppDimensions.serparatorVert8,
                                       TextFormField(
@@ -197,8 +197,8 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                                         validator: Validators.phone,
                                         onChanged: (value) => controller
                                             .onPhoneChanged(value, index),
-                                        decoration: const InputDecoration(
-                                            labelText: "Téléphone"),
+                                        decoration: InputDecoration(
+                                            labelText: "Phone".tr),
                                         keyboardType: TextInputType.number,
                                       )
                                     ]
@@ -214,12 +214,12 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
                   TextButton.icon(
                       onPressed: controller.addOne,
                       icon: const Icon(Icons.add),
-                      label: const Text("Ajouter une personne")),
+                      label:  Text("Add someone".tr)),
                   AppDimensions.serparatorVert16,
                   AppDimensions.serparatorVert16,
                   ElevatedButton(
                       onPressed: controller.save,
-                      child: const Text("Vérifier et payer")),
+                      child:  Text("Review and pay".tr)),
                   AppDimensions.serparatorVert16,
                 ],
               );

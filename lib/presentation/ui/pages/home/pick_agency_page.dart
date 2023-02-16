@@ -24,7 +24,7 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
           children: [
             HeaderWithImage(
               child: Text(
-                "Choisissez votre agence",
+                "Select agency".tr,
                 style: Theme.of(context)
                     .textTheme
                     .headline5!

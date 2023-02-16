@@ -53,7 +53,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                             TextSpan(text: "hello".tr + ' '),
                             TextSpan(
                               text:
-                                  "${user.value == null ? 'Guest' : user.value!.name} ",
+                                  "${user.value == null ? 'guest'.tr : user.value!.name} ",
                               style: Theme.of(context)
                                   .textTheme
                                   .headline5!
@@ -63,7 +63,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                       fontWeight: FontWeight.bold),
                             ),
                             TextSpan(
-                              text: "Où désirez-vous voyager?",
+                              text: "where_to".tr,
                             )
                           ]),
                       textAlign: TextAlign.center);
@@ -80,10 +80,10 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                           DropdownButtonFormField(
                               value: controller.typeTravel.value,
                               decoration: InputDecoration(
-                                  labelText: "Type de voyage",
+                                  labelText: "travel_type".tr,
                                   prefixIcon:
                                       Icon(Icons.compare_arrows_outlined)),
-                              items: ["Aller simple", "Aller et retour"]
+                              items: ["one-way".tr, "round-trip".tr]
                                   .map((e) => DropdownMenuItem(
                                       child: Text(e), value: e))
                                   .toList(),
@@ -92,7 +92,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                           DropdownButtonFormField(
                               value: controller.departure.value,
                               decoration: InputDecoration(
-                                  labelText: "Lieu de départ",
+                                  labelText: "departure".tr,
                                   prefixIcon:
                                   Icon(Icons.circle_outlined)),
                               items: controller.villes
@@ -147,7 +147,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                   onSaved: (val) => print(val),
                                   decoration: InputDecoration(
                                       prefixIcon: Icon(Icons.calendar_month),
-                                      labelText: "Date du voyage"),
+                                      labelText: "Date"),
                                 ),
                               ),
                               AppDimensions.serparatorHor8,
@@ -165,7 +165,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                     decoration: InputDecoration(
                                         prefixIcon:
                                             Icon(Icons.hourglass_bottom),
-                                        labelText: "Heure départ"),
+                                        labelText: "departure_time".tr),
                                   ),
                                 ),
                             ],
@@ -173,7 +173,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                           AppDimensions.serparatorVert8,
                           Obx(() {
                             return controller.typeTravel.value ==
-                                    'Aller et retour'
+                                    'round-trip'.tr
                                 ? Column(
                                     children: [
                                       Row(
@@ -190,7 +190,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                               validator: (val) {
                                                 print(val);
                                                 if (val == '') {
-                                                  return 'Saisissez une date de retour';
+                                                  return 'enter_return_date'.tr;
                                                 }
                                                 return null;
                                               },
@@ -198,7 +198,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                               decoration: InputDecoration(
                                                   prefixIcon: Icon(
                                                       Icons.calendar_month),
-                                                  labelText: "Date de Retour"),
+                                                  labelText: "return_date".tr),
                                             ),
                                           ),
                                           AppDimensions.serparatorHor8,
@@ -217,7 +217,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                               decoration: InputDecoration(
                                                   prefixIcon: Icon(
                                                       Icons.hourglass_bottom),
-                                                  labelText: "Heure retour"),
+                                                  labelText: "return_time".tr),
                                             ),
                                           ),
                                         ],
@@ -235,15 +235,15 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
                                       prefixIcon: Icon(Icons.person),
-                                      labelText: "Nombre de passagers"),
+                                      labelText: "passengers".tr),
                                   validator: (text){
                                     if (text == null || text.isEmpty) {
 
-                                      return "Merci de préciser le nombre de passager";
+                                      return "specify_passengers_numbers".tr;
                                     }
                                     if (text != null && int.parse(text) > 6) {
 
-                                      return "Le nombre de passager doit être inférieur à 6";
+                                      return "passengers_must_be_less_than".tr;
                                     }
                                     return null;
                                   },
@@ -253,7 +253,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                               Expanded(
                                 child: DropdownButtonFormField(
                                   value: controller.classeTravel.value,
-                                  items: ["classique", "VIP"]
+                                  items: ["classic".tr, "VIP"]
                                       .map((e) => DropdownMenuItem(
                                             child: Text(e),
                                             value: e,
@@ -262,7 +262,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                                   onChanged: controller.classeTravel,
                                   decoration: InputDecoration(
                                       prefixIcon: Icon(Icons.star),
-                                      labelText: "Classe"),
+                                      labelText: "class".tr),
                                 ),
                               ),
                             ],
@@ -278,19 +278,19 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                   onPressed: () {
                     if (controller.departure.value == '') {
                       controller.messageErrorDepart.value =
-                          'Veuillez choisir la ville de départ';
+                          'Please choose the departure city'.tr;
                       return;
                     }
                     if (controller.arrival.value == '') {
                       controller.messageErrorArrive.value =
-                          'Veuillez saisir votre destination';
+                          'Please enter your destination'.tr;
                       return;
                     }
                     if (controller.departure.value != '' &&
                         controller.arrival.value != '' && controller.departure.value == controller.arrival.value) {
                       Get.snackbar(
-                          "Erreur !!",
-                          "Le départ doit être différent de la destination",
+                          "Error !!".tr,
+                          "Departure must be different from destination".tr,
                           snackPosition: SnackPosition.BOTTOM,
                           backgroundColor: Colors.amber,
                           margin: EdgeInsets.all(10),
@@ -308,7 +308,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
                       controller.initSearch();
                     }
                   },
-                  child: Text("Rechercher"))
+                  child: Text("Search".tr))
             ],
           ));
         },

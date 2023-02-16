@@ -7,7 +7,6 @@ import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/login/login_controller.dart';
 import 'package:ki_part/presentation/widgets/header_with_image.dart';
 import 'package:ki_part/utils/app_routes.dart';
-import 'package:ki_part/utils/validators.dart';
 
 class LoginPage extends GetWidget<LoginController> {
   const LoginPage({super.key});
@@ -30,9 +29,9 @@ class LoginPage extends GetWidget<LoginController> {
                   child: Text.rich(
                     TextSpan(
                         children: [
-                          TextSpan(text: "Connectez-vous "),
+                          TextSpan(text: "Login".tr),
                           TextSpan(
-                              text: "et vivez pleinement l'expérience ",
+                              text: "and fully live the experience".tr,
                               style: TextStyle(
                                   color:
                                       Theme.of(context).colorScheme.primary)),
@@ -49,7 +48,7 @@ class LoginPage extends GetWidget<LoginController> {
                   )),
               AppDimensions.serparatorVert8,
               Text(
-                "Profitez de réservations et de remboursements plus rapides ainsi que des réductions.",
+                "Enjoy faster reservations and refunds as well as discounts.",
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
@@ -68,7 +67,7 @@ class LoginPage extends GetWidget<LoginController> {
                         controller: controller.phoneController,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
-                          labelText: "Téléphone",
+                          labelText: "Phone".tr,
                           hintText: "6XXXXXXXX",
                           prefixIcon: Icon(Icons.phone),
                         ),
@@ -79,7 +78,7 @@ class LoginPage extends GetWidget<LoginController> {
                           controller: controller.passwordController,
                           obscureText: !controller.isVisble.value,
                           decoration: InputDecoration(
-                            labelText: "Mot de passe",
+                            labelText: "Password".tr,
                             prefixIcon: Icon(Icons.key),
                             suffixIcon: IconButton(
                                 onPressed: controller.change,
@@ -94,7 +93,7 @@ class LoginPage extends GetWidget<LoginController> {
                             Get.toNamed(Approutes.PASSWORD_FORGOT);
                           },
                           child: Text(
-                            "Mot de passe oublié?",
+                            "Forgot your password?".tr,
                             style:
                                 Theme.of(context).textTheme.bodySmall!.copyWith(
                                       decoration: TextDecoration.underline,
@@ -107,7 +106,7 @@ class LoginPage extends GetWidget<LoginController> {
                             contentPadding: EdgeInsets.zero,
                             controlAffinity: ListTileControlAffinity.leading,
                             activeColor: Theme.of(context).colorScheme.primary,
-                            title: Text("Se souvenir de moi"),
+                            title: Text("Remember me".tr),
                             onChanged: controller.remember);
                       })
                     ],
@@ -115,11 +114,11 @@ class LoginPage extends GetWidget<LoginController> {
               AppDimensions.serparatorVert16,
               AppDimensions.serparatorVert16,
               ElevatedButton(
-                  onPressed: controller.login, child: Text("Connexion")),
+                  onPressed: controller.login, child: Text("Sign in".tr)),
               AppDimensions.serparatorVert16,
               AppDimensions.serparatorVert16,
               Text(
-                "Vous n'avez pas encore de compte?",
+                "No account?".tr,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               TextButton(
@@ -127,7 +126,7 @@ class LoginPage extends GetWidget<LoginController> {
                     Get.toNamed(Approutes.SIGNUP);
                   },
                   child: Text(
-                    "Créer un compte",
+                    "Create an account".tr,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         decoration: TextDecoration.underline,
                         color: Theme.of(context).colorScheme.primary),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -24,8 +25,8 @@ class PasswordForgotPage extends GetWidget<ForgotPasswordController> {
               children: [
                 AppDimensions.serparatorVert16,
                 AppDimensions.serparatorVert16,
-                const Text(
-                  "Veuillez indiquez votre numéro de téléphone dans le champs ci dessous. Vous recevrez un sms pour reinitialiser votre mot depasse",
+                 Text(
+                  "Enter your phone number below. You will receive a text message to reset your password",
                   textAlign: TextAlign.center,
                 ),
                 AppDimensions.serparatorVert16,
@@ -36,7 +37,7 @@ class PasswordForgotPage extends GetWidget<ForgotPasswordController> {
                   validator: Validators.phone,
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
-                      labelText: "Téléphone",
+                      labelText: " "+"Phone".tr,
                       prefixIcon: Container(
                         alignment: Alignment.center,
                         constraints: const BoxConstraints(maxWidth: 70),
@@ -50,7 +51,7 @@ class PasswordForgotPage extends GetWidget<ForgotPasswordController> {
                 AppDimensions.serparatorVert16,
                 ElevatedButton(
                     onPressed: controller.onPasswordForgot,
-                    child: const Text("Envoyer"))
+                    child:  Text("Send".tr))
               ],
             ),
           )),

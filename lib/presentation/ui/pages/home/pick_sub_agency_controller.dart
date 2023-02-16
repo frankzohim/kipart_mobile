@@ -19,7 +19,6 @@ class PickSubAgencyController extends GetxController {
 
   @override
   void onInit() {
-    print('toto');
     loadArguments();
     super.onInit();
   }
@@ -28,9 +27,5 @@ class PickSubAgencyController extends GetxController {
     agency.value = await Get.arguments[0]['agency'];
     dataSearch.value = await Get.arguments[1]['dataSearch'];
     subAgencies.value = await Get.arguments[2]['subAgencies'];
-
-    print(agency.value!.logo);
-    print(dataSearch.value!.departure);
-    print(subAgencies.value!.length);
   }
 }

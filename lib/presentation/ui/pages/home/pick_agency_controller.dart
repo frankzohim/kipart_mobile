@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:ki_part/data/models/agences.dart';
 import 'package:ki_part/data/models/searchData.dart';
 import 'package:ki_part/repo/api.dart';
-import 'package:ki_part/repo/agency_repo.dart';
 
 class PickAgencyController extends GetxController
     with StateMixin<List<AgencesModel>> {

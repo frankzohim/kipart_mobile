@@ -69,7 +69,7 @@ class AgencyDetailsPage extends GetWidget<AgencyController> {
               ),
               AppDimensions.serparatorVert16,
               Text(
-                "Les voyages",
+                "Trips".tr,
                 style: Theme.of(context).textTheme.headline6,
               ),
               AppDimensions.serparatorVert8,

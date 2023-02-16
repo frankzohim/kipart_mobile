@@ -16,23 +16,23 @@ class SideMenu extends StatelessWidget {
   final list = [
     NavItem(
         iconData: Icons.add_card,
-        title: "Mes tickets",
+        title: "my_tickets".tr,
         page: Approutes.MY_TICKETS,
         requireLogin: true),
     // NavItem(title: "Agence", page: const AgencyDetailsPage()),
     NavItem(
-        iconData: Icons.mail,
-        title: "Boîte de reception",
+        iconData: Icons.notifications,
+        title: "Notifications",
         page: Approutes.CHAT,
         requireLogin: true),
     NavItem(
         iconData: Icons.settings,
-        title: "Paramètres",
+        title: "settings".tr,
         page: Approutes.SETTINGS,
         requireLogin: false),
     NavItem(
       iconData: Icons.person,
-      title: "Service client",
+      title: "customer_service".tr,
       page: Approutes.CUSTOMER_SERVICE,
       requireLogin: false,
     ),
@@ -77,7 +77,7 @@ class SideMenu extends StatelessWidget {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                "Mon profil",
+                                                "my_profile".tr,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .headline5!
@@ -91,18 +91,8 @@ class SideMenu extends StatelessWidget {
                                               Text.rich(
                                                 TextSpan(
                                                     children: [
-                                                      TextSpan(text: "Profitez des avantages du compte KiPART "),
-                                                      TextSpan(
-                                                          text: "réservation, ",
-                                                          style: TextStyle(
-                                                              color:
-                                                              Theme.of(context).colorScheme.primary)),
-                                                      TextSpan(text: "mise à jour"),
-                                                      TextSpan(
-                                                          text: " en temps réel",
-                                                          style: TextStyle(
-                                                              color:
-                                                              Theme.of(context).colorScheme.primary)),
+                                                      TextSpan(text: "advantage".tr),
+
                                                     ],
                                                     style: Theme.of(context).textTheme.headline5!.copyWith(
                                                         fontWeight: FontWeight.bold, color: Colors.white)),
@@ -130,7 +120,7 @@ class SideMenu extends StatelessWidget {
                                       onPressed: () {
                                         Get.toNamed(Approutes.LOGIN);
                                       },
-                                      child: const Text("S'identifier"))
+                                      child: Text("login".tr))
                                 ],
                               )
                             : Text(
@@ -158,7 +148,7 @@ class SideMenu extends StatelessWidget {
                           UserService userService = Get.find();
                           if (item.requireLogin &&
                               userService.user.value == null) {
-                            Loader.info(message: "Vous n'êtes pas conncté");
+                            Loader.info(message: "not_connected".tr);
                             return;
                           }
                           Get.toNamed(

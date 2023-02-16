@@ -31,7 +31,7 @@ class OperatorPaymentPage extends GetWidget<OperatorPaymentController> {
             children: [
               HeaderWithImage(
                   child: Text(
-                "Choisir le mode de paiement",
+                "Choose payment method".tr,
                 style: Theme.of(context)
                     .textTheme
                     .headline5!
@@ -63,9 +63,9 @@ class OperatorPaymentPage extends GetWidget<OperatorPaymentController> {
                   );
                 }).toList(),
                 onChanged: controller.operator,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                     prefixIcon: Icon(Icons.star),
-                    labelText: "Mode de paiement"),
+                    labelText: "Payment method".tr),
               ),
               AppDimensions.serparatorVert16,
               AppDimensions.serparatorVert16,
@@ -78,10 +78,10 @@ class OperatorPaymentPage extends GetWidget<OperatorPaymentController> {
               AppDimensions.serparatorVert16,
               if (controller.operator.value == 'OM')
                 ElevatedButton(
-                    onPressed: () {}, child: const Text("Valider Paiement")),
+                    onPressed: () {}, child:  Text("Next".tr)),
               if (controller.operator.value == 'MoMo')
                 ElevatedButton(
-                    onPressed: () {}, child: const Text("Effectuer Paiement")),
+                    onPressed: () {}, child:  Text("Next".tr)),
               if (controller.operator.value == 'CB')
                 ElevatedButton(
                     onPressed: () {
@@ -95,7 +95,7 @@ class OperatorPaymentPage extends GetWidget<OperatorPaymentController> {
                         },
                       );
                     },
-                    child: const Text("Valider")),
+                    child:  Text("Next".tr)),
             ],
           );
         }),
