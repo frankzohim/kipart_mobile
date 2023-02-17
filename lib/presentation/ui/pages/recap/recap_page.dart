@@ -191,7 +191,7 @@ class RecapPage extends GetWidget<RecapController> {
       case "homme":
         return "Mr.";
       case "man":
-        return "Mme.";
+        return "Mr.";
       default:
         return "";
     }

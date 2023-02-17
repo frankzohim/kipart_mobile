@@ -57,7 +57,7 @@ class TravellersInfosController extends GetxController {
         ..cni = ""
         ..name = ""
         ..phone = ""
-        ..type = "WOMAN".tr);
+        ..type = "MAN".tr);
     });
   }
 

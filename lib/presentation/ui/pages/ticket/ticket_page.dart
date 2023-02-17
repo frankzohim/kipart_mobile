@@ -22,7 +22,7 @@ class TicketPage extends GetWidget<TicketController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 238, 238, 238),
-      appBar: AppBar(title: Text("Votre ticket"), ),
+      appBar: AppBar(title: Text("Your ticket".tr), ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Stack(alignment: Alignment.topCenter, children: [
@@ -79,7 +79,7 @@ class MyTicketWidget extends StatelessWidget {
                                 AppColors.primary,
                               ])),
                           child: Text(
-                            "Détails de votre ticket",
+                            "Your ticket\'s details".tr,
                             style: Theme.of(context).textTheme.headline5!.copyWith(
                                 fontWeight: FontWeight.bold, color: Colors.white),
                           ),
@@ -108,7 +108,7 @@ class MyTicketWidget extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Détails du voyage",
+                                      "Trip details".tr,
                                       style: Theme.of(context)
                                           .textTheme
                                           .headline6!
@@ -120,7 +120,7 @@ class MyTicketWidget extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("AGENCE : "),
+                                    Text("AGENCY".tr+ " : "),
                                     Text("${Get.arguments["subAgencyName"]}".toUpperCase()
                                     ),
                                   ],
@@ -128,21 +128,21 @@ class MyTicketWidget extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("CLASSE : "),
+                                    Text("CLASS".tr +" : "),
                                     Text("${Get.arguments["travel"]['classe']}".toUpperCase()),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("HEURE : "),
+                                    Text("TIME"+ ": "),
                                     Text("${Get.arguments["travel"]['hours']}"),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("MONTANT : "),
+                                    Text("AMOUNT"+ " : "),
                                     Text(Get.arguments['travel']['classe'] == "vip" ?
                                     "${Get.arguments["travellers"].length * 1000 + 8000 * Get.arguments["travellers"].length} FCFA"
                                         :"${Get.arguments["travellers"].length * 500 + 3000 * Get.arguments["travellers"].length} FCFA"
@@ -165,7 +165,7 @@ class MyTicketWidget extends StatelessWidget {
                                 Center(
                                   child:
                                   Text(
-                                    "Passagers",
+                                    "passengers".tr,
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline6!
@@ -184,8 +184,8 @@ class MyTicketWidget extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                         children: [
                                           Text("${_getCivitiy(e.type)} ${e.name}"),
-                                          Text("CNI: ${e.cni}"),
-                                          Text("TEl.: ${e.phone}"),
+                                          Text("N° NCI".tr +" : "+ e.cni),
+                                          Text("Phone".tr.toUpperCase()+" : " + e.phone),
                                         ],
                                       )),
                                 ))
@@ -207,9 +207,9 @@ class MyTicketWidget extends StatelessWidget {
                             )
                         ),
                         AppDimensions.serparatorVert16,
-                        Text("Faire scanner ce code QR à l’agence"),
+                        Text("Have this QR code scanned at the branch".tr),
                         AppDimensions.serparatorVert8,
-                        Text("Nous Contacter : +237 673 18 93 79",
+                        Text("Contact us".tr + ": +237 673 18 93 79",
                             style: TextStyle(
                                 fontSize: 9,
                                 height: 2, //line height 200%, 1= 100%, were 0.9 = 90% of actual line height
@@ -252,7 +252,7 @@ class MyTicketWidget extends StatelessWidget {
                           });
                         },
                         icon: Icon(Icons.save),
-                        label: Text("Enregistrer"),
+                        label: Text("Save".tr),
                       ),
                     ),
 
@@ -263,7 +263,7 @@ class MyTicketWidget extends StatelessWidget {
                           Get.offAllNamed(Approutes.MY_TICKETS);
                         },
                         icon: Icon(Icons.view_list),
-                        label: Text("Mes Tickets"),
+                        label: Text("my_tickets".tr),
                       ),
                     ),
                   ],
@@ -275,7 +275,7 @@ class MyTicketWidget extends StatelessWidget {
                     onPressed: () {
                       Get.offAllNamed(Approutes.HOME);
                     },
-                    child: Text("Retourner à l'acceuil")
+                    child: Text("Back to home".tr)
                 ),
               ],
         );
@@ -305,7 +305,7 @@ class MyTicketWidget extends StatelessWidget {
      print("File Saved to Gallery");
      Get.snackbar(
          "Super !",
-         "Ticket enregistré dans votre galerie",
+         "Ticket saved in your gallery".tr,
          snackPosition: SnackPosition.BOTTOM,
          backgroundColor: Colors.amber,
          margin: EdgeInsets.all(10),
@@ -323,8 +323,12 @@ class MyTicketWidget extends StatelessWidget {
     switch (type.toLowerCase()) {
       case "femme":
         return "Mme.";
+      case "woman":
+        return "Mrs.";
       case "homme":
-        return "M.";
+        return "Mr.";
+      case "man":
+        return "Mr.";
       default:
         return "";
     }

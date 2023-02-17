@@ -123,6 +123,13 @@ class Messages extends Translations {
       'New Password' : 'New Password',
       'Confirm password' : 'Confirm password',
       'Reset' : 'Reset',
+      'Your ticket' : 'Your ticket',
+      'Your ticket\'s details' : 'Your ticket\'s details',
+      'Have this QR code scanned at the branch' : 'Have this QR code scanned at the branch',
+      'Contact us' : 'Contact us',
+      'Save' : 'Save',
+      'Back to home' : 'Back to home',
+      'Ticket saved in your gallery' : 'Ticket saved in your gallery',
     },
 
     'fr_FR' : {
@@ -249,6 +256,15 @@ class Messages extends Translations {
       'Reset' : 'Reinitialiser',
       'New Password' : 'Nouveau mot de passe',
       'Confirm password' : 'Confirmer le mot de passe',
+      'Your ticket' : 'Votre ticket',
+      'Your ticket\'s details' : 'Détails de votre ticket',
+      'Trip details' : 'Détails du voyage',
+      'AMOUNT' : 'MONTANT',
+      'Have this QR code scanned at the branch' : 'Faire scanner ce code QR à l’agence',
+      'Contact us' : 'Nous Contacter',
+      'Save' : 'Enregistrer',
+      'Back to home' : 'Retourner à l\'acceuil',
+      'Ticket saved in your gallery' : 'Ticket enregistré dans votre galerie',
     }
   };
 }
