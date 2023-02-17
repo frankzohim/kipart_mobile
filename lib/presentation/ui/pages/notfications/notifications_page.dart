@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/config/app_assets.dart';
@@ -22,13 +23,13 @@ class NotificationsPage extends GetView<NotificationsController> {
                   child: Column(
                     children: [
                       Text(
-                        "Recevez des notifications en temps réel sur votre voyage",
+                        "Receive real-time notifications about your trip".tr,
                         style: Theme.of(context).textTheme.headline6!.copyWith(
                             color: Theme.of(context).colorScheme.primary),
                       ),
                       AppDimensions.serparatorVert8,
                       Text(
-                          "Recevez des notifications en temps réel sur les retards et l’embarquement directement sur votre mobile."),
+                          "Get real-time delay and boarding notifications straight to your mobile.".tr),
                     ],
                   ),
                 ),
@@ -41,7 +42,7 @@ class NotificationsPage extends GetView<NotificationsController> {
               ],
             ),
             SwitchListTile.adaptive(
-                title: Text("Notifications push"),
+                title: Text("Push notifications".tr),
                 value: true,
                 onChanged: (v) {}),
             Divider(
@@ -55,13 +56,13 @@ class NotificationsPage extends GetView<NotificationsController> {
                   child: Column(
                     children: [
                       Text(
-                        "Recevez les offres spéciales et les mises à jour du produit",
+                        "Receive special offers and product updates".tr,
                         style: Theme.of(context).textTheme.headline6!.copyWith(
                             color: Theme.of(context).colorScheme.primary),
                       ),
                       AppDimensions.serparatorVert8,
                       Text(
-                          "Recevez des notifications en temps réel sur les retards et l’embarquement directement sur votre mobile."),
+                          "Receive real-time delay and boarding notifications directly to your mobile"),
                     ],
                   ),
                 ),
@@ -74,7 +75,7 @@ class NotificationsPage extends GetView<NotificationsController> {
               ],
             ),
             SwitchListTile.adaptive(
-                title: Text("Notifications push"),
+                title: Text("Push notifications"),
                 value: true,
                 onChanged: (v) {})
           ],

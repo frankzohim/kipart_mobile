@@ -1,6 +1,4 @@
-import 'dart:math';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/config/app_assets.dart';
@@ -8,8 +6,6 @@ import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/services/user_service.dart';
 import 'package:ki_part/utils/app_routes.dart';
 import 'package:ki_part/utils/loader.dart';
-
-import 'header_with_image.dart';
 
 class SideMenu extends StatelessWidget {
   SideMenu({super.key});
@@ -120,7 +116,7 @@ class SideMenu extends StatelessWidget {
                                       onPressed: () {
                                         Get.toNamed(Approutes.LOGIN);
                                       },
-                                      child: Text("login".tr))
+                                      child: Text("Login".tr))
                                 ],
                               )
                             : Text(

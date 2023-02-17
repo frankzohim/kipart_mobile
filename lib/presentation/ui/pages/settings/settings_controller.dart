@@ -37,7 +37,7 @@ class SettingsController extends GetxController {
               ),
               AppDimensions.serparatorVert8,
               Text(
-                "Dites-nous ce que vous pensez et aidez-nous à améliorer KiPART au quotidien.",
+                "Tell us what you think and help us improve KiPART every day.".tr,
                 style: Theme.of(context).textTheme.headline6!.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                     ),
@@ -49,14 +49,14 @@ class SettingsController extends GetxController {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16))),
                   onPressed: Get.back,
-                  child: Text("J'aime!")),
+                  child: Text("I like!")),
               AppDimensions.serparatorVert8,
               OutlinedButton(
                   style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16))),
                   onPressed: Get.back,
-                  child: Text("Améliorations possibles"))
+                  child: Text("Possible improvements".tr))
             ],
           ),
         ),
@@ -66,7 +66,7 @@ class SettingsController extends GetxController {
 
   void logOut() async {
     if (Get.find<UserService>().user.value == null) {
-      Loader.error("Vous n'êtes pas connecté");
+      Loader.error("You are not connected".tr);
       return;
     }
 
@@ -79,20 +79,20 @@ class SettingsController extends GetxController {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "Confirmer",
+                      "Confirm".tr,
                       style: Theme.of(ctx).textTheme.headline6,
                     ),
                     AppDimensions.serparatorVert8,
-                    const Text("Voulez-vous vraiment vous déconnecter?"),
+                     Text("Are you sure you want to log out?".tr),
                     AppDimensions.serparatorVert8,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         TextButton(
-                            onPressed: Get.back, child: const Text("Non")),
+                            onPressed: Get.back, child:  Text("No".tr)),
                         TextButton(
                             onPressed: () => Get.back(result: true),
-                            child: const Text("Oui"))
+                            child: Text("Yes".tr))
                       ],
                     )
                   ],
@@ -103,7 +103,7 @@ class SettingsController extends GetxController {
     Loader.loading();
     Api().userRepo.logout().then((value) {
       Loader.close();
-      Loader.info(message: "Vous asvez été déconnecté avec succes");
+      Loader.info(message: "You have been successfully logged out".tr);
       Get.find<UserService>().logOut();
     }).catchError((error) {
       Loader.close();

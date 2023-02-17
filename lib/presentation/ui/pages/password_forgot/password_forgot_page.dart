@@ -14,7 +14,7 @@ class PasswordForgotPage extends GetWidget<ForgotPasswordController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mot de passe oublié"),
+        title: Text("Forgot your password".tr),
         elevation: 0,
       ),
       body: SingleChildScrollView(

@@ -47,8 +47,8 @@ class BankPaymentController extends GetxController with StateMixin<String> {
       await Alert(
         context: context,
         type: AlertType.success,
-        title: "Félicitations!",
-        desc: "Paiement effectué avec succès.",
+        title: "Congratulations !".tr,
+        desc: "Payment made successfully".tr,
         buttons: [
           DialogButton(
             child: Text(
@@ -62,8 +62,8 @@ class BankPaymentController extends GetxController with StateMixin<String> {
                   backgroundColor: Theme.of(Get.context!).colorScheme.secondary,
                   barrierDismissible: false,
                   loopAnimation: true,
-                  text: "Veuillez patienter",
-                  title: "Chargement...",
+                  text: "Please wait".tr,
+                  title: "Loading...",
                   type: CoolAlertType.loading);
               String qrCode = await Api().ticketRepo.getTicket(tickets[1]);
               Loader.close();
@@ -95,12 +95,12 @@ class BankPaymentController extends GetxController with StateMixin<String> {
       await Alert(
         context: context,
         type: AlertType.error,
-        title: "Error !",
+        title: "Error !!",
         desc: msg,
         buttons: [
           DialogButton(
             child: Text(
-              'fermer'.tr,
+              'Close'.tr,
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             onPressed: () => Navigator.of(context).pop(),

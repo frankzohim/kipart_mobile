@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ki_part/config/app_dimensions.dart';
+import 'package:get/get.dart';
 
 class MyErrorWidget extends StatelessWidget {
   final VoidCallback onRetry;
@@ -14,11 +15,11 @@ class MyErrorWidget extends StatelessWidget {
           const Icon(Icons.error, color: Colors.red, size: 35),
           AppDimensions.serparatorVert16,
           Text(
-            "Une erreur est survenue",
+            "An error has occurred".tr,
             style: Theme.of(context).textTheme.headline6,
           ),
           AppDimensions.serparatorVert16,
-          ElevatedButton(onPressed: onRetry, child: const Text("Réessayer"))
+          ElevatedButton(onPressed: onRetry, child: const Text("Try again"))
         ],
       ),
     );

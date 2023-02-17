@@ -14,7 +14,7 @@ class MyTicketsPage extends GetWidget<MyTicketsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Mes tickets") , ),
+      appBar: AppBar(title: Text("my_tickets".tr) , ),
       body:
       Obx(() => ListView.separated(
         padding: const EdgeInsets.all(16),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/reset_password/reset_password_controller.dart';
@@ -12,7 +13,7 @@ class ResetPasswordPage extends GetWidget<ResetPasswordController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Reinitialiser le mot de passe"),
+        title: Text("Reset password".tr),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -57,7 +58,7 @@ class ResetPasswordPage extends GetWidget<ResetPasswordController> {
                             ? Icons.visibility_off
                             : Icons.remove_red_eye),
                       ),
-                      labelText: "Nouveau mot de passe"),
+                      labelText: "New Password".tr),
                 ),
                 AppDimensions.serparatorVert16,
                 TextFormField(
@@ -71,13 +72,13 @@ class ResetPasswordPage extends GetWidget<ResetPasswordController> {
                           icon: Icon(controller.isVisble.value
                               ? Icons.visibility_off
                               : Icons.remove_red_eye)),
-                      labelText: "Confirmer le mot de passe"),
+                      labelText: "Confirm password".tr),
                 ),
                 AppDimensions.serparatorVert16,
                 AppDimensions.serparatorHor16,
                 ElevatedButton(
                     onPressed: controller.resetPassword,
-                    child: const Text("Valider"))
+                    child:  Text("Reset".tr))
               ],
             );
           }),

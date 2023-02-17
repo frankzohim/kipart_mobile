@@ -166,7 +166,7 @@ class BankPaymentPage extends GetWidget<BankPaymentController> {
 
                     controller.payTicket(context);
                   },
-                  child: Text("Payer".tr + "("+Get.arguments["amount"].toString() +" FCFA)"))
+                  child: Text("Pay".tr + "("+Get.arguments["amount"].toString() +" FCFA)"))
             ],
           );
         }),

@@ -15,10 +15,10 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
     return Scaffold(
       body: NestedScrollView(
           headerSliverBuilder: (a, b) => [
-            const SliverAppBar(
+             SliverAppBar(
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text("Entrez vos informations"),
+                title: Text("Enter your information".tr),
               ),
               expandedHeight: 120,
             )

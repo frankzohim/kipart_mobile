@@ -31,7 +31,7 @@ class SettingsPage extends GetView<SettingsController> {
             ),
             ListTile(
               textColor: Theme.of(context).colorScheme.primary,
-              title: const Text("Notez-nous"),
+              title:  Text("Rate us".tr),
               onTap: controller.noteApp,
             ),
             const Divider(
@@ -40,7 +40,7 @@ class SettingsPage extends GetView<SettingsController> {
             ),
             ListTile(
               textColor: Theme.of(context).colorScheme.primary,
-              title: const Text("Politique de confidentialité"),
+              title:  Text("privacy-policy".tr),
               onTap: () {},
             ),
             const Divider(
@@ -49,7 +49,7 @@ class SettingsPage extends GetView<SettingsController> {
             ),
             ListTile(
               textColor: Theme.of(context).colorScheme.primary,
-              title: const Text("Conditions d'utilisation"),
+              title: Text("Terms of uses".tr),
               onTap: () {},
             ),
             const Divider(
@@ -58,7 +58,7 @@ class SettingsPage extends GetView<SettingsController> {
             ),
             ListTile(
               textColor: Theme.of(context).colorScheme.primary,
-              title: const Text("Se deconnecter"),
+              title: Text("Sign out".tr),
               onTap: controller.logOut,
             ),
             const Divider(

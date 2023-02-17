@@ -57,7 +57,7 @@ class TravellersInfosController extends GetxController {
         ..cni = ""
         ..name = ""
         ..phone = ""
-        ..type = "FEMME");
+        ..type = "WOMAN".tr);
     });
   }
 
@@ -81,7 +81,7 @@ class TravellersInfosController extends GetxController {
 
   onTypeChanged(int i, int index) {
     travellers.update((val) {
-      val![index].type = ["HOMME", "FEMME", "ENFANT"][i];
+      val![index].type = ["MAN".tr, "WOMAN".tr, "CHILD".tr][i];
     });
   }
 
@@ -98,8 +98,6 @@ class TravellersInfosController extends GetxController {
       travellers.value[0].phone = user.value!.phoneNumber;
     }
 
-    print("in travellers");
-    print(travellers.value[0]);
     Api()
         .travelRepo
         .saveTravellers(trip["id"].toString(), travellers.value)

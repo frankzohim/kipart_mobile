@@ -104,8 +104,8 @@ class RecapPage extends GetWidget<RecapController> {
                                         CrossAxisAlignment.start,
                                     children: [
                                        Text("${_getCivitiy(e.type)} ${e.name}"),
-                                       Text("CNI: ${e.cni}"),
-                                       Text("TEl.: ${e.phone}"),
+                                       Text("N° NCI".tr +" : "+ e.cni),
+                                       Text("Phone".tr.toUpperCase()+" : " + e.phone),
                                     ],
                                   ),
                                 ))
