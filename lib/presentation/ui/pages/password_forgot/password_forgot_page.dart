@@ -26,7 +26,7 @@ class PasswordForgotPage extends GetWidget<ForgotPasswordController> {
                 AppDimensions.serparatorVert16,
                 AppDimensions.serparatorVert16,
                  Text(
-                  "Enter your phone number below. You will receive a text message to reset your password",
+                  "Enter your phone number below. You will receive a text message to reset your password".tr,
                   textAlign: TextAlign.center,
                 ),
                 AppDimensions.serparatorVert16,

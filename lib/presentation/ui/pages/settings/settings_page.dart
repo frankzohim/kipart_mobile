@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/presentation/ui/pages/settings/settings_controller.dart';
 import 'package:ki_part/utils/app_routes.dart';
+import 'package:ki_part/services/user_service.dart';
 
 class SettingsPage extends GetView<SettingsController> {
   const SettingsPage({super.key});
@@ -56,18 +57,21 @@ class SettingsPage extends GetView<SettingsController> {
               height: 1,
               thickness: 1,
             ),
-            ListTile(
-              textColor: Theme.of(context).colorScheme.primary,
-              title: Text("Sign out".tr),
-              onTap: controller.logOut,
-            ),
+
+          ListTile(
+            textColor: Theme.of(context).colorScheme.primary,
+            title: Text(Get.find<UserService>().user.value != null ? "Sign out".tr : "You are logout".tr),
+            onTap: controller.logOut,
+          ),
+
+
             const Divider(
               height: 1,
               thickness: 1,
             ),
             const ListTile(
                 textColor: Colors.grey,
-                title: Text("Version 1.0.0"),
+                title: Text("Version 2.0.0"),
                 onTap: null),
             const Divider(
               height: 1,

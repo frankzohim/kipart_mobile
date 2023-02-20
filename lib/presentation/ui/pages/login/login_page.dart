@@ -48,7 +48,7 @@ class LoginPage extends GetWidget<LoginController> {
                   )),
               AppDimensions.serparatorVert8,
               Text(
-                "Enjoy faster reservations and refunds as well as discounts.",
+                "Enjoy faster reservations and refunds as well as discounts.".tr,
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme

@@ -82,7 +82,7 @@ class TicketRepo {
 
     var res =
     await _dio.get("/api/v1/list/tickets");
-    print(res.data['data']);
+    //print(res.data['data']);
     return res.data["data"]
         .map<TicketModel>((e) => TicketModel.fromJson(e))
         .toList();

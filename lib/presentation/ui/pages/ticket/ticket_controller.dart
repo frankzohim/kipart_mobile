@@ -7,8 +7,6 @@ import 'package:ki_part/data/models/subAgency.dart';
 import 'package:ki_part/data/models/agences.dart';
 import 'package:ki_part/data/models/users.dart';
 import 'package:ki_part/data/models/searchData.dart';
-import 'package:ki_part/utils/loader.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class TicketController extends GetxController {
   final travellers = Rx<List<Traveller>>([]);
@@ -29,7 +27,10 @@ class TicketController extends GetxController {
 
   loadArguments() async{
     print(Get.arguments["travel"]);
+    print('hello');
+
     travellers.value = await Get.arguments["travellers"];
+    print(travellers.value[0].cni);
     dataSearch.value = await Get.arguments['dataSearch'];
     user.value = await Get.arguments['user'];
     agency.value = await Get.arguments['agency'];

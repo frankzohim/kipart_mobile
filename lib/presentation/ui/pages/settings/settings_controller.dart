@@ -6,6 +6,9 @@ import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/services/user_service.dart';
 import 'package:ki_part/utils/loader.dart';
 
+import '../../../../utils/app_routes.dart';
+
+
 class SettingsController extends GetxController {
   void noteApp() {
     showDialog(
@@ -105,6 +108,7 @@ class SettingsController extends GetxController {
       Loader.close();
       Loader.info(message: "You have been successfully logged out".tr);
       Get.find<UserService>().logOut();
+      Get.toNamed(Approutes.HOME);
     }).catchError((error) {
       Loader.close();
       Loader.error(error.details);

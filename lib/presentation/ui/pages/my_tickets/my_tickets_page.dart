@@ -27,8 +27,8 @@ class MyTicketsPage extends GetWidget<MyTicketsController> {
           return InkWell(
             onTap: () async {
 
-              print(controller.tickets.value[index]);
-
+              //print(controller.tickets.value[index]);
+              print(controller.tickets.value[index].passengers[0]['cniNumber']);
               void displayTicket() async {
                 //Adding traveller to list
                 List<Traveller> travellers = [];

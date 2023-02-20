@@ -52,7 +52,7 @@ class Messages extends Translations {
       'Remember me' : 'Remember me',
       'Sign in' : 'Sign in',
       'No account?' : 'No account?',
-      'Create an account ' : 'Create an account',
+      'Create an account' : 'Create an account',
       'Lastname and firstname' : 'Lastname and firstname',
       'By creating your account you agree to our' : 'By creating your account you agree to our ',
       'terms of use' : 'terms of use ',
@@ -129,6 +129,7 @@ class Messages extends Translations {
       'Contact us' : 'Contact us',
       'Save' : 'Save',
       'Back to home' : 'Back to home',
+      'You are logout' : 'You are logout',
       'Ticket saved in your gallery' : 'Ticket saved in your gallery',
     },
 
@@ -183,7 +184,7 @@ class Messages extends Translations {
       'Remember me' : 'Se souvenir de moi',
       'Sign in' : 'Connexion',
       'No account?' : 'Vous n\'avez pas encore de compte?',
-      'Create an account ' : 'Créer un compte',
+      'Create an account' : 'Créer un compte',
       'Lastname and firstname' : 'Noms et prénoms',
       'Confirm password' : 'Confirmer mot de passe',
       'By creating your account you agree to our' : 'En créant votre compte vous acceptez nos ',
@@ -265,6 +266,7 @@ class Messages extends Translations {
       'Save' : 'Enregistrer',
       'Back to home' : 'Retourner à l\'acceuil',
       'Ticket saved in your gallery' : 'Ticket enregistré dans votre galerie',
+      'You are logout' : 'Vous êtes déconnecté',
     }
   };
 }
