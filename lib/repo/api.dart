@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ki_part/models/exception.dart';
@@ -13,7 +12,7 @@ class Api {
   static final _instance =
       Api._(UserRepo(_appDio), AgencyRepo(_appDio), TravelRepo(_appDio), TicketRepo(_appDio));
   static final Dio _appDio =
-      Dio(BaseOptions(baseUrl: "http://api.mykipart.com/"));
+      Dio(BaseOptions(baseUrl: "http://kipart.stillforce.tech/"));
 
   late UserRepo userRepo;
   late TravelRepo travelRepo;

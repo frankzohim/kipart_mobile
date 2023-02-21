@@ -33,7 +33,7 @@ class TravelRepo {
   // }
 
   static Future<List<dynamic>> searchTravels(SearchData? dataS) async {
-    var endpointUrl = "http://api.mykipart.com/api/searchFull/travel";
+    var endpointUrl = "http://kipart.stillforce.tech/api/searchFull/travel";
     print(endpointUrl);
     Map<String, String> queryParams = {
       'type': dataS!.type,
@@ -91,7 +91,7 @@ class TravelRepo {
     // print(res.data.toString());
     // return res.data.toList();
     var endpointUrl =
-        "http://api.mykipart.com/api/search/byAgency/$agencyId";
+        "http://kipart.stillforce.tech/api/search/byAgency/$agencyId";
     // print(endpointUrl);
     print("in travel list");
     print(dataS!.classe);
@@ -107,7 +107,7 @@ class TravelRepo {
     String queryString = Uri(queryParameters: queryParams).query;
     var requestUrl = '$endpointUrl?$queryString';
     // print(requestUrl);
-    print("view again 1");
+
     var responseJson = await http.post(Uri.parse(requestUrl), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
@@ -128,8 +128,8 @@ class TravelRepo {
     }
   }
 
-  Future saveTravellers(String travelleId, List<Traveller> travellers) async {
-    var res = await _dio.post("api/v1/add/passengers/$travelleId",
+  Future saveTravellers(String travelleId, List<Traveller> travellers, String subAgencyId) async {
+    var res = await _dio.post("api/v1/add/passengers/$travelleId/$subAgencyId",
         data: {"passengers": travellers.map((e) => e.toJson()).toList()});
     return res.data;
   }
