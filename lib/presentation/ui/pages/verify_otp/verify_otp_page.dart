@@ -3,7 +3,6 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/verify_otp/verify_otp_controller.dart';
 import 'package:ki_part/utils/validators.dart';
-import 'package:pinput/pinput.dart';
 
 class VerifyOTPPage extends GetWidget<VerifyOTPController> {
   const VerifyOTPPage({super.key});
@@ -40,25 +39,9 @@ class VerifyOTPPage extends GetWidget<VerifyOTPController> {
             AppDimensions.serparatorVert16,
             Form(
               key: controller.formKey,
-              child: Pinput(
+              child: TextFormField(
                 controller: controller.otpController,
-                length: 6,
                 validator: Validators.otp,
-                androidSmsAutofillMethod:
-                    AndroidSmsAutofillMethod.smsUserConsentApi,
-                submittedPinTheme: PinTheme(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        border: Border.all(width: .5),
-                        borderRadius: BorderRadius.circular(6),
-                        color:
-                            Theme.of(context).inputDecorationTheme.fillColor)),
-                focusedPinTheme: PinTheme(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:
-                            Theme.of(context).inputDecorationTheme.fillColor)),
               ),
             ),
             AppDimensions.serparatorVert8,
