@@ -131,6 +131,7 @@ class Messages extends Translations {
       'Back to home' : 'Back to home',
       'You are logout' : 'You are logout',
       'Ticket saved in your gallery' : 'Ticket saved in your gallery',
+      'Review now!' : 'Review now!',
     },
 
     'fr_FR' : {
@@ -267,6 +268,7 @@ class Messages extends Translations {
       'Back to home' : 'Retourner à l\'acceuil',
       'Ticket saved in your gallery' : 'Ticket enregistré dans votre galerie',
       'You are logout' : 'Vous êtes déconnecté',
+      'Review now!' : 'Notez maintenant!',
     }
   };
 }

@@ -12,7 +12,7 @@ class Api {
   static final _instance =
       Api._(UserRepo(_appDio), AgencyRepo(_appDio), TravelRepo(_appDio), TicketRepo(_appDio));
   static final Dio _appDio =
-      Dio(BaseOptions(baseUrl: "http://kipart.stillforce.tech/"));
+      Dio(BaseOptions(baseUrl: "http://api.mykipart.com/"));
 
   late UserRepo userRepo;
   late TravelRepo travelRepo;

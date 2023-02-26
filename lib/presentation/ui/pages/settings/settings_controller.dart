@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/config/app_assets.dart';
 import 'package:ki_part/config/app_dimensions.dart';
+import 'package:ki_part/presentation/ui/pages/rating/rating_page.dart';
 import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/services/user_service.dart';
 import 'package:ki_part/utils/loader.dart';
-
 import '../../../../utils/app_routes.dart';
 
 
@@ -51,8 +51,12 @@ class SettingsController extends GetxController {
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16))),
-                  onPressed: Get.back,
-                  child: Text("I like!")),
+                  onPressed: (){
+                    Get.to(
+                      RatingPage(),
+                    );
+                  },
+                  child: Text("Review now!")),
               AppDimensions.serparatorVert8,
               OutlinedButton(
                   style: OutlinedButton.styleFrom(

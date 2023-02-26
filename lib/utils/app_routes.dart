@@ -49,6 +49,8 @@ import 'package:ki_part/presentation/ui/pages/chat/chat_page.dart';
 import 'package:ki_part/presentation/ui/pages/chat/chat_controller.dart';
 import 'package:ki_part/presentation/ui/pages/customer_service/customer_service_controller.dart';
 import 'package:ki_part/presentation/ui/pages/customer_service/customer_service_page.dart';
+import 'package:ki_part/presentation/ui/pages/rating/rating_controller.dart';
+import 'package:ki_part/presentation/ui/pages/rating/rating_page.dart';
 
 mixin Approutes {
   static const HOME = "/";
@@ -80,6 +82,7 @@ mixin Approutes {
 
   static const BANK_PAYMENT = "/payment/bank";
   static const OPERATOR_PAYMENT = "/payment/operator";
+  static const RATING = "/rating";
 
   static final pages = [
     GetPage(name: HOME, page: () => const SearchTravelPage()),
@@ -89,6 +92,7 @@ mixin Approutes {
         name: LOGIN,
         page: () => const LoginPage(),
         binding: BindingsBuilder.put(() => LoginController())),
+
     GetPage(
         name: SIGNUP,
         page: () => const RegisterPage(),
@@ -185,6 +189,6 @@ mixin Approutes {
     GetPage(
         name: OPERATOR_PAYMENT,
         page: () => OperatorPaymentPage(),
-        binding: BindingsBuilder.put(() => OperatorPaymentController()))
+        binding: BindingsBuilder.put(() => OperatorPaymentController())),
   ];
 }
