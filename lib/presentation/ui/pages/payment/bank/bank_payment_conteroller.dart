@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:ki_part/repo/api.dart';
 import 'package:ki_part/utils/app_routes.dart';
@@ -14,7 +13,6 @@ class BankPaymentController extends GetxController with StateMixin<String> {
   final travellers = Rx<List<Traveller>>([]);
   dynamic travel;
   final subAgency  = Rx<SubAgencyModel?>(null);
-  CardFieldInputDetails? card;
   final formKey = GlobalKey<FormState>();
   final dateExp = "".obs;
   final TextEditingController nomCard = TextEditingController();

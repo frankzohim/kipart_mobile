@@ -4,7 +4,6 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/reset_password/reset_password_controller.dart';
 import 'package:ki_part/utils/validators.dart';
-import 'package:pinput/pinput.dart';
 
 class ResetPasswordPage extends GetWidget<ResetPasswordController> {
   const ResetPasswordPage({super.key});
@@ -23,27 +22,9 @@ class ResetPasswordPage extends GetWidget<ResetPasswordController> {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Pinput(
-                  length: 6,
+                TextFormField(
                   controller: controller.otpController,
                   validator: Validators.otp,
-                  androidSmsAutofillMethod:
-                      AndroidSmsAutofillMethod.smsUserConsentApi,
-                  submittedPinTheme: PinTheme(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                          border: Border.all(width: .5),
-                          borderRadius: BorderRadius.circular(6),
-                          color: Theme.of(context)
-                              .inputDecorationTheme
-                              .fillColor)),
-                  focusedPinTheme: PinTheme(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context)
-                              .inputDecorationTheme
-                              .fillColor)),
                 ),
                 AppDimensions.serparatorVert16,
                 TextFormField(
