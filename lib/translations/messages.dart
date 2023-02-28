@@ -132,6 +132,10 @@ class Messages extends Translations {
       'You are logout' : 'You are logout',
       'Ticket saved in your gallery' : 'Ticket saved in your gallery',
       'Review now!' : 'Review now!',
+      'Enter your' : 'Enter your',
+      'Orange Money number' : 'Orange Money number',
+      'to finalize the payment' : 'to finalize the payment',
+      'By clicking on "pay", you will receive instructions on your phone to complete the payment' : '',
     },
 
     'fr_FR' : {
@@ -269,6 +273,10 @@ class Messages extends Translations {
       'Ticket saved in your gallery' : 'Ticket enregistré dans votre galerie',
       'You are logout' : 'Vous êtes déconnecté',
       'Review now!' : 'Notez maintenant!',
+      'Enter your' : 'Enterez votre',
+      'Orange Money number' : 'numéro Orange Money',
+      'to finalize the payment' : 'pour finaliser le paiement',
+      'By clicking on "pay", you will receive instructions on your phone to complete the payment' : 'En cliquant sur "payer", vous recevrez des instructions sur votre téléphone pour finaliser le paiement',
     }
   };
 }

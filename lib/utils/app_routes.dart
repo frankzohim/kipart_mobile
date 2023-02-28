@@ -22,6 +22,8 @@ import 'package:ki_part/presentation/ui/pages/password_forgot/forgot_password_co
 import 'package:ki_part/presentation/ui/pages/password_forgot/password_forgot_page.dart';
 import 'package:ki_part/presentation/ui/pages/payment/bank/bank_payment_conteroller.dart';
 import 'package:ki_part/presentation/ui/pages/payment/bank/bank_payment_page.dart';
+import 'package:ki_part/presentation/ui/pages/payment/om/om_payment_controller.dart';
+import 'package:ki_part/presentation/ui/pages/payment/om/om_payment_page.dart';
 import 'package:ki_part/presentation/ui/pages/payment/operator/operator_payment.dart';
 import 'package:ki_part/presentation/ui/pages/payment/operator/operator_payment_controller.dart';
 import 'package:ki_part/presentation/ui/pages/payment/payment_page.dart';
@@ -81,6 +83,7 @@ mixin Approutes {
   static const NOTIFICATIONS = "/settings/notifications";
 
   static const BANK_PAYMENT = "/payment/bank";
+  static const OM_PAYMENT = "/payment/om";
   static const OPERATOR_PAYMENT = "/payment/operator";
   static const RATING = "/rating";
 
@@ -186,6 +189,10 @@ mixin Approutes {
         name: BANK_PAYMENT,
         page: () => BankPaymentPage(),
         binding: BindingsBuilder.put(() => BankPaymentController())),
+    GetPage(
+        name: OM_PAYMENT,
+        page: () => OMPaymentPage(),
+        binding: BindingsBuilder.put(() => OMPaymentController())),
     GetPage(
         name: OPERATOR_PAYMENT,
         page: () => OperatorPaymentPage(),

@@ -78,7 +78,17 @@ class OperatorPaymentPage extends GetWidget<OperatorPaymentController> {
               AppDimensions.serparatorVert16,
               if (controller.operator.value == 'OM')
                 ElevatedButton(
-                    onPressed: () {}, child:  Text("Next".tr)),
+                    onPressed: () {
+                      Get.offAndToNamed(Approutes.OM_PAYMENT,
+                        arguments: {
+                          "amount": Get.arguments["amount"],
+                          "paymentId": Get.arguments["paymentId"],
+                          'travel': Get.arguments["travel"],
+                          "travellers": Get.arguments["travellers"],
+                          "subAgency": Get.arguments["subAgency"]
+                        },
+                      );
+                    }, child:  Text("Next".tr)),
               if (controller.operator.value == 'MoMo')
                 ElevatedButton(
                     onPressed: () {}, child:  Text("Next".tr)),

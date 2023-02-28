@@ -52,9 +52,9 @@ class SettingsController extends GetxController {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16))),
                   onPressed: (){
-                    Get.to(
+                    /*Get.to(
                       RatingPage(),
-                    );
+                    );*/
                   },
                   child: Text("Review now!")),
               AppDimensions.serparatorVert8,

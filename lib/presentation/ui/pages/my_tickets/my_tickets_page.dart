@@ -86,7 +86,7 @@ class MyTicketsPage extends GetWidget<MyTicketsController> {
                       ),
                       Column(
                         children:  [
-                          Text("${controller.tickets.value[index].travel[0]['date'].toString().substring(0,10)}, ${controller.tickets.value[index].travel[0]['heure']}"),
+                          Text("${controller.tickets.value[index].travel[0]['date']}, ${controller.tickets.value[index].travel[0]['heure']}"),
                           Text("${controller.tickets.value[index].travel[0]['departure']} -> "
                               "${controller.tickets.value[index].travel[0]['arrival']}"),
                           Text("${controller.tickets.value[index].passengers[0]['nom']}, "
