@@ -77,7 +77,25 @@ class OMPaymentPage extends GetWidget<OMPaymentController> {
           AppDimensions.serparatorVert16,
           AppDimensions.serparatorVert16,
           ElevatedButton(
-              onPressed: controller.payTicket(context),
+              onPressed :(){
+                if (controller.phoneController.value == '' || (controller.phoneController.value != '' && controller.phoneController.value.toString()[0]!=6)) {
+                  Get.snackbar(
+                      "Error !!".tr,
+                      "Numéro incorrect".tr,
+                      snackPosition: SnackPosition.BOTTOM,
+                      backgroundColor: Colors.amber,
+                      margin: EdgeInsets.all(10),
+                      animationDuration: Duration(milliseconds: 2000),
+                      isDismissible: true,
+                      //dismissDirection: SnackDismissDirection.HORIZONTAL
+                      forwardAnimationCurve: Curves.bounceInOut,
+                      reverseAnimationCurve: Curves.bounceInOut,
+                      overlayBlur: 5
+                  );
+                  return;
+                }
+                controller.payTicket(context);
+              },
               child:  Text("Pay".tr + "("+Get.arguments["amount"].toString() +" FCFA)")
           )
         ]),
