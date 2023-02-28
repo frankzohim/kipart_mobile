@@ -78,7 +78,7 @@ class OMPaymentPage extends GetWidget<OMPaymentController> {
           AppDimensions.serparatorVert16,
           ElevatedButton(
               onPressed :(){
-                if (controller.phoneController.value == '' || (controller.phoneController.value != '' && controller.phoneController.value.toString()[0]!=6)) {
+                if (controller.phoneController.value.text.length != 9 ||  controller.phoneController.value.text[0]!='6' || controller.phoneController.value.text[1]!='9') {
                   Get.snackbar(
                       "Error !!".tr,
                       "Numéro incorrect".tr,
