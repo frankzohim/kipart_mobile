@@ -7,4 +7,4 @@ Application d'achat de tickets de voyage en ligne
 - 2. executer ``flutter pub get``  dans la racine du dossier
 - 3. exexuter ``flutter pub run build_runner build``
 - 4. executer ``flutter run`` 
-- 5. m'offrir une bouteille de vin 😁😁😁😁😁😁😁😁
+- 5. enjoyez l'appli
