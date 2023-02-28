@@ -135,7 +135,7 @@ class Messages extends Translations {
       'Enter your' : 'Enter your',
       'Orange Money number' : 'Orange Money number',
       'to finalize the payment' : 'to finalize the payment',
-      'By clicking on "pay", you will receive instructions on your phone to complete the payment' : '',
+      'By clicking on "pay", you will receive instructions on your phone to complete the payment' : 'By clicking on "pay", you will receive instructions on your phone to complete the payment',
     },
 
     'fr_FR' : {

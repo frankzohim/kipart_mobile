@@ -40,7 +40,7 @@ class OMPaymentPage extends GetWidget<OMPaymentController> {
               )),
           AppDimensions.serparatorVert8,
           Text(
-            "Enjoy faster reservations and refunds as well as discounts.".tr,
+            'By clicking on "pay", you will receive instructions on your phone to complete the payment'.tr,
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
@@ -69,22 +69,7 @@ class OMPaymentPage extends GetWidget<OMPaymentController> {
                   ),
 
                   AppDimensions.serparatorVert16,
-                  Text.rich(
-                    TextSpan(children: [
-                      TextSpan(
-                          text: "By creating your account you agree to our".tr),
-                      TextSpan(
-                          text: "terms of use".tr,
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary)),
-                      TextSpan(text: "and our".tr),
-                      TextSpan(
-                          text: "privacy-policy".tr,
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary))
-                    ], style: Theme.of(context).textTheme.bodySmall),
-                    textAlign: TextAlign.center,
-                  ),
+
                 ],
               ),
             ),
