@@ -19,7 +19,7 @@ class MyTicketsController extends GetxController
     change(null, status: RxStatus.loading());
     Api().ticketRepo.getTicketList()
         .then((value) {
-
+        print(value);
         //print("hello");
           tickets.value = value;
       change(value, status: RxStatus.success());

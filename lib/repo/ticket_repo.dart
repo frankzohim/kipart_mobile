@@ -51,6 +51,44 @@ class TicketRepo {
     return tickets;
   }
 
+  Future<List<String>> buyTicketWithOM(String idSubAgency,
+      String amount, String codePromo, String idPayment, String phoneNumber) async {
+    final UserModel user;
+    await Storage.instance.init();
+    final val = Storage.instance.get("currentUser");
+    user = UserModel.fromMap(val);
+
+    var endpointUrl =
+        "http://api.mykipart.com/api/v1/pay/withOrangeMoney/$phoneNumber/$amount/$idPayment/$codePromo/$idSubAgency";
+    print(endpointUrl);
+    print("Orange Money");
+
+    var requestUrl = endpointUrl;
+
+    var responseJson = await http.post(Uri.parse(requestUrl),
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json',
+          "Authorization": user.accessToken!
+        },
+        body: jsonEncode({
+          'amount': amount,
+          'description': 'Paiement ticket de voyage sur KiPART via Orange Money',
+        }));
+
+    var resp = jsonDecode(responseJson.body);
+    print(responseJson.body);
+    List<String> tickets = [];
+    tickets.add(resp['message']);
+    //tickets.add(resp['ticketId'][0].toString());
+    List<dynamic> ticketsId = resp['ticketId'];
+    ticketsId.forEach((element) {
+      tickets.add(element.toString());
+    });
+
+    return tickets;
+  }
+
   Future<String> getTicket(String idQrCode) async {
 
     final UserModel user;
@@ -82,7 +120,7 @@ class TicketRepo {
 
     var res =
     await _dio.get("/api/v1/list/tickets");
-    //print(res.data['data']);
+    print(res.data['data']);
     return res.data["data"]
         .map<TicketModel>((e) => TicketModel.fromJson(e))
         .toList();

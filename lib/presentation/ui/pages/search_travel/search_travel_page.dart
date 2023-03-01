@@ -24,7 +24,7 @@ class SearchTravelPage extends GetWidget<SearchTravelController> {
           // backgroundColor: Colors.transparent,
 
           centerTitle: true,
-          title: Text("KiPart",
+          title: Text("KiPART",
               style: Theme.of(context)
                   .textTheme
                   .headline4!

@@ -85,16 +85,11 @@ class TravelRepo {
 
   static Future<List<dynamic>> listTravelsAgency(
       int? agencyId, SearchData? dataS) async {
-    // print("/api/search/byAgency/$agencyId");
-    // var res = await _dio.get("/api/search/byAgency/$agencyId",
-    //     queryParameters: dataS!.toJson());
-    // print(res.data.toString());
-    // return res.data.toList();
+
     var endpointUrl =
         "http://api.mykipart.com/api/search/byAgency/$agencyId";
-    // print(endpointUrl);
+    print(endpointUrl);
     print("in travel list");
-    print(dataS!.classe);
     Map<String, String> queryParams = {
       'type': dataS!.type,
       'departure': dataS.departure,
@@ -113,7 +108,7 @@ class TravelRepo {
       'Accept': 'application/json',
       // "Authorization": Compte.token
     });
-    // print(responseJson.body);
+    print(responseJson.body);
     var resp = jsonDecode(responseJson.body);
 
     // print(resp['data']);

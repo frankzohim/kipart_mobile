@@ -33,9 +33,13 @@ class OMPaymentController extends GetxController with StateMixin<String> {
     print(paymentId);
   }
 
-  payTicket(context) {
+  payTicket(context) async{
     //Loader.loading();
     print('hello');
+    Loader.loading();
+    List<String> tickets = await Api().ticketRepo.buyTicketWithOM(subAgency.value!.id.toString(), amount.toString(), 'YRTRKiP3', paymentId, "694297339");
+    Loader.close();
+    print(tickets);
     //List<String> tickets = await Api().ticketRepo.buyTicket(subAgency.value!.id.toString(), amount.toString(), 'YRTRKiP3', paymentId, numCard.text,cvvCard.text );
     //Loader.close();
   }
