@@ -81,7 +81,7 @@ class AgencyDetailsPage extends GetWidget<AgencyController> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         final item = TravelRepo.listTravels[index];
-                        if(item['classe'] =="classique")
+                        if(item['classe'].toString().toLowerCase() =="classique")
                           item['price'] = "3000";
                         else
                           item['price'] = "8000";

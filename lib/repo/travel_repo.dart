@@ -46,10 +46,6 @@ class TravelRepo {
     };
     String queryString = Uri(queryParameters: queryParams).query;
     var requestUrl = '$endpointUrl?$queryString';
-    // print('les données envoyées');
-    // print(requestUrl);
-    // var requestUrl =
-    //     'http://kipart.stillforce.tech/api/searchFull/travel?type=Aller Simple&departure=douala&arrival=yaoundé&departure_time=02:58&dateDeparture=2022-12-18&number_of_places=4&classe=vip';
 
     var responseJson = await http.post(Uri.parse(requestUrl), headers: {
       'Content-type': 'application/json',

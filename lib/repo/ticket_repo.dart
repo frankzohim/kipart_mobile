@@ -59,7 +59,7 @@ class TicketRepo {
     user = UserModel.fromMap(val);
 
     var endpointUrl =
-        "http://api.mykipart.com/api/v1/pay/withOrangeMoney/$phoneNumber/$amount/$idPayment/$codePromo/$idSubAgency";
+        "http://api.mykipart.com/api/v1/pay/withOrangeMoney/$phoneNumber/1/$idPayment/$codePromo/$idSubAgency";
     print(endpointUrl);
     print("Orange Money");
 

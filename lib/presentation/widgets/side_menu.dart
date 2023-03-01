@@ -51,7 +51,7 @@ class SideMenu extends StatelessWidget {
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage(AppAssets.connexion)
+                            image: AssetImage(AppAssets.connexionDark)
                         ),
 
                     ),
@@ -76,7 +76,7 @@ class SideMenu extends StatelessWidget {
                                                 "my_profile".tr,
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headline5!
+                                                    .headline6!
                                                     .copyWith(
                                                         color: Colors.white,
                                                         fontWeight:
@@ -90,7 +90,7 @@ class SideMenu extends StatelessWidget {
                                                       TextSpan(text: "advantage".tr),
 
                                                     ],
-                                                    style: Theme.of(context).textTheme.headline5!.copyWith(
+                                                    style: Theme.of(context).textTheme.headline6!.copyWith(
                                                         fontWeight: FontWeight.bold, color: Colors.white)),
                                                 textAlign: TextAlign.center,
                                               )

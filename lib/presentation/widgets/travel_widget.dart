@@ -70,7 +70,7 @@ class TravelWidget extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      "${travel['number_of_places']} "+"Seat(s)".tr
+                      "${travel['placeAvailable']} "+"Seat(s)".tr
                     ),
                   ],
                 ),
