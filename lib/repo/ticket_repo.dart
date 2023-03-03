@@ -59,7 +59,7 @@ class TicketRepo {
     user = UserModel.fromMap(val);
 
     var endpointUrl =
-        "http://api.mykipart.com/api/v1/pay/withOrangeMoney/$phoneNumber/1/$idPayment/$codePromo/$idSubAgency";
+        "http://api.mykipart.com/api/v1/pay/withOrangeMoney/$phoneNumber/1/$idSubAgency";
     print(endpointUrl);
     print("Orange Money");
 
@@ -77,7 +77,23 @@ class TicketRepo {
         }));
 
     var resp = jsonDecode(responseJson.body);
-    print(responseJson.body);
+    print("toto");
+    print(resp);
+    String accessToken = resp['accessToken'];
+    String payToken = resp['payToken'];
+    var endpointUrl1 =
+        "http://api.mykipart.com/api/v1/getPayment/status/$accessToken/$payToken/$idPayment/$codePromo/$idSubAgency";
+
+    var responseJson1 = await http.get(Uri.parse(endpointUrl1),
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json',
+          "Authorization": user.accessToken!
+        },
+        );
+
+    print(responseJson1.body);
+    print('tata');
     List<String> tickets = [];
     tickets.add(resp['message']);
     //tickets.add(resp['ticketId'][0].toString());
