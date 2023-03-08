@@ -5,6 +5,7 @@ import 'package:ki_part/presentation/ui/pages/home/pick_agency_controller.dart';
 import 'package:ki_part/presentation/widgets/agency_widget.dart';
 import 'package:ki_part/presentation/widgets/error_widget.dart';
 import 'package:ki_part/presentation/widgets/header_with_image.dart';
+import 'package:ki_part/presentation/widgets/side_menu.dart';
 
 class PickAgencyPage extends GetWidget<PickAgencyController> {
   const PickAgencyPage({super.key});
@@ -17,6 +18,7 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
+      drawer: SideMenu(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(

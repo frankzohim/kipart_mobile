@@ -40,7 +40,54 @@ class OMPaymentController extends GetxController with StateMixin<String> {
     List<String> tickets = await Api().ticketRepo.buyTicketWithOM(subAgency.value!.id.toString(), amount.toString(), 'YRTRKiP3', paymentId, "694297339");
     Loader.close();
     print(tickets);
-    //List<String> tickets = await Api().ticketRepo.buyTicket(subAgency.value!.id.toString(), amount.toString(), 'YRTRKiP3', paymentId, numCard.text,cvvCard.text );
-    //Loader.close();
+
+    if (tickets[0] == "payment effectué") {
+      await Alert(
+          context: context,
+          type: AlertType.success,
+          title: "Congratulations !".tr,
+          desc: "Payment made successfully".tr,
+          buttons: [
+            DialogButton(
+                child: Text(
+                  "OK",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                onPressed: () async {
+                  CoolAlert.show(
+                      context: Get.context!,
+                      animType: CoolAlertAnimType.slideInLeft,
+                      backgroundColor: Theme.of(Get.context!).colorScheme.secondary,
+                      barrierDismissible: false,
+                      loopAnimation: true,
+                      text: "Please wait".tr,
+                      title: "Loading...",
+                      type: CoolAlertType.loading);
+                  String qrCode = await Api().ticketRepo.getTicket(tickets[1]);
+                  Loader.close();
+                  Get.offAllNamed(Approutes.MY_TICKETS);
+                  color: Colors.orange;
+                  width: 120;
+                }
+            )]
+      ).show();
+    } else {
+      await Alert(
+        context: context,
+        type: AlertType.error,
+        title: "Error !!",
+        desc: msg,
+        buttons: [
+          DialogButton(
+            child: Text(
+              'Close'.tr,
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+            width: 120,
+          )
+        ],
+      ).show();
+    }
   }
 }

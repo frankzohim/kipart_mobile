@@ -6,6 +6,7 @@ class Messages extends Translations {
     'en_US' : {
 
       'hello' : 'Hello',
+      'home' : 'Home',
       'my_profile' : 'My profile',
       'advantage' : 'Enjoy KiPART account benefits',
       'my_tickets' : 'My tickets',
@@ -141,6 +142,7 @@ class Messages extends Translations {
     'fr_FR' : {
 
         'hello' : 'Bonjour',
+      'home' : 'Accueil',
       'my_profile' : 'Mon profil',
       'advantage' : 'Profitez des avantages du compte KiPART',
       'Login' : 'S\'identifier',

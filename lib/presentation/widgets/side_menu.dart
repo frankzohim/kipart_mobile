@@ -11,27 +11,32 @@ class SideMenu extends StatelessWidget {
   SideMenu({super.key});
   final list = [
     NavItem(
+        iconData: Icons.home_filled,
+        title: "home".tr,
+        page: Approutes.HOME,
+        requireLogin: true),
+    NavItem(
         iconData: Icons.add_card,
         title: "my_tickets".tr,
         page: Approutes.MY_TICKETS,
         requireLogin: true),
     // NavItem(title: "Agence", page: const AgencyDetailsPage()),
-    NavItem(
+    /*NavItem(
         iconData: Icons.notifications,
         title: "Notifications",
         page: Approutes.CHAT,
-        requireLogin: true),
+        requireLogin: true),*/
     NavItem(
         iconData: Icons.settings,
         title: "settings".tr,
         page: Approutes.SETTINGS,
         requireLogin: false),
-    NavItem(
+    /*NavItem(
       iconData: Icons.person,
       title: "customer_service".tr,
       page: Approutes.CUSTOMER_SERVICE,
       requireLogin: false,
-    ),
+    ),*/
   ];
 
   @override

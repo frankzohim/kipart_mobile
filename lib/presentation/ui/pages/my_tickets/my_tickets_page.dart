@@ -7,6 +7,7 @@ import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/utils/app_routes.dart';
 import 'package:ki_part/presentation/ui/pages/my_tickets/my_tickets_controller.dart';
 import 'package:ki_part/data/models/traveller.dart';
+import 'package:ki_part/presentation/widgets/side_menu.dart';
 
 class MyTicketsPage extends GetWidget<MyTicketsController> {
   const MyTicketsPage({super.key});
@@ -15,6 +16,7 @@ class MyTicketsPage extends GetWidget<MyTicketsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("my_tickets".tr) , ),
+      drawer: SideMenu(),
       body:
       Obx(() => ListView.separated(
         padding: const EdgeInsets.all(16),

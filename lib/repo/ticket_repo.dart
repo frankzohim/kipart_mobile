@@ -82,7 +82,7 @@ class TicketRepo {
     String accessToken = resp['accessToken'];
     String payToken = resp['payToken'];
     var endpointUrl1 =
-        "http://api.mykipart.com/api/v1/getPayment/status/$accessToken/$payToken/$idPayment/$codePromo/$idSubAgency";
+        "http://api.mykipart.com/api/v1/getPayment/status/$accessToken/$payToken/$idPayment/$codePromo/$idSubAgency/1";
 
     var responseJson1 = await http.get(Uri.parse(endpointUrl1),
         headers: {
@@ -93,11 +93,11 @@ class TicketRepo {
         );
 
     print(responseJson1.body);
-    print('tata');
+    var resp1 = jsonDecode(responseJson1.body);
     List<String> tickets = [];
-    tickets.add(resp['message']);
-    //tickets.add(resp['ticketId'][0].toString());
-    List<dynamic> ticketsId = resp['ticketId'];
+    tickets.add(resp1['message']);
+
+    List<dynamic> ticketsId = resp1['ticketId'];
     ticketsId.forEach((element) {
       tickets.add(element.toString());
     });
