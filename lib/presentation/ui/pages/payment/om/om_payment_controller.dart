@@ -41,7 +41,8 @@ class OMPaymentController extends GetxController with StateMixin<String> {
     Loader.close();
     print(tickets);
 
-    if (tickets[0] == "payment effectué") {
+    if(tickets.length != 0){
+    if (tickets[0] == "successful") {
       await Alert(
           context: context,
           type: AlertType.success,
@@ -75,7 +76,26 @@ class OMPaymentController extends GetxController with StateMixin<String> {
       await Alert(
         context: context,
         type: AlertType.error,
-        title: "Error !!",
+        title: "Error !!".tr+" "+tickets[0],
+        desc: msg,
+        buttons: [
+          DialogButton(
+            child: Text(
+              'Close'.tr,
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+            width: 120,
+          )
+        ],
+      ).show();
+    }
+    }
+    else {
+      await Alert(
+        context: context,
+        type: AlertType.error,
+        title: "An error occured !!",
         desc: msg,
         buttons: [
           DialogButton(

@@ -118,4 +118,52 @@ class SettingsController extends GetxController {
       Loader.error(error.details);
     });
   }
+
+  void deleteAccount() async {
+    if (Get.find<UserService>().user.value == null) {
+      Loader.error("You are not connected".tr);
+      return;
+    }
+
+    var res = await showDialog<bool?>(
+        context: Get.context!,
+        builder: (ctx) => Dialog(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Confirm".tr,
+                  style: Theme.of(ctx).textTheme.headline6,
+                ),
+                AppDimensions.serparatorVert8,
+                Text("Are you sure you want to delete your account?".tr),
+                AppDimensions.serparatorVert8,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: Get.back, child:  Text("No".tr)),
+                    TextButton(
+                        onPressed: () => Get.back(result: true),
+                        child: Text("Yes".tr))
+                  ],
+                )
+              ],
+            ),
+          ),
+        ));
+    if (res != true) return;
+    Loader.loading();
+    Api().userRepo.deleteAccount().then((value) {
+      Loader.close();
+      Loader.info(message: "Your account has been successfully deleted".tr);
+      Get.find<UserService>().logOut();
+      Get.toNamed(Approutes.HOME);
+    }).catchError((error) {
+      Loader.close();
+      Loader.error(error.details);
+    });
+  }
 }

@@ -18,7 +18,6 @@ class PickAgencyPage extends GetWidget<PickAgencyController> {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      drawer: SideMenu(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(

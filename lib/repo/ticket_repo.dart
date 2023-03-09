@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 import 'package:ki_part/utils/storage.dart';
@@ -19,8 +19,6 @@ class TicketRepo {
 
     var endpointUrl =
         "http://api.mykipart.com/api/v1/stripe/test/payment/$idPayment/$amount/$codePromo/$idSubAgency";
-    print(endpointUrl);
-    print("hello world");
 
     var requestUrl = endpointUrl;
 
@@ -60,8 +58,6 @@ class TicketRepo {
 
     var endpointUrl =
         "http://api.mykipart.com/api/v1/pay/withOrangeMoney/$phoneNumber/1/$idSubAgency";
-    print(endpointUrl);
-    print("Orange Money");
 
     var requestUrl = endpointUrl;
 
@@ -77,7 +73,7 @@ class TicketRepo {
         }));
 
     var resp = jsonDecode(responseJson.body);
-    print("toto");
+
     print(resp);
     String accessToken = resp['accessToken'];
     String payToken = resp['payToken'];
@@ -92,16 +88,23 @@ class TicketRepo {
         },
         );
 
-    print(responseJson1.body);
-    var resp1 = jsonDecode(responseJson1.body);
+    log(responseJson1.body);
     List<String> tickets = [];
-    tickets.add(resp1['message']);
+    if(responseJson1.body.isNotEmpty){
+      final data = jsonDecode(responseJson1.body);
+      print(data["message"]);
 
-    List<dynamic> ticketsId = resp1['ticketId'];
-    ticketsId.forEach((element) {
-      tickets.add(element.toString());
-    });
+      tickets.add(data['message']);
 
+      
+      if(data["message"] == "successful"){
+        List<dynamic> ticketsId = data['ticketId'];
+        ticketsId.forEach((element) {
+          tickets.add(element.toString());
+        });
+      }
+
+    }
     return tickets;
   }
 

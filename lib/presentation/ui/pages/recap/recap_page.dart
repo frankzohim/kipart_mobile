@@ -4,6 +4,7 @@ import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/recap/recap_controller.dart';
 import 'package:ki_part/presentation/widgets/bus_widget.dart';
 import 'package:ki_part/utils/app_routes.dart';
+import 'package:ki_part/presentation/widgets/side_menu.dart';
 
 class RecapPage extends GetWidget<RecapController> {
   const RecapPage({super.key});
@@ -11,6 +12,7 @@ class RecapPage extends GetWidget<RecapController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SideMenu(),
       body: NestedScrollView(
           headerSliverBuilder: (a, b) => [
                  SliverAppBar(

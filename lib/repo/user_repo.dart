@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:ki_part/data/models/users.dart';
 import 'package:ki_part/data/models/brandAmbassador.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:ki_part/utils/storage.dart';
 
 class UserRepo {
   final Dio _dio;
@@ -18,6 +21,33 @@ class UserRepo {
     var usr = await _dio.get("/api/v1/details/user",
         options: Options(headers: {"Authorization": token}));
     return UserModel.fromMap(usr.data)..accessToken = token;
+  }
+
+  Future<String> deleteAccount() async {
+    final UserModel user;
+    await Storage.instance.init();
+    final val = Storage.instance.get("currentUser");
+    user = UserModel.fromMap(val);
+
+    var endpointUrl =
+        "http://api.mykipart.com/api/v1/delete/Account";
+    print(endpointUrl);
+
+    var requestUrl = endpointUrl;
+
+    var responseJson = await http.post(Uri.parse(requestUrl),
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json',
+          "Authorization": user.accessToken!
+        },
+        body: jsonEncode({
+          'description': 'Demande de suppression d\'un compte',
+        }));
+
+    var resp = jsonDecode(responseJson.body);
+    print(resp);
+    return resp['message'];
   }
 
   Future register(

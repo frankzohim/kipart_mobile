@@ -64,6 +64,18 @@ class SettingsPage extends GetView<SettingsController> {
             onTap: controller.logOut,
           ),
 
+            const Divider(
+              height: 1,
+              thickness: 1,
+            ),
+        if(Get.find<UserService>().user.value != null)
+          ListTile(
+            textColor: Theme.of(context).colorScheme.primary,
+            title: Text("Delete my account".tr),
+            onTap: controller.deleteAccount,
+          ),
+
+
 
             const Divider(
               height: 1,
@@ -71,7 +83,7 @@ class SettingsPage extends GetView<SettingsController> {
             ),
             const ListTile(
                 textColor: Colors.grey,
-                title: Text("Version 2.0.0"),
+                title: Text("Version 4.0.0"),
                 onTap: null),
             const Divider(
               height: 1,

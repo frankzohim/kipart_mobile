@@ -6,6 +6,7 @@ import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/agency/agency_controller.dart';
 import 'package:ki_part/presentation/widgets/travel_widget.dart';
 import 'package:ki_part/repo/travel_repo.dart';
+import 'package:ki_part/presentation/widgets/side_menu.dart';
 
 // class AgencyDetailsPage extends GetWidget<AgencyController> {
 class AgencyDetailsPage extends GetWidget<AgencyController> {
@@ -20,6 +21,7 @@ class AgencyDetailsPage extends GetWidget<AgencyController> {
               ? Text("${controller.agency.value!.name}")
               : const Text(''),
         ),
+        drawer: SideMenu(),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
           child: Column(

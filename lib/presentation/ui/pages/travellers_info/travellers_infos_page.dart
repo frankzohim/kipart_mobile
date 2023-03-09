@@ -6,6 +6,7 @@ import 'package:ki_part/presentation/widgets/bus_widget.dart';
 import 'package:ki_part/presentation/ui/pages/travellers_info/travellers_infos_controller.dart';
 import 'package:ki_part/utils/app_routes.dart';
 import 'package:ki_part/utils/validators.dart';
+import 'package:ki_part/presentation/widgets/side_menu.dart';
 
 class TravellersInfosPage extends GetWidget<TravellersInfosController> {
   const TravellersInfosPage({super.key});
@@ -13,6 +14,7 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SideMenu(),
       body: NestedScrollView(
           headerSliverBuilder: (a, b) => [
              SliverAppBar(
@@ -23,6 +25,7 @@ class TravellersInfosPage extends GetWidget<TravellersInfosController> {
               expandedHeight: 120,
             )
           ],
+
           body: SingleChildScrollView(
             padding: const EdgeInsets.all(16),
             child: Obx(() {
