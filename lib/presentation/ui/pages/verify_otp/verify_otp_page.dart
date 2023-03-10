@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/config/app_dimensions.dart';
 import 'package:ki_part/presentation/ui/pages/verify_otp/verify_otp_controller.dart';
 import 'package:ki_part/utils/validators.dart';
+import 'package:get/get.dart';
 
 class VerifyOTPPage extends GetWidget<VerifyOTPController> {
   const VerifyOTPPage({super.key});
@@ -10,7 +11,7 @@ class VerifyOTPPage extends GetWidget<VerifyOTPController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Code de vérification")),
+      appBar: AppBar(title: Text("Verification code".tr)),
       body: Container(
         padding: const EdgeInsets.all(16),
         alignment: Alignment.center,
@@ -21,7 +22,7 @@ class VerifyOTPPage extends GetWidget<VerifyOTPController> {
               return Text.rich(
                 TextSpan(
                     text:
-                        "Entrez le code de vérification à 6 chiffres que nous vous avons envoyé au numero ",
+                        "Enter the 6-digit verification code we sent to the number".tr,
                     children: [
                       TextSpan(
                           text:
@@ -47,15 +48,15 @@ class VerifyOTPPage extends GetWidget<VerifyOTPController> {
             AppDimensions.serparatorVert8,
             TextButton(
                 onPressed: controller.resendCode,
-                child: const Text(
-                  "Renvoyer le code",
+                child:  Text(
+                  "Resend code".tr,
                   style: TextStyle(decoration: TextDecoration.underline),
                 )),
             AppDimensions.serparatorVert16,
             AppDimensions.serparatorVert16,
             ElevatedButton(
                 onPressed: controller.verifyOTP,
-                child: const Text("Verifier le numéro"))
+                child: Text("Check number".tr))
           ],
         ),
       ),

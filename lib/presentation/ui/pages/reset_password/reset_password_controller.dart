@@ -32,7 +32,7 @@ class ResetPasswordController extends GetxController with PasswordReveal {
       Loader.close();
       Loader.info(
         message:
-            'Votre mot de passe a été reinitilisé. Veuillez vous conntecter',
+            'Your password has been reset. Please login'.tr,
         onCofirm: () {
            Get.toNamed(Approutes.LOGIN);
         },

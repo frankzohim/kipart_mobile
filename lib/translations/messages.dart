@@ -136,6 +136,13 @@ class Messages extends Translations {
       'Enter your' : 'Enter your',
       'Orange Money number' : 'Orange Money number',
       'to finalize the payment' : 'to finalize the payment',
+      'Verification code' : 'Verification code',
+      'Resend code' : 'Resend code',
+      'Check number' : 'Check number',
+      'Your code has been sent to' : 'Your code has been sent to',
+      'Your password has been reset. Please login' : 'Your password has been reset. Please login',
+      'Your account has been successfully verified. Please login' : 'Your account has been successfully verified. Please login',
+      'Enter the 6-digit verification code we sent to the number' : 'Enter the 6-digit verification code we sent to the number',
       'By clicking on "pay", you will receive instructions on your phone to complete the payment' : 'By clicking on "pay", you will receive instructions on your phone to complete the payment',
     },
 
@@ -278,6 +285,13 @@ class Messages extends Translations {
       'Enter your' : 'Enterez votre',
       'Orange Money number' : 'numéro Orange Money',
       'to finalize the payment' : 'pour finaliser le paiement',
+      'Verification code' : 'Code de vérification',
+      'Resend code' : 'Renvoyer le code',
+      'Check number' : 'Verifier le numéro',
+      'Your code has been sent to' : 'Votre code a été envoyé à',
+      'Your password has been reset. Please login' : 'Votre mot de passe a été reinitilisé. Veuillez vous connecter',
+      'Your account has been successfully verified. Please login' : 'Votre compte a été verifié avec succes. Veuillez vous connecter',
+      'Enter the 6-digit verification code we sent to the number' : 'Entrez le code de vérification à 6 chiffres que nous vous avons envoyé au numero',
       'By clicking on "pay", you will receive instructions on your phone to complete the payment' : 'En cliquant sur "payer", vous recevrez des instructions sur votre téléphone pour finaliser le paiement',
     }
   };

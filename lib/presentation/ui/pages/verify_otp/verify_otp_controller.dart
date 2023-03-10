@@ -33,7 +33,7 @@ class VerifyOTPController extends GetxController {
       Loader.close();
       Loader.info(
         message:
-            "Votre compte a été verifié avec succes. Veuillez vous connecter",
+            "Your account has been successfully verified. Please login".tr,
         onCofirm: () {
           Get.offAllNamed(
             Approutes.LOGIN,
@@ -51,7 +51,7 @@ class VerifyOTPController extends GetxController {
     Loader.loading();
     Api().userRepo.resendCode(phoneNumber.value).then((value) {
       Loader.close();
-      Loader.info(message: "Votre code a été envoyé à ${phoneNumber.value}");
+      Loader.info(message: "Your code has been sent to".tr +" "+ phoneNumber.value);
     }).catchError((error) {
       Loader.close();
       Loader.error(error.details!);
