@@ -5,6 +5,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:ki_part/presentation/ui/pages/settings/settings_controller.dart';
 import 'package:ki_part/utils/app_routes.dart';
 import 'package:ki_part/services/user_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends GetView<SettingsController> {
   const SettingsPage({super.key});
@@ -30,7 +31,7 @@ class SettingsPage extends GetView<SettingsController> {
               height: 1,
               thickness: 1,
             ),
-            ListTile(
+            /*ListTile(
               textColor: Theme.of(context).colorScheme.primary,
               title:  Text("Rate us".tr),
               onTap: controller.noteApp,
@@ -38,11 +39,13 @@ class SettingsPage extends GetView<SettingsController> {
             const Divider(
               height: 1,
               thickness: 1,
-            ),
+            ),*/
             ListTile(
               textColor: Theme.of(context).colorScheme.primary,
               title:  Text("privacy-policy".tr),
-              onTap: () {},
+              onTap: () {
+                launchUrl(Uri.parse('https://mykipart.com/Privacy-Policy'));
+              },
             ),
             const Divider(
               height: 1,
@@ -51,7 +54,9 @@ class SettingsPage extends GetView<SettingsController> {
             ListTile(
               textColor: Theme.of(context).colorScheme.primary,
               title: Text("Terms of uses".tr),
-              onTap: () {},
+              onTap: () {
+                launchUrl(Uri.parse('https://mykipart.com/cgu'));
+              },
             ),
             const Divider(
               height: 1,
@@ -93,5 +98,11 @@ class SettingsPage extends GetView<SettingsController> {
         ),
       ),
     );
+  }
+
+  Future<void> _launchUrl(url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
