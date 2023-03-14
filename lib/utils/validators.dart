@@ -37,7 +37,7 @@ abstract class Validators {
   }
 
   static String? email(String? value) {
-    if (value == null || !value.isEmail) return "Invalid Email".tr;
+    if (value != "" && !value!.isEmail) return "Invalid Email".tr;
     return null;
   }
 
