@@ -52,6 +52,7 @@ dependencies:
   flutter_svg: ^1.1.6
   screenshot: ^1.2.3
   image_gallery_saver: '^1.7.1'
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
